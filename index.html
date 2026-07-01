@@ -241,10 +241,74 @@ button:not(.loading) .btn-text::after { content: "Get Recording Access →"; }
   color: var(--text-muted);
 }
 
+/* PASSWORD BOX */
+.password-section {
+  background: var(--green-soft);
+  border: 1.5px solid rgba(0,206,72,0.25);
+  border-radius: 12px;
+  padding: 18px 20px;
+  margin-bottom: 28px;
+}
+.password-section-label {
+  font-family: ui-monospace, monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--green-dark);
+  margin-bottom: 10px;
+}
+.password-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.password-value {
+  font-family: ui-monospace, 'SF Mono', Consolas, monospace;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--navy);
+  letter-spacing: 0.06em;
+}
+.copy-btn {
+  width: auto;
+  padding: 8px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  background: var(--green);
+  color: var(--navy);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: inherit;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.copy-btn:hover {
+  background: var(--green-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,206,72,0.3);
+}
+.copy-btn.copied {
+  background: var(--navy);
+  color: #fff;
+}
+.password-hint {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 8px;
+  line-height: 1.5;
+}
+
 /* MOBILE */
 @media (max-width: 500px) {
   .card { padding: 36px 24px; }
   h1 { font-size: 24px; }
+  .password-value { font-size: 18px; }
 }
 </style>
 </head>
@@ -260,9 +324,21 @@ button:not(.loading) .btn-text::after { content: "Get Recording Access →"; }
   <h1>Access Your Workshop Recording</h1>
   <p class="subtitle">Enter the same email you used to register for the 1ManAgencyPlan Workshop. We'll verify your access and redirect you to the recording instantly.</p>
 
+  <div class="password-section">
+    <div class="password-section-label">Step 1 — Copy Recording Password</div>
+    <div class="password-row">
+      <span class="password-value" id="pwdDisplay">0wBA@0k=</span>
+      <button type="button" class="copy-btn" id="copyBtn" onclick="copyPassword()">
+        <span id="copyIcon">⎘</span>
+        <span id="copyLabel">Copy</span>
+      </button>
+    </div>
+    <div class="password-hint">You'll need this when Zoom asks for a password.</div>
+  </div>
+
   <form id="accessForm" action="https://script.google.com/macros/s/AKfycbzq43IEsYrbk54ygT3AvbgtsxIFZQWEH3CgWI33Wja2zTa1-DjjEXjHzjAKqDjhpfDZ/exec" method="GET" target="_top">
     <input type="hidden" name="redirect" id="redirectInput" value="">
-    <label for="email">Your registered email</label>
+    <label for="email">Step 2 — Enter your registered email</label>
     <input
       type="email"
       id="email"
@@ -300,6 +376,23 @@ button:not(.loading) .btn-text::after { content: "Get Recording Access →"; }
 <div class="bottom-brand">1MAP Club · 2026</div>
 
 <script>
+// Copy password to clipboard
+function copyPassword() {
+  navigator.clipboard.writeText('0wBA@0k=').then(function() {
+    var btn = document.getElementById('copyBtn');
+    var label = document.getElementById('copyLabel');
+    var icon = document.getElementById('copyIcon');
+    btn.classList.add('copied');
+    icon.textContent = '✓';
+    label.textContent = 'Copied!';
+    setTimeout(function() {
+      btn.classList.remove('copied');
+      icon.textContent = '⎘';
+      label.textContent = 'Copy';
+    }, 2000);
+  });
+}
+
 // Set the redirect URL so Apps Script knows where to send invalid emails back
 document.getElementById('redirectInput').value = window.location.href.split('?')[0];
 
