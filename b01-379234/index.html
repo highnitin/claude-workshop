@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1MAP Club — Workshop Recording Access</title>
+<meta name="description" content="Access your 1ManAgencyPlan Workshop recording. Registered participants only.">
+<style>
+:root {
+  --bg: #FAFAF7;
+  --navy: #03112C;
+  --navy-soft: #1A2540;
+  --green: #00CE48;
+  --green-dark: #00A33A;
+  --green-soft: rgba(0,206,72,0.08);
+  --text: #03112C;
+  --text-muted: #5A5F6A;
+  --border: rgba(3,17,44,0.1);
+  --border-strong: rgba(3,17,44,0.2);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', system-ui, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* TOP LABEL */
+.top-label {
+  font-family: ui-monospace, 'SF Mono', Consolas, monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--green-dark);
+  font-weight: 600;
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.pulse {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.6; }
+}
+
+/* CARD */
+.card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 48px 44px;
+  max-width: 460px;
+  width: 100%;
+  box-shadow: 0 4px 32px rgba(3,17,44,0.07);
+}
+
+.brand {
+  font-family: ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--navy);
+  line-height: 1.2;
+  margin-bottom: 12px;
+  letter-spacing: -0.015em;
+}
+
+.subtitle {
+  font-size: 14.5px;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin-bottom: 36px;
+}
+
+/* FORM */
+label {
+  display: block;
+  font-family: ui-monospace, monospace;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+
+input[type="email"] {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1.5px solid var(--border-strong);
+  border-radius: 10px;
+  font-size: 15px;
+  color: var(--navy);
+  background: #fff;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  margin-bottom: 14px;
+  font-family: inherit;
+}
+
+input[type="email"]::placeholder { color: #b0b5bf; }
+
+input[type="email"]:focus {
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px rgba(0,206,72,0.12);
+}
+
+button {
+  width: 100%;
+  padding: 15px;
+  background: var(--green);
+  color: var(--navy);
+  font-weight: 700;
+  font-size: 15px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.15s;
+  letter-spacing: 0.01em;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+button:hover {
+  background: var(--green-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(0,206,72,0.3);
+}
+
+button:active { transform: translateY(0); }
+
+button.loading {
+  opacity: 0.7;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(3,17,44,0.3);
+  border-top-color: var(--navy);
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  display: none;
+}
+
+button.loading .spinner { display: block; }
+button.loading .btn-text::after { content: "Checking…"; }
+button:not(.loading) .btn-text::after { content: "Get Recording Access →"; }
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ERROR STATE */
+.error-box {
+  display: none;
+  margin-top: 16px;
+  padding: 14px 16px;
+  background: #fff5f5;
+  border: 1px solid #fca5a5;
+  border-radius: 10px;
+  font-size: 13.5px;
+  color: #b91c1c;
+  line-height: 1.6;
+}
+.error-box.show { display: block; }
+.error-box a { color: #b91c1c; font-weight: 600; }
+
+/* SUCCESS STATE */
+.success-box {
+  display: none;
+  margin-top: 16px;
+  padding: 14px 16px;
+  background: var(--green-soft);
+  border: 1px solid rgba(0,206,72,0.3);
+  border-radius: 10px;
+  font-size: 13.5px;
+  color: var(--green-dark);
+  line-height: 1.6;
+  font-weight: 500;
+}
+.success-box.show { display: block; }
+
+/* DIVIDER */
+.divider {
+  margin: 32px 0 24px;
+  border: none;
+  border-top: 1px solid var(--border);
+}
+
+/* FOOTER NOTE */
+.footer-note {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  text-align: center;
+}
+.footer-note a {
+  color: var(--green-dark);
+  text-decoration: none;
+  font-weight: 500;
+}
+.footer-note a:hover { text-decoration: underline; }
+
+/* BOTTOM BRAND */
+.bottom-brand {
+  margin-top: 32px;
+  font-family: ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* PASSWORD BOX */
+.password-section {
+  background: var(--green-soft);
+  border: 1.5px solid rgba(0,206,72,0.25);
+  border-radius: 12px;
+  padding: 18px 20px;
+  margin-bottom: 28px;
+}
+.password-section-label {
+  font-family: ui-monospace, monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--green-dark);
+  margin-bottom: 10px;
+}
+.password-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.password-value {
+  font-family: ui-monospace, 'SF Mono', Consolas, monospace;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--navy);
+  letter-spacing: 0.06em;
+}
+.copy-btn {
+  width: auto;
+  padding: 8px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  background: var(--green);
+  color: var(--navy);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: inherit;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.copy-btn:hover {
+  background: var(--green-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,206,72,0.3);
+}
+.copy-btn.copied {
+  background: var(--navy);
+  color: #fff;
+}
+.password-hint {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 8px;
+  line-height: 1.5;
+}
+
+/* MOBILE */
+@media (max-width: 500px) {
+  .card { padding: 36px 24px; }
+  h1 { font-size: 24px; }
+  .password-value { font-size: 18px; }
+}
+</style>
+</head>
+<body>
+
+<div class="top-label">
+  <span class="pulse"></span>
+  1ManAgencyPlan Workshop · Recording Access
+</div>
+
+<div class="card">
+  <div class="brand">1MAP Club · Nitin Joshi</div>
+  <h1>Access Your Workshop Recording</h1>
+  <p class="subtitle">Enter the same email you used to register for the 1ManAgencyPlan Workshop. We'll verify your access and redirect you to the recording instantly.</p>
+
+  <div class="password-section">
+    <div class="password-section-label">Step 1 — Copy Recording Password</div>
+    <div class="password-row">
+      <span class="password-value" id="pwdDisplay">0wBA@0k=</span>
+      <button type="button" class="copy-btn" id="copyBtn" onclick="copyPassword()">
+        <span id="copyIcon">⎘</span>
+        <span id="copyLabel">Copy</span>
+      </button>
+    </div>
+    <div class="password-hint">You'll need this when Zoom asks for a password.</div>
+  </div>
+
+  <form id="accessForm" action="https://script.google.com/macros/s/AKfycbzq43IEsYrbk54ygT3AvbgtsxIFZQWEH3CgWI33Wja2zTa1-DjjEXjHzjAKqDjhpfDZ/exec" method="GET" target="_top">
+    <input type="hidden" name="redirect" id="redirectInput" value="">
+    <label for="email">Step 2 — Enter your registered email</label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      placeholder="you@example.com"
+      required
+      autocomplete="email"
+      autocapitalize="none"
+    >
+    <button type="submit" id="submitBtn">
+      <span class="spinner"></span>
+      <span class="btn-text"></span>
+    </button>
+  </form>
+
+  <div class="error-box" id="errorBox">
+    ✗ &nbsp;This email isn't in our workshop list. Please use the exact email you registered with (check for typos or try your other email).<br><br>
+    If you're sure it's correct, reach out:<br>
+    WhatsApp or <a href="mailto:highnitin@gmail.com">highnitin@gmail.com</a>
+  </div>
+
+  <div class="success-box" id="successBox">
+    ✓ &nbsp;Access confirmed! Redirecting you to the recording…
+  </div>
+
+  <hr class="divider">
+
+  <div class="footer-note">
+    Only registered 1ManAgencyPlan Workshop participants can access this recording.<br>
+    <a href="https://1managencyplan.in" target="_blank">1managencyplan.in</a> &nbsp;·&nbsp;
+    <a href="https://instagram.com/highnitin" target="_blank">@highnitin</a>
+  </div>
+</div>
+
+<div class="bottom-brand">1MAP Club · 2026</div>
+
+<script>
+// Copy password to clipboard
+function copyPassword() {
+  navigator.clipboard.writeText('0wBA@0k=').then(function() {
+    var btn = document.getElementById('copyBtn');
+    var label = document.getElementById('copyLabel');
+    var icon = document.getElementById('copyIcon');
+    btn.classList.add('copied');
+    icon.textContent = '✓';
+    label.textContent = 'Copied!';
+    setTimeout(function() {
+      btn.classList.remove('copied');
+      icon.textContent = '⎘';
+      label.textContent = 'Copy';
+    }, 2000);
+  });
+}
+
+// Set the redirect URL so Apps Script knows where to send invalid emails back
+document.getElementById('redirectInput').value = window.location.href.split('?')[0];
+
+// Show error if Apps Script redirected back with ?error=notfound
+const params = new URLSearchParams(window.location.search);
+if (params.get('error') === 'notfound') {
+  document.getElementById('errorBox').classList.add('show');
+  window.history.replaceState({}, '', window.location.pathname);
+}
+
+// Show loading state on submit
+document.getElementById('accessForm').addEventListener('submit', function() {
+  document.getElementById('errorBox').classList.remove('show');
+  document.getElementById('submitBtn').classList.add('loading');
+});
+</script>
+
+</body>
+</html>
