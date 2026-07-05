@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>1MAP Club — Batch 02 Recording Access</title>
-<meta name="description" content="Access your 1ManAgencyPlan Batch 02 Workshop recordings. Registered participants only.">
 <style>
 :root {
   --bg: #FAFAF7;
@@ -18,9 +17,7 @@
   --border: rgba(3,17,44,0.1);
   --border-strong: rgba(3,17,44,0.2);
 }
-
 * { box-sizing: border-box; margin: 0; padding: 0; }
-
 body {
   background: var(--bg);
   font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', system-ui, sans-serif;
@@ -29,18 +26,18 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 24px;
+  padding: 40px 24px 60px;
   -webkit-font-smoothing: antialiased;
 }
 
 .top-label {
-  font-family: ui-monospace, 'SF Mono', Consolas, monospace;
+  font-family: ui-monospace, monospace;
   font-size: 11px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--green-dark);
   font-weight: 600;
-  margin-bottom: 32px;
+  margin-bottom: 28px;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -51,59 +48,124 @@ body {
   animation: pulse 2s ease-in-out infinite;
 }
 @keyframes pulse {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.4); opacity: 0.6; }
+  0%,100%{transform:scale(1);opacity:1;}
+  50%{transform:scale(1.4);opacity:0.6;}
 }
 
-.card {
+.page-title {
+  font-family: Georgia, serif;
+  font-size: 26px;
+  font-weight: 500;
+  color: var(--navy);
+  letter-spacing: -0.015em;
+  margin-bottom: 8px;
+  text-align: center;
+}
+.page-sub {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 36px;
+  text-align: center;
+  line-height: 1.6;
+}
+
+/* RECORDING CARD */
+.rec-card {
   background: #fff;
   border: 1px solid var(--border);
   border-radius: 20px;
-  padding: 48px 44px;
-  max-width: 460px;
+  padding: 36px 40px;
+  max-width: 480px;
   width: 100%;
-  box-shadow: 0 4px 32px rgba(3,17,44,0.07);
-}
-
-.brand {
-  font-family: ui-monospace, monospace;
-  font-size: 11px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  font-weight: 600;
+  box-shadow: 0 4px 28px rgba(3,17,44,0.07);
   margin-bottom: 20px;
 }
 
-h1 {
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: 28px;
-  font-weight: 500;
-  color: var(--navy);
-  line-height: 1.2;
-  margin-bottom: 12px;
-  letter-spacing: -0.015em;
+.rec-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
 }
-
-.subtitle {
-  font-size: 14.5px;
-  color: var(--text-muted);
-  line-height: 1.65;
-  margin-bottom: 36px;
-}
-
-.recordings-info {
+.rec-tag {
+  font-family: ui-monospace, monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--green-dark);
   background: var(--green-soft);
-  border: 1.5px solid rgba(0,206,72,0.2);
-  border-radius: 12px;
-  padding: 14px 16px;
-  margin-bottom: 28px;
-  font-size: 13px;
-  color: var(--navy);
-  line-height: 1.6;
+  border: 1px solid rgba(0,206,72,0.2);
+  border-radius: 20px;
+  padding: 4px 12px;
 }
-.recordings-info strong { color: var(--green-dark); }
+.rec-duration {
+  font-family: ui-monospace, monospace;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
 
+/* PASSWORD BOX */
+.pwd-box {
+  background: var(--green-soft);
+  border: 1.5px solid rgba(0,206,72,0.25);
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-bottom: 24px;
+}
+.pwd-box-label {
+  font-family: ui-monospace, monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--green-dark);
+  margin-bottom: 10px;
+}
+.pwd-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.pwd-value {
+  font-family: ui-monospace, 'SF Mono', Consolas, monospace;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--navy);
+  letter-spacing: 0.06em;
+}
+.copy-btn {
+  padding: 8px 18px;
+  background: var(--green);
+  color: var(--navy);
+  font-weight: 700;
+  font-size: 13px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: inherit;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.copy-btn:hover {
+  background: var(--green-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,206,72,0.3);
+}
+.copy-btn.copied { background: var(--navy); color: #fff; }
+.pwd-hint {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 8px;
+  line-height: 1.5;
+}
+
+/* EMAIL FORM */
 label {
   display: block;
   font-family: ui-monospace, monospace;
@@ -114,7 +176,6 @@ label {
   color: var(--navy);
   margin-bottom: 8px;
 }
-
 input[type="email"] {
   width: 100%;
   padding: 14px 16px;
@@ -125,7 +186,7 @@ input[type="email"] {
   background: #fff;
   outline: none;
   transition: border-color 0.15s, box-shadow 0.15s;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
   font-family: inherit;
 }
 input[type="email"]::placeholder { color: #b0b5bf; }
@@ -134,11 +195,11 @@ input[type="email"]:focus {
   box-shadow: 0 0 0 3px rgba(0,206,72,0.12);
 }
 
-button[type="submit"] {
+.submit-btn {
   width: 100%;
-  padding: 15px;
-  background: var(--green);
-  color: var(--navy);
+  padding: 14px;
+  background: var(--navy);
+  color: #fff;
   font-weight: 700;
   font-size: 15px;
   border: none;
@@ -151,74 +212,69 @@ button[type="submit"] {
   justify-content: center;
   gap: 8px;
 }
-button[type="submit"]:hover {
-  background: var(--green-dark);
+.submit-btn:hover {
+  background: var(--navy-soft);
   transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(0,206,72,0.3);
+  box-shadow: 0 6px 20px rgba(3,17,44,0.2);
 }
-button[type="submit"].loading {
+.submit-btn.loading {
   opacity: 0.7;
   cursor: not-allowed;
   pointer-events: none;
 }
 .spinner {
-  width: 16px; height: 16px;
-  border: 2px solid rgba(3,17,44,0.3);
-  border-top-color: var(--navy);
+  width: 15px; height: 15px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: #fff;
   border-radius: 50%;
   animation: spin 0.6s linear infinite;
   display: none;
 }
-button[type="submit"].loading .spinner { display: block; }
-button[type="submit"].loading .btn-text::after { content: "Checking…"; }
-button[type="submit"]:not(.loading) .btn-text::after { content: "Get Recording Access →"; }
+.submit-btn.loading .spinner { display: block; }
+.submit-btn.loading .btn-text::after { content: "Checking…"; }
+.submit-btn:not(.loading) .btn-text::after { content: "Watch Part 1 Recording →"; }
 @keyframes spin { to { transform: rotate(360deg); } }
 
+.submit-btn-p2:not(.loading) .btn-text::after { content: "Watch Part 2 Recording →"; }
+
+/* ERROR */
 .error-box {
   display: none;
-  margin-top: 16px;
-  padding: 14px 16px;
+  margin-top: 14px;
+  padding: 12px 16px;
   background: #fff5f5;
   border: 1px solid #fca5a5;
   border-radius: 10px;
-  font-size: 13.5px;
+  font-size: 13px;
   color: #b91c1c;
   line-height: 1.6;
 }
 .error-box.show { display: block; }
 .error-box a { color: #b91c1c; font-weight: 600; }
 
-.divider {
-  margin: 32px 0 24px;
-  border: none;
-  border-top: 1px solid var(--border);
-}
-
-.footer-note {
-  font-size: 12.5px;
-  color: var(--text-muted);
-  line-height: 1.7;
-  text-align: center;
-}
-.footer-note a {
-  color: var(--green-dark);
-  text-decoration: none;
-  font-weight: 500;
-}
-.footer-note a:hover { text-decoration: underline; }
-
+/* FOOTER */
 .bottom-brand {
-  margin-top: 32px;
+  margin-top: 24px;
   font-family: ui-monospace, monospace;
   font-size: 11px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--text-muted);
+  text-align: center;
 }
+.back-link {
+  display: inline-block;
+  margin-top: 16px;
+  font-size: 13px;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-weight: 500;
+}
+.back-link:hover { color: var(--navy); }
 
-@media (max-width: 500px) {
-  .card { padding: 36px 24px; }
-  h1 { font-size: 24px; }
+@media (max-width: 520px) {
+  .rec-card { padding: 28px 20px; }
+  .pwd-value { font-size: 18px; }
 }
 </style>
 </head>
@@ -226,69 +282,127 @@ button[type="submit"]:not(.loading) .btn-text::after { content: "Get Recording A
 
 <div class="top-label">
   <span class="pulse"></span>
-  1ManAgencyPlan Workshop · Batch 02 Recording Access
+  1ManAgencyPlan Workshop · Batch 02
 </div>
 
-<div class="card">
-  <div class="brand">1MAP Club · Nitin Joshi</div>
-  <h1>Access Batch 02 Recordings</h1>
-  <p class="subtitle">Enter the same email you used to register for the 1ManAgencyPlan Batch 02 Workshop. We'll verify your access and unlock both recordings.</p>
+<div class="page-title">Batch 02 Recordings</div>
+<p class="page-sub">Enter your registered email for each part to unlock the recording.</p>
 
-  <div class="recordings-info">
-    <strong>2 recordings included:</strong><br>
-    Part 1 — 1h 01m &nbsp;·&nbsp; Part 2 — 1h 37m
+<!-- PART 1 CARD -->
+<div class="rec-card">
+  <div class="rec-header">
+    <span class="rec-tag">Part 1 of 2</span>
+    <span class="rec-duration">⏱ 1h 01m</span>
   </div>
 
-  <form id="accessForm" action="https://script.google.com/macros/s/AKfycbzq43IEsYrbk54ygT3AvbgtsxIFZQWEH3CgWI33Wja2zTa1-DjjEXjHzjAKqDjhpfDZ/exec" method="GET" target="_top">
-    <input type="hidden" name="redirect" id="redirectInput" value="">
-    <input type="hidden" name="batch" value="B02">
-    <label for="email">Your registered email</label>
-    <input
-      type="email"
-      id="email"
-      name="email"
-      placeholder="you@example.com"
-      required
-      autocomplete="email"
-      autocapitalize="none"
-    >
-    <button type="submit" id="submitBtn">
+  <div class="pwd-box">
+    <div class="pwd-box-label">Step 1 — Copy Recording Password</div>
+    <div class="pwd-row">
+      <span class="pwd-value" id="pwd1">@5bLJCr2</span>
+      <button type="button" class="copy-btn" id="copyBtn1" onclick="copyPwd('pwd1','copyBtn1')">
+        <span id="copyIcon1">⎘</span>
+        <span id="copyLabel1">Copy</span>
+      </button>
+    </div>
+    <div class="pwd-hint">Zoom will ask for this when the recording opens.</div>
+  </div>
+
+  <form id="form1" action="https://script.google.com/macros/s/AKfycbzq43IEsYrbk54ygT3AvbgtsxIFZQWEH3CgWI33Wja2zTa1-DjjEXjHzjAKqDjhpfDZ/exec" method="GET" target="_top">
+    <input type="hidden" name="redirect" id="redirect1" value="">
+    <input type="hidden" name="batch" value="B02P1">
+    <label for="email1">Step 2 — Enter your registered email</label>
+    <input type="email" id="email1" name="email" placeholder="you@example.com" required autocomplete="email" autocapitalize="none">
+    <button type="submit" id="submitBtn1" class="submit-btn">
       <span class="spinner"></span>
       <span class="btn-text"></span>
     </button>
   </form>
 
-  <div class="error-box" id="errorBox">
-    ✗ &nbsp;This email isn't in our Batch 02 list. Please use the exact email you registered with.<br><br>
-    If you're sure it's correct, reach out:<br>
-    WhatsApp or <a href="mailto:highnitin@gmail.com">highnitin@gmail.com</a>
-  </div>
-
-  <hr class="divider">
-
-  <div class="footer-note">
-    Only registered Batch 02 participants can access these recordings.<br>
-    <a href="https://1managencyplan.in" target="_blank">1managencyplan.in</a> &nbsp;·&nbsp;
-    <a href="https://instagram.com/highnitin" target="_blank">@highnitin</a>
+  <div class="error-box" id="errorBox1">
+    ✗ &nbsp;Email not found in Batch 02 list. Use the exact email you registered with.<br><br>
+    Need help? <a href="mailto:highnitin@gmail.com">highnitin@gmail.com</a>
   </div>
 </div>
 
-<div class="bottom-brand">1MAP Club · 2026</div>
+<!-- PART 2 CARD -->
+<div class="rec-card">
+  <div class="rec-header">
+    <span class="rec-tag">Part 2 of 2</span>
+    <span class="rec-duration">⏱ 1h 37m</span>
+  </div>
+
+  <div class="pwd-box">
+    <div class="pwd-box-label">Step 1 — Copy Recording Password</div>
+    <div class="pwd-row">
+      <span class="pwd-value" id="pwd2">2@sT9A*6</span>
+      <button type="button" class="copy-btn" id="copyBtn2" onclick="copyPwd('pwd2','copyBtn2')">
+        <span id="copyIcon2">⎘</span>
+        <span id="copyLabel2">Copy</span>
+      </button>
+    </div>
+    <div class="pwd-hint">Zoom will ask for this when the recording opens.</div>
+  </div>
+
+  <form id="form2" action="https://script.google.com/macros/s/AKfycbzq43IEsYrbk54ygT3AvbgtsxIFZQWEH3CgWI33Wja2zTa1-DjjEXjHzjAKqDjhpfDZ/exec" method="GET" target="_top">
+    <input type="hidden" name="redirect" id="redirect2" value="">
+    <input type="hidden" name="batch" value="B02P2">
+    <label for="email2">Step 2 — Enter your registered email</label>
+    <input type="email" id="email2" name="email" placeholder="you@example.com" required autocomplete="email" autocapitalize="none">
+    <button type="submit" id="submitBtn2" class="submit-btn submit-btn-p2">
+      <span class="spinner"></span>
+      <span class="btn-text"></span>
+    </button>
+  </form>
+
+  <div class="error-box" id="errorBox2">
+    ✗ &nbsp;Email not found in Batch 02 list. Use the exact email you registered with.<br><br>
+    Need help? <a href="mailto:highnitin@gmail.com">highnitin@gmail.com</a>
+  </div>
+</div>
+
+<a href="https://highnitin.github.io/claude-workshop/" class="back-link">← Back to Recording Vault</a>
+<div class="bottom-brand">1MAP Club · Nitin Joshi · 2026</div>
 
 <script>
-document.getElementById('redirectInput').value = window.location.href.split('?')[0];
+var pageUrl = window.location.href.split('?')[0];
+document.getElementById('redirect1').value = pageUrl;
+document.getElementById('redirect2').value = pageUrl;
 
-const params = new URLSearchParams(window.location.search);
-if (params.get('error') === 'notfound') {
-  document.getElementById('errorBox').classList.add('show');
-  window.history.replaceState({}, '', window.location.pathname);
-}
+// Show errors based on query param
+var params = new URLSearchParams(window.location.search);
+var err = params.get('error');
+if (err === 'B02P1') document.getElementById('errorBox1').classList.add('show');
+if (err === 'B02P2') document.getElementById('errorBox2').classList.add('show');
+if (err) window.history.replaceState({}, '', window.location.pathname);
 
-document.getElementById('accessForm').addEventListener('submit', function() {
-  document.getElementById('errorBox').classList.remove('show');
-  document.getElementById('submitBtn').classList.add('loading');
+// Loading states
+document.getElementById('form1').addEventListener('submit', function() {
+  document.getElementById('errorBox1').classList.remove('show');
+  document.getElementById('submitBtn1').classList.add('loading');
 });
-</script>
+document.getElementById('form2').addEventListener('submit', function() {
+  document.getElementById('errorBox2').classList.remove('show');
+  document.getElementById('submitBtn2').classList.add('loading');
+});
 
+// Copy password
+function copyPwd(pwdId, btnId) {
+  var text = document.getElementById(pwdId).textContent;
+  var partNum = pwdId.replace('pwd', '');
+  navigator.clipboard.writeText(text).then(function() {
+    var icon = document.getElementById('copyIcon' + partNum);
+    var label = document.getElementById('copyLabel' + partNum);
+    var btn = document.getElementById(btnId);
+    btn.classList.add('copied');
+    icon.textContent = '✓';
+    label.textContent = 'Copied!';
+    setTimeout(function() {
+      btn.classList.remove('copied');
+      icon.textContent = '⎘';
+      label.textContent = 'Copy';
+    }, 2000);
+  });
+}
+</script>
 </body>
 </html>
