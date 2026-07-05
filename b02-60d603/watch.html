@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1MAP Club — Batch 02 Recordings</title>
+<style>
+:root {
+  --bg: #FAFAF7;
+  --navy: #03112C;
+  --navy-soft: #1A2540;
+  --green: #00CE48;
+  --green-dark: #00A33A;
+  --green-soft: rgba(0,206,72,0.08);
+  --text: #03112C;
+  --text-muted: #5A5F6A;
+  --border: rgba(3,17,44,0.1);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', system-ui, sans-serif;
+  min-height: 100vh;
+  padding: 40px 24px 80px;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 560px; margin: 0 auto; }
+
+.top-label {
+  font-family: ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--green-dark);
+  font-weight: 600;
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.pulse {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--green);
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%,100%{transform:scale(1);opacity:1;}
+  50%{transform:scale(1.4);opacity:0.6;}
+}
+
+h1 {
+  font-family: Georgia, serif;
+  font-size: 26px;
+  font-weight: 500;
+  color: var(--navy);
+  letter-spacing: -0.015em;
+  margin-bottom: 8px;
+}
+.subtitle {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 36px;
+  line-height: 1.6;
+}
+
+/* RECORDING CARD */
+.rec-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 28px 28px 24px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 20px rgba(3,17,44,0.06);
+}
+
+.rec-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.rec-tag {
+  font-family: ui-monospace, monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--green-dark);
+  background: var(--green-soft);
+  border: 1px solid rgba(0,206,72,0.2);
+  border-radius: 20px;
+  padding: 4px 12px;
+}
+
+.rec-duration {
+  font-family: ui-monospace, monospace;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+.rec-title {
+  font-family: Georgia, serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--navy);
+  margin-bottom: 18px;
+  letter-spacing: -0.01em;
+}
+
+/* PASSWORD ROW */
+.pwd-section {
+  background: var(--green-soft);
+  border: 1.5px solid rgba(0,206,72,0.2);
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 16px;
+}
+.pwd-label {
+  font-family: ui-monospace, monospace;
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--green-dark);
+  margin-bottom: 8px;
+}
+.pwd-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.pwd-value {
+  font-family: ui-monospace, 'SF Mono', Consolas, monospace;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--navy);
+  letter-spacing: 0.06em;
+}
+.copy-btn {
+  padding: 7px 16px;
+  background: var(--green);
+  color: var(--navy);
+  font-weight: 700;
+  font-size: 12px;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: inherit;
+  flex-shrink: 0;
+}
+.copy-btn:hover {
+  background: var(--green-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,206,72,0.3);
+}
+.copy-btn.copied { background: var(--navy); color: #fff; }
+.pwd-hint {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+/* WATCH BUTTON */
+.watch-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 14px;
+  background: var(--navy);
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: all 0.15s;
+  letter-spacing: 0.01em;
+}
+.watch-btn:hover {
+  background: var(--navy-soft);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(3,17,44,0.2);
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 32px;
+  font-size: 13px;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.15s;
+}
+.back-link:hover { color: var(--navy); }
+
+.bottom-brand {
+  margin-top: 40px;
+  font-family: ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-align: center;
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="top-label">
+    <span class="pulse"></span>
+    1MAP Club · Batch 02 · Access Granted
+  </div>
+
+  <h1>Your Batch 02 Recordings</h1>
+  <p class="subtitle">Both sessions unlocked. Copy the password first, then open the recording — it will open in a new tab so you can always come back here.</p>
+
+  <!-- PART 1 -->
+  <div class="rec-card">
+    <div class="rec-header">
+      <span class="rec-tag">Part 1 of 2</span>
+      <span class="rec-duration">⏱ 1h 01m</span>
+    </div>
+    <div class="rec-title">1ManAgencyPlan Workshop — Session 1</div>
+
+    <div class="pwd-section">
+      <div class="pwd-label">Recording Password</div>
+      <div class="pwd-row">
+        <span class="pwd-value" id="pwd1">@5bLJCr2</span>
+        <button class="copy-btn" id="copyBtn1" onclick="copyPwd('pwd1','copyBtn1')">Copy</button>
+      </div>
+      <div class="pwd-hint">Zoom will ask for this when the recording opens.</div>
+    </div>
+
+    <a href="https://us06web.zoom.us/rec/share/kiw4mONLsBUaI9j_9oyPNSaJHXTAcnc1f7nnnqaSJ-gSfAMqPUruXAAlDOcUDx0E.pAqUAmYzkVNlqzfe" target="_blank" class="watch-btn">
+      ▶ &nbsp;Watch Part 1 — Opens in New Tab
+    </a>
+  </div>
+
+  <!-- PART 2 -->
+  <div class="rec-card">
+    <div class="rec-header">
+      <span class="rec-tag">Part 2 of 2</span>
+      <span class="rec-duration">⏱ 1h 37m</span>
+    </div>
+    <div class="rec-title">1ManAgencyPlan Workshop — Session 2</div>
+
+    <div class="pwd-section">
+      <div class="pwd-label">Recording Password</div>
+      <div class="pwd-row">
+        <span class="pwd-value" id="pwd2">2@sT9A*6</span>
+        <button class="copy-btn" id="copyBtn2" onclick="copyPwd('pwd2','copyBtn2')">Copy</button>
+      </div>
+      <div class="pwd-hint">Zoom will ask for this when the recording opens.</div>
+    </div>
+
+    <a href="https://us06web.zoom.us/rec/share/dqrkvAK2SQni9FJtD7wUyOabjlxQAomBHYCwCBCqdhX7DNwTAcqA7kdzt_kAzXqL.Swcw05KT69Wy_jZF" target="_blank" class="watch-btn">
+      ▶ &nbsp;Watch Part 2 — Opens in New Tab
+    </a>
+  </div>
+
+  <a href="https://highnitin.github.io/claude-workshop/" class="back-link">← Back to Recording Vault</a>
+
+  <div class="bottom-brand">1MAP Club · Nitin Joshi · 2026</div>
+
+</div>
+
+<script>
+function copyPwd(pwdId, btnId) {
+  var text = document.getElementById(pwdId).textContent;
+  navigator.clipboard.writeText(text).then(function() {
+    var btn = document.getElementById(btnId);
+    btn.classList.add('copied');
+    btn.textContent = '✓ Copied!';
+    setTimeout(function() {
+      btn.classList.remove('copied');
+      btn.textContent = 'Copy';
+    }, 2000);
+  });
+}
+</script>
+</body>
+</html>
