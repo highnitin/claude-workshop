@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1MAP Performance OS — Claude Skill Pack Architecture</title>
+<meta name="description" content="The complete 1MAP Performance OS. 7 skills. 1 flywheel. Built by Nitin Joshi | 1MAP Club.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f6f5ef;
+  --bg-card: #FFFFFF;
+  --navy: #15181d;
+  --navy-soft: #2c313a;
+  --green: #c6f24a;
+  --green-dark: #5f7d0c;
+  --green-soft: rgba(198,242,74,0.1);
+  --text: #15181d;
+  --text-muted: #5c626d;
+  --text-light: #868d98;
+  --border: rgba(21,24,29,0.08);
+  --border-strong: rgba(21,24,29,0.18);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* TOP NAV */
+.top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(246,245,239,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.top-nav-brand {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--navy);
+  letter-spacing: -0.3px;
+}
+.top-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 13px;
+  font-family: 'JetBrains Mono', monospace;
+}
+.top-nav-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.top-nav-links a:hover { color: var(--navy); }
+.top-nav-links .home-link {
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.container {
+  max-width: 940px;
+  margin: 0 auto;
+  padding: 56px 36px 72px;
+}
+
+/* HEADER */
+.header {
+  margin-bottom: 28px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--border);
+}
+.wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.wordmark-mark {
+  width: 32px;
+  height: 32px;
+  background: var(--navy);
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.wordmark-mark svg { width: 18px; height: 18px; }
+.wordmark-text { font-size: 13px; letter-spacing: 0.02em; color: var(--text-muted); }
+.wordmark-text strong { color: var(--navy); font-weight: 600; }
+.eyebrow {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--green-dark);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  font-weight: 600;
+}
+h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 42px;
+  line-height: 1.05;
+  font-weight: 600;
+  margin: 0 0 14px;
+  letter-spacing: -0.02em;
+  color: var(--navy);
+}
+.tagline {
+  font-size: 17px;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.5;
+  max-width: 640px;
+}
+
+/* AUTHOR CARD */
+.author-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 28px;
+  padding: 14px 18px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  max-width: 480px;
+}
+.author-photo {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: var(--navy);
+  border: 1px solid var(--border);
+}
+.author-info { display: flex; flex-direction: column; gap: 2px; }
+.author-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--navy);
+  letter-spacing: -0.005em;
+}
+.author-meta {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.author-meta a {
+  color: var(--text-muted);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--text-light);
+  transition: all 0.15s ease;
+}
+.author-meta a:hover { color: var(--green-dark); border-bottom-color: var(--green); }
+.author-dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--text-light);
+  display: inline-block;
+}
+
+/* CTAs */
+.cta-row {
+  margin: 28px 0 28px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.cta-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 22px;
+  background: var(--green);
+  color: var(--navy);
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.15s ease;
+  border: 1px solid var(--green);
+}
+.cta-primary:hover {
+  background: var(--green-dark);
+  border-color: var(--green-dark);
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(198,242,74,0.28);
+}
+.cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 22px;
+  background: transparent;
+  color: var(--navy);
+  font-weight: 500;
+  font-size: 14px;
+  text-decoration: none;
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  transition: background 0.15s ease;
+}
+.cta-secondary:hover { background: var(--bg-card); border-color: var(--navy); }
+.arrow { display: inline-block; transition: transform 0.15s ease; }
+.cta-primary:hover .arrow, .cta-secondary:hover .arrow, .skill-install:hover .arrow, .hq-club-link:hover .arrow { transform: translateX(2px); }
+
+/* HQ CLUB BANNER */
+.hq-club {
+  margin-bottom: 36px;
+  padding: 18px 22px;
+  background: linear-gradient(135deg, rgba(21,24,29,0.04) 0%, rgba(198,242,74,0.06) 100%);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--green);
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.hq-club-content { flex: 1; min-width: 260px; }
+.hq-club-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  color: var(--green-dark);
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.hq-club-pulse {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.6; }
+}
+.hq-club-title { font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 600; color: var(--navy); margin-bottom: 3px; }
+.hq-club-body { font-size: 13.5px; color: var(--text-muted); line-height: 1.5; }
+.hq-club-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 16px;
+  background: var(--navy);
+  color: var(--green);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 7px;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+.hq-club-link:hover {
+  background: var(--navy-soft);
+  transform: translateY(-1px);
+}
+
+/* THE LOOP VISUAL */
+.loop-section {
+  margin: 40px 0 44px;
+  padding: 36px 24px 28px;
+  background: var(--navy);
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+}
+.loop-eyebrow {
+  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--green);
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.loop-title {
+  text-align: center;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 24px;
+  letter-spacing: -0.005em;
+}
+.loop-wrap {
+  max-width: 480px;
+  margin: 0 auto;
+  position: relative;
+}
+.loop-svg { width: 100%; height: auto; display: block; }
+.loop-orbit {
+  fill: none;
+  stroke: rgba(198,242,74,0.18);
+  stroke-width: 1.2;
+  stroke-dasharray: 4 7;
+  animation: rotateOrbit 60s linear infinite;
+  transform-origin: 300px 300px;
+}
+@keyframes rotateOrbit {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.loop-node-bg {
+  fill: var(--navy);
+  stroke: var(--green);
+  stroke-width: 1.5;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.loop-node-bg:hover {
+  fill: var(--green);
+  stroke: var(--green);
+}
+.loop-node-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  fill: var(--green);
+  pointer-events: none;
+  letter-spacing: 0.04em;
+}
+.loop-node-bg:hover + .loop-node-num,
+.loop-node-g:hover .loop-node-num { fill: var(--navy); }
+.loop-node-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px;
+  fill: #fff;
+  font-weight: 500;
+  pointer-events: none;
+}
+.loop-particle {
+  fill: var(--green);
+  filter: drop-shadow(0 0 6px rgba(198,242,74,0.6));
+}
+.loop-center-mark { fill: var(--green); }
+.loop-center-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  fill: #fff;
+  text-anchor: middle;
+}
+.loop-center-sub {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  fill: rgba(255,255,255,0.6);
+  text-anchor: middle;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.loop-arrow {
+  fill: var(--green);
+  opacity: 0.4;
+}
+.loop-caption {
+  text-align: center;
+  font-size: 12.5px;
+  color: rgba(255,255,255,0.6);
+  margin-top: 16px;
+  font-style: italic;
+}
+
+/* TREE controls */
+.controls { display: flex; gap: 8px; margin-bottom: 20px; }
+.ctrl-btn {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  padding: 7px 14px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-muted);
+  border-radius: 6px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.15s ease;
+  font-weight: 500;
+}
+.ctrl-btn:hover { border-color: var(--border-strong); color: var(--navy); }
+
+/* TREE */
+.tree { font-size: 14px; }
+.node { margin: 0; }
+.row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.12s ease;
+  user-select: none;
+}
+.row:hover { background: var(--green-soft); }
+.row.is-root {
+  background: var(--navy);
+  color: #fff;
+  padding: 20px 20px;
+  margin-bottom: 10px;
+  border-radius: 12px;
+  align-items: center;
+}
+.row.is-root:hover { background: var(--navy-soft); }
+.row.is-root .chev { color: var(--green); }
+.row.is-root .row-label { color: #fff; font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 600; letter-spacing: -0.01em; }
+.row.is-root .row-sub { color: rgba(255, 255, 255, 0.7); margin-top: 4px; }
+.row.is-root .icon-circle { background: var(--green); }
+.row.is-root .icon-circle svg { width: 18px; height: 18px; }
+.row.is-skill { padding: 14px 14px; align-items: center; border: 1px solid transparent; scroll-margin-top: 20px; }
+.row.is-skill:hover { border-color: var(--border); }
+.row.is-skill.is-flash { animation: flashHighlight 1.5s ease; }
+@keyframes flashHighlight {
+  0%, 100% { background: transparent; }
+  20%, 60% { background: rgba(198,242,74,0.18); }
+}
+
+.chev {
+  display: inline-block; width: 14px; flex-shrink: 0;
+  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  color: var(--text-light); padding-top: 6px;
+  transition: transform 0.2s ease;
+}
+.chev.is-open { transform: rotate(90deg); }
+.chev.is-leaf { color: transparent; }
+
+.icon-circle {
+  width: 32px; height: 32px; border-radius: 8px;
+  background: var(--navy); color: var(--green);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600;
+  flex-shrink: 0; letter-spacing: 0.02em;
+}
+
+.label-wrap { display: flex; flex-direction: column; gap: 3px; min-width: 0; flex: 1; }
+.label-top { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.row-label { font-size: 14px; font-weight: 500; color: var(--navy); line-height: 1.4; }
+.row.is-skill .row-label { font-family: 'Space Grotesk', sans-serif; font-size: 18px; letter-spacing: -0.005em; font-weight: 600; }
+.row.is-leaf .row-label { font-size: 13px; font-weight: 400; color: var(--text); }
+.row-sub { font-size: 13.5px; color: var(--text-muted); line-height: 1.5; margin-top: 3px; }
+.pill {
+  display: inline-flex; align-items: center;
+  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  letter-spacing: 0.08em; padding: 3px 9px; border-radius: 5px;
+  background: var(--green-soft); color: var(--green-dark);
+  font-weight: 600; text-transform: uppercase;
+}
+
+.skill-install {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 14px; background: var(--green); color: var(--navy);
+  font-size: 12px; font-weight: 700; text-decoration: none;
+  border-radius: 6px; flex-shrink: 0; transition: all 0.15s ease;
+  margin-left: auto; white-space: nowrap;
+}
+.skill-install:hover {
+  background: var(--green-dark); color: #fff;
+  transform: translateY(-1px); box-shadow: 0 3px 12px rgba(198,242,74,0.3);
+}
+
+.row.is-phase { padding: 9px 12px; }
+.phase-num {
+  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  color: var(--green-dark); letter-spacing: 0.08em;
+  font-weight: 600; text-transform: uppercase;
+}
+
+.row.is-leaf { padding: 5px 12px; }
+.leaf-dot {
+  width: 4px; height: 4px; border-radius: 50%;
+  background: var(--text-light);
+  margin: 10px 14px 0 2px; flex-shrink: 0;
+}
+
+.children {
+  padding-left: 28px; border-left: 1px solid var(--border);
+  margin-left: 24px; overflow: hidden; max-height: 0;
+  transition: max-height 0.35s ease;
+}
+.children.is-open { max-height: 6000px; }
+.leaf-list { padding: 4px 0 8px 0; }
+
+.meta {
+  display: flex; gap: 24px; flex-wrap: wrap;
+  margin-top: 14px; padding: 14px 16px;
+  background: rgba(21,24,29,0.025); border-radius: 8px;
+  margin-left: 12px; margin-bottom: 4px;
+}
+.meta-item {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px; letter-spacing: 0.06em;
+  color: var(--text-muted); text-transform: uppercase; font-weight: 500;
+}
+.meta-item strong {
+  color: var(--navy); font-weight: 600; margin-left: 6px;
+  text-transform: none; letter-spacing: 0;
+  font-family: 'Satoshi', -apple-system, system-ui, sans-serif; font-size: 11px;
+}
+.meta-item.file strong {
+  color: var(--green-dark); font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px; letter-spacing: 0.04em;
+}
+
+/* FOOTER */
+.footer {
+  margin-top: 56px; padding-top: 28px;
+  border-top: 1px solid var(--border);
+  display: flex; justify-content: space-between;
+  align-items: flex-start; flex-wrap: wrap; gap: 20px;
+}
+.footer-left {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: 0.12em;
+  color: var(--text-light); text-transform: uppercase; line-height: 1.8;
+}
+.footer-left strong { color: var(--navy); font-weight: 600; }
+.footer-right {
+  font-size: 13px; color: var(--text-muted);
+  text-align: right; line-height: 1.7;
+}
+.footer-right .badge-strong { color: var(--navy); font-weight: 600; }
+.footer a {
+  color: var(--navy); text-decoration: none;
+  border-bottom: 1px dotted var(--text-light); transition: all 0.15s ease;
+}
+.footer a:hover { border-bottom-color: var(--green); color: var(--green-dark); }
+
+/* HOVER REVEAL */
+.hover-reveal {
+  position: relative;
+  cursor: help;
+  border-bottom: 1px dashed var(--green);
+}
+.hover-reveal-tip {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  right: 0;
+  background: var(--navy);
+  color: #fff;
+  padding: 14px 16px;
+  border-radius: 10px;
+  font-size: 12px;
+  line-height: 1.6;
+  letter-spacing: 0;
+  text-transform: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(4px);
+  transition: all 0.2s ease;
+  pointer-events: none;
+  z-index: 10;
+  font-weight: 400;
+  text-align: left;
+  box-shadow: 0 8px 24px rgba(21,24,29,0.18);
+  min-width: 260px;
+  white-space: normal;
+}
+.hover-reveal-tip::after {
+  content: '';
+  position: absolute;
+  top: 100%; right: 24px;
+  width: 0; height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 7px solid var(--navy);
+}
+.hover-reveal:hover .hover-reveal-tip {
+  opacity: 1; visibility: visible; transform: translateY(0);
+}
+.tip-row { display: flex; gap: 10px; margin-bottom: 6px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.04em; }
+.tip-row:last-child { margin-bottom: 0; }
+.tip-row strong { color: var(--green); font-weight: 600; min-width: 60px; flex-shrink: 0; }
+.tip-row span { color: rgba(255, 255, 255, 0.85); }
+
+/* MOBILE */
+@media (max-width: 700px) {
+  .container { padding: 36px 20px 56px; }
+  h1 { font-size: 30px; }
+  .tagline { font-size: 15px; }
+  .row.is-skill { flex-wrap: wrap; }
+  .skill-install { margin-left: 0; margin-top: 8px; width: 100%; justify-content: center; }
+  .label-top { gap: 8px; }
+  .row.is-skill .row-label { font-size: 16px; }
+  .meta { gap: 14px; padding: 12px; }
+  .cta-row { flex-direction: column; align-items: stretch; }
+  .cta-primary, .cta-secondary { justify-content: center; }
+  .footer { flex-direction: column; align-items: flex-start; }
+  .footer-right { text-align: left; }
+  .hq-club { flex-direction: column; align-items: stretch; }
+  .hq-club-link { justify-content: center; }
+  .loop-section { padding: 28px 12px 20px; }
+  .author-card { max-width: 100%; }
+  .hover-reveal-tip { right: -20px; min-width: 240px; }
+  .top-nav { padding: 12px 20px; }
+  .top-nav-links { display: none; }
+}
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <span class="top-nav-brand">1MAP Performance OS</span>
+  <div class="top-nav-links">
+    <a href="https://1managencyplan.online/" class="home-link">← Home</a>
+    <a href="https://1managencyplan.online/vault">Recording Vault</a>
+    <a href="https://1managencyplan.online/claude-master-prompt">Prompt Book</a>
+    <a href="https://1managencyplan.in" target="_blank">1managencyplan.in ↗</a>
+  </div>
+</nav>
+
+<div class="container">
+
+<div class="header">
+  <div class="wordmark">
+    <span class="wordmark-text"><strong>1MAP Club</strong> · A Claude Skill Pack</span>
+  </div>
+  <div class="eyebrow">The Performance Growth Flywheel · 2026 Edition</div>
+  <h1>1MAP Performance OS</h1>
+  <p class="tagline">Seven production-grade Claude Skills covering Research, Audit, Gaps, Opportunities, Execution, Evaluation, and Reporting. Install in your Claude. Run on your brand. Loop the flywheel.</p>
+
+  <div class="author-card">
+    <img src="https://storagev2.files-vault.com/uploads/blacklabel-386/sub-account-86133/1780742031-3dlHsZ6x7H.webp" alt="Nitin Joshi" class="author-photo"/>
+    <div class="author-info">
+      <div class="author-name">Built by Nitin Joshi</div>
+      <div class="author-meta">
+        <a href="https://1managencyplan.in/" target="_blank" rel="noopener">1MAP Club</a>
+        <span class="author-dot"></span>
+        <a href="https://instagram.com/highnitin" target="_blank" rel="noopener">@highnitin</a>
+        <span class="author-dot"></span>
+        <span>150+ Clients</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="cta-row">
+  <a href="https://1managencyplan.in/" target="_blank" rel="noopener" class="cta-primary">
+    Get all 7 skills <span class="arrow">→</span>
+  </a>
+  <a href="https://1managencyplan.in/" target="_blank" rel="noopener" class="cta-secondary">
+    Visit 1MAP Club <span class="arrow">↗</span>
+  </a>
+</div>
+
+<div class="hq-club">
+  <div class="hq-club-content">
+    <div class="hq-club-eyebrow"><span class="hq-club-pulse"></span>Live updates · 1MAP Club exclusive</div>
+    <div class="hq-club-title">These skills evolve every month.</div>
+    <div class="hq-club-body">Every major Google, Meta, and Claude update gets folded back in. <strong style="color: var(--navy);">1MAP Club members get every update first</strong> — plus the Vault, the live community feed, and everything I build next.</div>
+  </div>
+  <a href="https://1managencyplan.in/" target="_blank" rel="noopener" class="hq-club-link">
+    Join 1MAP Club <span class="arrow">→</span>
+  </a>
+</div>
+
+<!-- THE LOOP -->
+<div class="loop-section">
+  <div class="loop-eyebrow">The Performance Growth Flywheel</div>
+  <div class="loop-title">Seven stages. One loop. Always turning.</div>
+  <div class="loop-wrap">
+    <svg viewBox="0 0 600 600" class="loop-svg" id="loop-svg" role="img" aria-label="Circular flywheel diagram of seven stages: Research, Audit, Gaps, Opportunities, Execution, Evaluation, Reporting">
+
+      <!-- Dashed orbit path -->
+      <circle cx="300" cy="300" r="240" class="loop-orbit"/>
+
+      <!-- Hidden path for particle animation (clockwise) -->
+      <path id="loop-path" d="M 300,60 A 240,240 0 0,1 540,300 A 240,240 0 0,1 300,540 A 240,240 0 0,1 60,300 A 240,240 0 0,1 300,60" fill="none"/>
+
+      <!-- Center mark: HQ logo + label -->
+      <g class="loop-center">
+        <text x="300" y="350" class="loop-center-label">1MAP Performance OS</text>
+        <text x="300" y="368" class="loop-center-sub">7 stages · 1 system</text>
+      </g>
+
+      <!-- Nodes — generated by JS -->
+      <g id="loop-nodes"></g>
+
+      <!-- Animated particle traveling around the loop -->
+      <circle r="7" class="loop-particle">
+        <animateMotion dur="18s" repeatCount="indefinite" rotate="auto">
+          <mpath href="#loop-path"/>
+        </animateMotion>
+      </circle>
+
+      <!-- Second particle, offset -->
+      <circle r="4" class="loop-particle" opacity="0.5">
+        <animateMotion dur="18s" repeatCount="indefinite" begin="-9s" rotate="auto">
+          <mpath href="#loop-path"/>
+        </animateMotion>
+      </circle>
+
+    </svg>
+  </div>
+  <div class="loop-caption">Click any stage to jump to its skill below ↓</div>
+</div>
+
+<div class="controls">
+  <button class="ctrl-btn" id="expand-all">+ Expand all</button>
+  <button class="ctrl-btn" id="collapse-all">− Collapse all</button>
+</div>
+
+<div class="tree" id="tree"></div>
+
+<div class="footer">
+  <div class="footer-left">
+    Built by <strong>Nitin Joshi</strong><br>
+    1MAP Club · 2026
+  </div>
+  <div class="footer-right">
+    Works with <span class="badge-strong">Meta + Google Ads</span><br>
+    <span class="badge-strong">Products + Services</span> ·
+    <span class="hover-reveal badge-strong">5 markets, 6 currencies
+      <span class="hover-reveal-tip">
+        <div class="tip-row"><strong>India</strong><span>INR</span></div>
+        <div class="tip-row"><strong>Singapore + SEA</strong><span>SGD</span></div>
+        <div class="tip-row"><strong>GCC + UAE</strong><span>AED</span></div>
+        <div class="tip-row"><strong>US + Global</strong><span>USD</span></div>
+        <div class="tip-row"><strong>Australia</strong><span>AUD</span></div>
+        <div class="tip-row"><strong>Europe</strong><span>EUR</span></div>
+      </span>
+    </span><br>
+    <a href="https://1managencyplan.in/">1managencyplan.in</a> · <a href="https://instagram.com/highnitin">@highnitin</a>
+  </div>
+</div>
+
+</div>
+
+<script>
+const SKILLS = [
+  {
+    num: "01", title: "Performance Research Engine",
+    desc: "Build the decision foundation before spending a rupee.",
+    file: "01_Performance_Research_Skill.md",
+    phases: [
+      { title: "Business context & demand", items: ["Business type detection (product/service · B2C/B2B)", "Market state read (existing vs latent demand)", "Category & seasonality context with live web search"] },
+      { title: "Audience decoding", items: ["Segment mapping by situation, not demographics", "Voice-of-customer extraction · Swipe Bank of 10-15 verbatim phrases"] },
+      { title: "Competitive & category positioning", items: ["Paid competitor teardown (Meta Ad Library + Google Transparency Center)", "Organic competitor research via Apify (Instagram, YouTube, TikTok, LinkedIn)", "Positioning gap analysis on price + value-driver axes"] },
+      { title: "Own-account signal research", items: ["Historical performance mining for products and services", "Cross-source signal joins (Meta × CRM, Google × GA4, Reviews × ad performance)"] },
+      { title: "Channel & intent fit + synthesis", items: ["Channel-intent mapping across Meta, Google, LinkedIn, TikTok, YouTube", "13-section Research Brief output, decision-ready"] }
+    ],
+    meta: { connectors: "Meta · Google · Apify · Web", output: "Research Brief", time: "Stage 1 of 7" }
+  },
+  {
+    num: "02", title: "Performance Ads Audit System",
+    desc: "24 checkpoints. 8 phases. Meta + Google. Live data via MCP.",
+    file: "02_Performance_Ads_Audit_Skill.md",
+    phases: [
+      { title: "Business economics", items: ["Offering portfolio mapping (SKU tiers for products, ACV tiers for services)", "Unit economics validation (break-even ROAS for products, break-even CPL × close rate for services)", "Offer & incentive structure"] },
+      { title: "Funnel & journey", items: ["Funnel design check (Cold → Warm → Hot architecture)", "Landing page & conversion flow diagnosis"] },
+      { title: "Signal economy", items: ["Meta tracking integrity (Pixel + CAPI + EMQ + deduplication)", "Google tracking integrity (Enhanced Conversions + GA4 + DDA)", "Signal density & learning phase check on both platforms"] },
+      { title: "Creative strategy", items: ["3C framework evaluation", "Psychological trigger audit (5-point test)", "Meta + Google creative standards (RSA, PMax asset groups, AI Brief)", "Hook Rate · Quality Score · Ad Strength · Asset Performance Labels"] },
+      { title: "Catalog, feed & service assets", items: ["Meta catalog audit (products only)", "Google Merchant Center feed audit", "Service portfolio & proof-asset audit (services only)"] },
+      { title: "Campaign structure", items: ["Meta — ASC vs Manual testing layer", "Google — Search + PMax + Demand Gen + AI Max", "Budget allocation across cold/warm/hot funnel stages"] },
+      { title: "Performance diagnosis", items: ["Metric layer breakdown top-down, four tables", "Attribution & lag awareness · DDA validation", "Incrementality check via holdout-test discipline"] },
+      { title: "Scaling readiness", items: ["Pre-scaling checklist (tracking, creative depth, unit economics, close rate)", "Vertical + horizontal scaling strategy per platform"] }
+    ],
+    meta: { connectors: "Meta Ads · Google Ads", output: "Audit with Critical Issues + Quick Wins + Strategic Recs", time: "Stage 2 of 7" }
+  },
+  {
+    num: "03", title: "Performance Gaps Diagnosis",
+    desc: "Broken / Missing / Leaking — and the one Meta-Gap that closes five.",
+    file: "03_Performance_Gaps_Skill.md",
+    phases: [
+      { title: "Gap identification", items: ["Source audit loading & verification", "Broken / Missing / Leaking trichotomy classification", "Evidence tagging — no traceability means no gap"] },
+      { title: "Gap categorization", items: ["Cluster by functional area — Economics, Funnel, Tracking, Creative, Catalog, Service Assets, Campaign Structure, Audience, Scaling"] },
+      { title: "Severity assignment", items: ["Critical / High / Medium / Low scoring", "Four criteria — budget impact, strategic impact, time sensitivity, confidence"] },
+      { title: "Cross-cutting synthesis", items: ["Pattern recognition (2-4 themes across surface gaps)", "The Meta-Gap — the single root cause that closes 3+ surface gaps when fixed"] },
+      { title: "Gaps Brief output", items: ["The Critical 5 — top 5 gaps regardless of B/M/L tag", "What Is Not A Gap — myths to drop before the next stage"] }
+    ],
+    meta: { connectors: "None — pure synthesis", output: "Gaps Brief with Critical 5", time: "Stage 3 of 7" }
+  },
+  {
+    num: "04", title: "Performance Opportunities Ranking",
+    desc: "Score every move on Impact × Effort × Confidence × Time-to-Impact.",
+    file: "04_Performance_Opportunities_Skill.md",
+    phases: [
+      { title: "Opportunity generation", items: ["Convert Critical gaps into opportunities", "Add audit-direct opportunities + research white-space angles", "Deduplicate & consolidate to a clean candidate list of 8-15"] },
+      { title: "Scoring", items: ["Impact (1-5) anchored to monthly ad spend", "Effort (1-5) — settings change to 30-day cross-team work", "Confidence (1-5) — Evidence vs Inference vs Assumption", "Priority Score = (Impact × Confidence) / Effort"] },
+      { title: "Portfolio allocation", items: ["Quick Wins — week 1-2, time-to-impact in Days", "Big Bets — 30-60 days, strategic compounding moves", "Maintain — do not break what is working", "Kill — stop within 7 days"] },
+      { title: "Opportunities Brief output", items: ["Top 3 Next Moves headline", "Scored matrix with priority scores and bucket assignments", "30 / 60 / 90 day roadmap with owners + success metrics"] }
+    ],
+    meta: { connectors: "None — ranking layer", output: "30/60/90 Day Roadmap", time: "Stage 4 of 7" }
+  },
+  {
+    num: "05", title: "Performance Execution System",
+    desc: "Build PAUSED draft campaigns. The human owns the launch button.",
+    file: "05_Performance_Execution_Skill.md",
+    phases: [
+      { title: "Pre-flight", items: ["Connector setup walkthrough — Meta, Google, Higgsfield, Apify", "Load Opportunities Brief · pick first opportunity to execute", "Manual review gate confirmation upfront"] },
+      { title: "Creative briefing & production", items: ["Generate brief from Research + Opportunities context", "Route to Higgsfield AI · static asset · or human-produced", "Model selection · preset workflow · variant generation discipline"] },
+      { title: "Meta campaign build (draft)", items: ["Campaign structure decision · ASC vs Manual", "Audience configuration · creative attachment · budget & bidding", "Tracking verification · save as PAUSED via Meta Ads MCP"] },
+      { title: "Google campaign build (draft)", items: ["Campaign type selection — Search + AI Max + PMax + Demand Gen", "AI Max configuration · Asset Studio with Gemini Omni", "Audience signals · negative keywords · save as PAUSED"] },
+      { title: "Manual review gate", items: ["Pre-launch checklist for Meta and Google", "Direct-launch filter — Claude recommendation against bypassing review"] }
+    ],
+    meta: { connectors: "Meta · Google · Higgsfield · Web", output: "Paused draft campaign + review checklist", time: "Stage 5 of 7" }
+  },
+  {
+    num: "06", title: "Performance Evaluation System",
+    desc: "Wait for signal. Read top-down. Three frames, never one.",
+    file: "06_Performance_Evaluation_Skill.md",
+    phases: [
+      { title: "Pre-flight", items: ["Connector verification for the right platform", "Load context from Stages 1, 2, 4 — baseline + success metric + opportunity hypothesis", "Confirm evaluation window — 7-14 standard, 14-60 mature"] },
+      { title: "Live data pull", items: ["Meta data (campaign + ad set + ad-level breakdowns by age, gender, placement, geo)", "Google data + 2026 GML signals — Attributed Branded Searches, DDA", "Cross-source validation (GA4, CRM, reviews)"] },
+      { title: "Signal vs noise discipline", items: ["Statistical significance check (sample-size thresholds per metric)", "Learning phase check (Meta 50-events rule)", "Attribution lag awareness — product, service, B2B cycles differ"] },
+      { title: "Metric layer reading", items: ["Top-down order — CPM → CTR → CVR → CPA → ROAS", "Three-frame comparison — vs goal, vs baseline, vs benchmark"] },
+      { title: "Verdict + feedback loop", items: ["Five-verdict framework — Scale / Continue / Iterate / Kill / Wait", "Specific actions with owners + dates", "Feedback to Stages 1, 2, 4 — this is what closes the flywheel"] }
+    ],
+    meta: { connectors: "Meta · Google · CRM · Web", output: "Evaluation Brief with verdict + actions", time: "Stage 6 of 7" }
+  },
+  {
+    num: "07", title: "Performance Reporting System",
+    desc: "Founder · client · team · board — same data, audience-tuned reports.",
+    file: "07_Performance_Reporting_Skill.md",
+    phases: [
+      { title: "Pre-flight & inputs", items: ["Audience selection (Founder · Marketing Leader · Client · Internal Team · Board)", "Format selection (One-pager · Slide deck · PDF · Email · Loom-script)", "Cadence awareness (weekly · monthly · quarterly · campaign post-mortem)"] },
+      { title: "Data aggregation", items: ["Pull live performance from Meta + Google via MCP", "Period-over-period calculations — flag any change above 20%", "Cross-platform aggregation + blended ROAS view"] },
+      { title: "Context & benchmarking", items: ["Apply base market benchmarks (India · Singapore-SEA · GCC · US · Australia-Europe)", "Apply category-specific modifiers — 20+ verticals", "Three-frame verdict per metric — Goal vs Last Period vs Benchmark"] },
+      { title: "Audience-tuned framing", items: ["Founder/CEO — outcome-led, strategic, currency in absolutes", "Client — ROI-led, decision-forcing, transparent", "Marketing leader — tactical, granular, action-oriented"] },
+      { title: "Output generation + flywheel close", items: ["Format-specific templates ready to paste into PowerPoint, Docs, email, or Loom", "Flywheel close-out — questions surfaced for the next Research cycle"] }
+    ],
+    meta: { connectors: "Meta · Google · GA4 · Web · pptx/docx/pdf", output: "Stakeholder report in any format", time: "Stage 7 of 7" }
+  }
+];
+
+const SHORT_NAMES = ["Research", "Audit", "Gaps", "Opportunities", "Execution", "Evaluation", "Reporting"];
+
+/* ===== Build the loop visualization ===== */
+const loopNodes = document.getElementById('loop-nodes');
+const cx = 300, cy = 300, r = 240;
+const startAngle = -90;
+SKILLS.forEach((skill, i) => {
+  const angle = (startAngle + (i * 360 / 7)) * Math.PI / 180;
+  const x = cx + r * Math.cos(angle);
+  const y = cy + r * Math.sin(angle);
+
+  const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+  g.classList.add('loop-node-g');
+  g.style.cursor = 'pointer';
+  g.setAttribute('data-skill', i);
+
+  const bg = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+  bg.setAttribute('cx', x);
+  bg.setAttribute('cy', y);
+  bg.setAttribute('r', 28);
+  bg.classList.add('loop-node-bg');
+
+  const num = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+  num.setAttribute('x', x);
+  num.setAttribute('y', y + 4);
+  num.setAttribute('text-anchor', 'middle');
+  num.classList.add('loop-node-num');
+  num.textContent = skill.num;
+
+  const labelDist = 38;
+  const lx = x + labelDist * Math.cos(angle);
+  const ly = y + labelDist * Math.sin(angle);
+  const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+  label.setAttribute('x', lx);
+  label.setAttribute('y', ly + 4);
+
+  const cosA = Math.cos(angle);
+  if (cosA > 0.3) label.setAttribute('text-anchor', 'start');
+  else if (cosA < -0.3) label.setAttribute('text-anchor', 'end');
+  else label.setAttribute('text-anchor', 'middle');
+
+  label.classList.add('loop-node-label');
+  label.textContent = SHORT_NAMES[i];
+
+  g.appendChild(bg);
+  g.appendChild(num);
+  g.appendChild(label);
+  g.addEventListener('click', () => {
+    const target = document.querySelector('[data-skill-row="' + i + '"]');
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      target.classList.remove('is-flash');
+      void target.offsetWidth;
+      target.classList.add('is-flash');
+      const children = target.parentElement.querySelector('.children');
+      const chev = target.querySelector('.chev');
+      if (children && !children.classList.contains('is-open')) {
+        children.classList.add('is-open');
+        if (chev) chev.classList.add('is-open');
+      }
+    }
+  });
+  loopNodes.appendChild(g);
+});
+
+/* ===== Build the tree ===== */
+const tree = document.getElementById('tree');
+
+function buildLeaf(text) {
+  const row = document.createElement('div');
+  row.className = 'row is-leaf';
+  row.innerHTML = '<span class="chev is-leaf">·</span><span class="leaf-dot"></span><span class="label-wrap"><span class="row-label">' + text + '</span></span>';
+  return row;
+}
+
+function buildPhase(phase, idx) {
+  const wrap = document.createElement('div');
+  wrap.className = 'node';
+  const row = document.createElement('div');
+  row.className = 'row is-phase';
+  row.innerHTML = '<span class="chev">▸</span><span class="label-wrap"><span class="label-top"><span class="phase-num">Phase ' + (idx + 1) + '</span><span class="row-label">' + phase.title + '</span></span></span>';
+  const children = document.createElement('div');
+  children.className = 'children';
+  const list = document.createElement('div');
+  list.className = 'leaf-list';
+  phase.items.forEach(it => list.appendChild(buildLeaf(it)));
+  children.appendChild(list);
+  row.addEventListener('click', (e) => { e.stopPropagation(); toggle(row, children); });
+  wrap.appendChild(row);
+  wrap.appendChild(children);
+  return wrap;
+}
+
+function buildSkill(skill, idx) {
+  const wrap = document.createElement('div');
+  wrap.className = 'node';
+  const row = document.createElement('div');
+  row.className = 'row is-skill';
+  row.setAttribute('data-skill-row', idx);
+  row.innerHTML = '<span class="chev">▸</span><span class="icon-circle">' + skill.num + '</span><span class="label-wrap"><span class="label-top"><span class="row-label">' + skill.title + '</span><span class="pill">Skill</span></span><span class="row-sub">' + skill.desc + '</span></span><a href="https://1managencyplan.in/" target="_blank" rel="noopener" class="skill-install" onclick="event.stopPropagation();">Get this skill <span class="arrow">↗</span></a>';
+  const children = document.createElement('div');
+  children.className = 'children';
+  skill.phases.forEach((p, i) => children.appendChild(buildPhase(p, i)));
+  const meta = document.createElement('div');
+  meta.className = 'meta';
+  meta.innerHTML = '<span class="meta-item">Connectors<strong>' + skill.meta.connectors + '</strong></span><span class="meta-item">Output<strong>' + skill.meta.output + '</strong></span><span class="meta-item">Position<strong>' + skill.meta.time + '</strong></span><span class="meta-item file">File<strong>' + skill.file + '</strong></span>';
+  children.appendChild(meta);
+  row.addEventListener('click', (e) => {
+    if (e.target.closest('.skill-install')) return;
+    toggle(row, children);
+  });
+  wrap.appendChild(row);
+  wrap.appendChild(children);
+  return wrap;
+}
+
+function toggle(row, children) {
+  const chev = row.querySelector('.chev');
+  const open = children.classList.toggle('is-open');
+  if (chev) chev.classList.toggle('is-open', open);
+}
+
+// Root
+const rootRow = document.createElement('div');
+rootRow.className = 'row is-root';
+rootRow.innerHTML = '<span class="chev is-open">▸</span><span class="label-wrap"><span class="row-label">1MAP Performance OS</span><span class="row-sub">The full Performance Growth Flywheel · 7 stages · 1 system</span></span>';
+const rootChildren = document.createElement('div');
+rootChildren.className = 'children is-open';
+SKILLS.forEach((s, i) => rootChildren.appendChild(buildSkill(s, i)));
+rootRow.addEventListener('click', () => toggle(rootRow, rootChildren));
+tree.appendChild(rootRow);
+tree.appendChild(rootChildren);
+
+// Controls
+document.getElementById('expand-all').addEventListener('click', () => {
+  document.querySelectorAll('.children').forEach(c => c.classList.add('is-open'));
+  document.querySelectorAll('.chev:not(.is-leaf)').forEach(c => c.classList.add('is-open'));
+});
+document.getElementById('collapse-all').addEventListener('click', () => {
+  document.querySelectorAll('.children').forEach((c, i) => { if (i !== 0) c.classList.remove('is-open'); });
+  document.querySelectorAll('.chev:not(.is-leaf)').forEach((c, i) => { if (i !== 0) c.classList.remove('is-open'); });
+});
+</script>
+</body>
+</html>

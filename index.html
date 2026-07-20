@@ -1,654 +1,884 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>1MAP Club — Recording Vault</title>
-<meta name="description" content="Access your 1ManAgencyPlan Workshop recordings. Registered participants only.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
-<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>1MAP Performance OS — 7 Claude Skills for Full-Stack Performance Marketing</title>
+<meta name="description" content="Seven production-ready Claude skills that run the full performance growth flywheel — research to reporting — across Meta, Google, 5 markets and 6 currencies. Built by Nitin Joshi, 1MAP Club." />
+<link rel="preconnect" href="https://api.fontshare.com" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
 <style>
-:root {
-  --ink: #15181d;
-  --soft-ink: #2c313a;
-  --muted: #5c626d;
-  --muted-light: #868d98;
-  --lime: #c6f24a;
-  --lime-text: #5f7d0c;
-  --lime-deep: #4d6a08;
-  --paper: #f6f5ef;
-  --paper-alt: #efeee5;
-  --card: #ffffff;
-  --dark: #0f1218;
-  --dark-alt: #161a22;
-  --border: rgba(21,24,29,.11);
-  --border-strong: rgba(21,24,29,.2);
-  --lime-soft: rgba(198,242,74,0.12);
-  --lime-border: rgba(198,242,74,0.3);
-  --warn: #c9781f;
-  --warn-bg: #fbf1e3;
-  --sans: 'Satoshi', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --display: 'Space Grotesk', var(--sans);
-  --mono: 'JetBrains Mono', ui-monospace, monospace;
-}
+  :root{
+    --ink:#0b0d11;
+    --ink-2:#12151b;
+    --ink-3:#1a1e26;
+    --card:#141821;
+    --paper:#f3f2ea;
+    --paper-2:#eceadf;
+    --ivory:#eef0e9;
+    --lime:#c6f24a;
+    --lime-2:#d8ff63;
+    --lime-ink:#0b0d11;
+    --lime-glow:rgba(198,242,74,.32);
+    --slate:#9aa2af;
+    --slate-2:#636b78;
+    --line-dk:rgba(238,240,233,.10);
+    --line-lt:rgba(11,13,17,.10);
+    --radius:20px;
+    --radius-sm:14px;
+    --maxw:1220px;
+    --sans:'Satoshi',-apple-system,BlinkMacSystemFont,sans-serif;
+    --disp:'Space Grotesk','Satoshi',sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);background:var(--ink);color:var(--ivory);-webkit-font-smoothing:antialiased;line-height:1.6;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  section{position:relative}
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+  .eyebrow{font-size:12.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--lime);display:inline-flex;align-items:center;gap:9px}
+  .eyebrow::before{content:"";width:22px;height:2px;background:var(--lime);border-radius:2px}
+  .eyebrow.center{justify-content:center}
+  .eyebrow.center::after{content:"";width:22px;height:2px;background:var(--lime);border-radius:2px}
+  .on-light .eyebrow{color:#6b8f12}
+  .on-light .eyebrow::before,.on-light .eyebrow.center::after{background:#6b8f12}
 
-body {
-  background: var(--paper);
-  font-family: var(--sans);
-  color: var(--ink);
-  -webkit-font-smoothing: antialiased;
-}
+  h1,h2,h3{font-family:var(--disp);font-weight:600;letter-spacing:-.02em;line-height:1.08}
+  .h-xl{font-size:clamp(2.35rem,4vw,3.2rem);line-height:1.08;padding:.05em 0}
+  .h-lg{font-size:clamp(1.9rem,3.5vw,2.85rem);line-height:1.1;padding:.05em 0}
+  .lead{font-size:clamp(1.04rem,1.4vw,1.2rem);color:var(--slate);max-width:56ch}
+  .on-light .lead{color:var(--slate-2)}
+  .accent{color:var(--lime)}
+  .on-light .accent{color:#5c7d0a}
 
-a { text-decoration: none; color: inherit; }
+  /* buttons */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-family:var(--sans);font-weight:700;font-size:1rem;white-space:nowrap;padding:15px 26px;border-radius:100px;cursor:pointer;border:none;transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s,background .25s,color .2s;line-height:1}
+  .btn i{width:18px;height:18px}
+  .btn-primary{color:var(--lime-ink);background:linear-gradient(180deg,var(--lime-2),var(--lime));box-shadow:0 10px 30px -8px var(--lime-glow),inset 0 1px 0 rgba(255,255,255,.35);font-weight:700}
+  .btn-primary:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 18px 44px -10px var(--lime-glow)}
+  .btn-ghost{background:transparent;color:var(--ivory);border:1.5px solid var(--line-dk)}
+  .btn-ghost:hover{transform:translateY(-2px);border-color:var(--lime);color:var(--lime)}
+  .on-light .btn-ghost{color:var(--ink);border-color:var(--line-lt)}
+  .on-light .btn-ghost:hover{border-color:#5c7d0a;color:#5c7d0a}
 
-/* ── HEADER ── */
-header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: rgba(246,245,239,0.94);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--border);
-  padding: 14px 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
+  /* header + hero */
+  header{position:relative;z-index:40}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:76px}
+  .brand{display:flex;align-items:center;gap:11px}
+  .brand .mark{width:34px;height:34px}
+  .brand .name{font-family:var(--disp);font-weight:600;font-size:1.24rem;letter-spacing:-.01em;color:#fff}
+  .brand .name b{color:var(--lime);font-weight:600}
+  .nav-links{display:flex;align-items:center;gap:28px}
+  .nav-links a{font-size:.96rem;font-weight:500;color:rgba(238,240,233,.72);transition:color .2s}
+  .nav-links a:hover{color:#fff}
+  .nav-right{display:flex;align-items:center;gap:18px}
+  .nav-toggle{display:none;background:none;border:none;color:#fff;cursor:pointer}
 
-.header-brand {
-  font-family: var(--mono);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--ink);
-}
+  .hero{background:var(--ink);position:relative;overflow:hidden;margin-top:-76px;padding-top:76px}
+  .hero::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+    background:
+      radial-gradient(48% 55% at 82% 4%,rgba(198,242,74,.16),transparent 60%),
+      radial-gradient(40% 45% at 10% 100%,rgba(198,242,74,.07),transparent 60%),
+      radial-gradient(60% 70% at 50% -10%,rgba(120,140,60,.10),transparent 60%)}
+  .grid-motif{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.5;
+    background-image:linear-gradient(var(--line-dk) 1px,transparent 1px),linear-gradient(90deg,var(--line-dk) 1px,transparent 1px);
+    background-size:56px 56px;-webkit-mask-image:radial-gradient(70% 60% at 60% 20%,#000,transparent 75%)}
+  .hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1.2fr .8fr;gap:52px;align-items:center;padding:64px 0 110px}
+  .hero h1{color:#fff;margin:22px 0 20px}
+  .hero .lead{max-width:47ch}
+  .hero-cta{display:flex;gap:14px;margin:34px 0 24px;flex-wrap:wrap}
+  .stat-pill{display:inline-flex;align-items:center;gap:0;background:rgba(238,240,233,.05);border:1px solid var(--line-dk);border-radius:100px;padding:6px;backdrop-filter:blur(6px)}
+  .stat-pill .sp{display:flex;flex-direction:column;padding:6px 18px;border-right:1px solid var(--line-dk)}
+  .stat-pill .sp:last-child{border-right:none}
+  .stat-pill .sp b{font-family:var(--disp);font-size:1.15rem;color:var(--lime);line-height:1}
+  .stat-pill .sp span{font-size:.74rem;color:var(--slate);margin-top:4px;letter-spacing:.02em}
 
-.header-brand span { color: var(--lime-text); }
+  /* hero code visual */
+  .hero-visual{position:relative}
+  .code-card{background:linear-gradient(180deg,rgba(26,30,38,.9),rgba(18,21,27,.92));border:1px solid var(--line-dk);border-radius:var(--radius);overflow:hidden;box-shadow:0 40px 80px -30px rgba(0,0,0,.7);backdrop-filter:blur(8px)}
+  .code-top{display:flex;align-items:center;gap:8px;padding:14px 18px;border-bottom:1px solid var(--line-dk)}
+  .code-top .dot{width:11px;height:11px;border-radius:50%;background:#2b313c}
+  .code-top .ct-label{margin-left:10px;font-size:.8rem;color:var(--slate);font-family:var(--disp)}
+  .code-body{padding:20px 22px;font-family:'Space Grotesk',monospace;font-size:.86rem;line-height:1.9;color:var(--slate)}
+  .code-body .cl{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .code-body .k{color:var(--lime)}
+  .code-body .w{color:#eef0e9}
+  .code-body .c{color:var(--slate-2)}
+  .code-body .run{color:var(--lime);font-weight:700}
+  .float-badge{position:absolute;right:-14px;bottom:-18px;background:var(--lime);color:var(--lime-ink);border-radius:16px;padding:16px 20px;box-shadow:0 20px 40px -14px var(--lime-glow);max-width:210px}
+  .float-badge .fb-icn{width:34px;height:34px;display:grid;place-items:center;background:rgba(11,13,17,.12);border-radius:9px;margin-bottom:10px}
+  .float-badge .fb-icn i{width:19px;height:19px;color:var(--lime-ink)}
+  .float-badge b{font-family:var(--disp);font-size:1rem;display:block;line-height:1.2}
+  .float-badge span{font-size:.82rem;opacity:.8;display:block;margin-top:3px}
 
-.refer-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  padding: 9px 18px;
-  background: var(--lime);
-  color: var(--ink);
-  font-size: 13px;
-  font-weight: 700;
-  border-radius: 8px;
-  transition: all 0.15s;
-  letter-spacing: 0.01em;
-  font-family: var(--sans);
-}
+  /* strip */
+  .strip{background:var(--ink-2);border-top:1px solid var(--line-dk);border-bottom:1px solid var(--line-dk)}
+  .strip-inner{display:flex;align-items:center;gap:30px;padding:22px 0}
+  .strip-label{font-size:.78rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--slate-2);white-space:nowrap;flex:none}
+  .marquee{overflow:hidden;position:relative;flex:1;min-width:0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+  .marquee-track{display:flex;gap:44px;width:max-content;animation:scroll 30s linear infinite}
+  .marquee:hover .marquee-track{animation-play-state:paused}
+  .m-item{display:flex;align-items:center;gap:10px;color:rgba(238,240,233,.68);font-weight:600;font-size:1rem;white-space:nowrap}
+  .m-item i{width:19px;height:19px;color:var(--lime)}
+  @keyframes scroll{to{transform:translateX(-50%)}}
 
-.refer-btn:hover {
-  background: var(--lime-text);
-  color: #fff;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 16px rgba(198,242,74,0.28);
-}
+  /* section shells */
+  .sec{padding:110px 0}
+  .sec-head{max-width:760px;margin-bottom:56px}
+  .sec-head.center{max-width:720px;margin:0 auto 56px;text-align:center}
+  .sec-head h2{margin:18px 0 16px;color:#fff}
+  .on-light .sec-head h2{color:var(--ink)}
+  .dark{background:var(--ink)}
+  .dark-2{background:var(--ink-2)}
+  .light{background:var(--paper);color:var(--ink)}
+  .glow-tr::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(45% 55% at 88% 6%,rgba(198,242,74,.12),transparent 60%)}
+  .glow-bl::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(45% 55% at 6% 96%,rgba(198,242,74,.10),transparent 60%)}
+  .dots-lt::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.5;background-image:radial-gradient(rgba(11,13,17,.06) 1.2px,transparent 1.2px);background-size:26px 26px;-webkit-mask-image:radial-gradient(80% 70% at 50% 0%,#000,transparent 80%)}
+  .sec .wrap{position:relative;z-index:1}
 
-/* ── MAIN ── */
-main {
-  max-width: 880px;
-  margin: 0 auto;
-  padding: 48px 24px 80px;
-}
+  /* SKILLS BENTO (4-col grid) */
+  .bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:minmax(210px,auto);gap:16px}
+  .scard{position:relative;border-radius:var(--radius);padding:26px;overflow:hidden;border:1px solid var(--line-dk);background:var(--card);display:flex;flex-direction:column;transition:transform .3s,border-color .3s,box-shadow .3s}
+  .scard:hover{transform:translateY(-4px);border-color:rgba(198,242,74,.4);box-shadow:0 24px 50px -26px rgba(0,0,0,.7)}
+  .scard .s-icn{width:48px;height:48px;border-radius:12px;display:grid;place-items:center;background:rgba(198,242,74,.10);border:1px solid rgba(198,242,74,.22);margin-bottom:auto}
+  .scard .s-icn i{width:23px;height:23px;color:var(--lime);stroke-width:1.9}
+  .scard .s-stage{position:absolute;top:24px;right:24px;font-family:var(--disp);font-size:.72rem;font-weight:600;color:var(--slate-2);letter-spacing:.08em;text-transform:uppercase}
+  .scard .s-stage::before{content:"Stage "}
+  .scard h3{font-size:1.16rem;color:#fff;margin:20px 0 8px}
+  .scard p{color:var(--slate);font-size:.93rem;line-height:1.55}
 
-/* ── BOOKING CTA ── */
-.booking-cta {
-  background: var(--dark);
-  border-radius: 20px;
-  padding: 36px 40px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  margin-bottom: 48px;
-}
+  /* Featured card (Stage 01, spans 2 cols) */
+  .scard.feat{grid-column:span 2;background:linear-gradient(150deg,rgba(198,242,74,.10),rgba(20,24,33,.9));border-color:rgba(198,242,74,.3)}
+  .scard.feat h3{font-size:1.5rem}
+  .scard.feat p{color:rgba(238,240,233,.78);font-size:1rem;max-width:44ch}
+  .scard.feat .s-icn{width:54px;height:54px;background:var(--lime)}
+  .scard.feat .s-icn i{color:var(--lime-ink)}
 
-.booking-badge {
-  display: inline-block;
-  font-family: var(--mono);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--lime);
-  background: rgba(198,242,74,0.1);
-  border: 1px solid rgba(198,242,74,0.25);
-  border-radius: 20px;
-  padding: 4px 12px;
-  margin-bottom: 14px;
-}
+  /* Design tool cards (Stage 4.1, 4.2) — subtle lime tint */
+  .scard.design{background:linear-gradient(150deg,rgba(198,242,74,.06),rgba(20,24,33,.95));border-color:rgba(198,242,74,.2)}
 
-.booking-cta h2 {
-  font-family: var(--display);
-  font-size: 26px;
-  font-weight: 600;
-  color: #fff;
-  line-height: 1.25;
-  margin-bottom: 8px;
-  letter-spacing: -0.02em;
-}
+  /* Bonus card — full lime, spans 2 cols */
+  .scard.bonus{grid-column:span 2;background:linear-gradient(150deg,var(--lime),var(--lime-2));border-color:var(--lime-2)}
+  .scard.bonus:hover{border-color:var(--lime-2);box-shadow:0 24px 50px -20px var(--lime-glow)}
+  .scard.bonus h3{font-size:1.5rem;color:var(--lime-ink)}
+  .scard.bonus p{color:rgba(11,13,17,.72);font-size:1rem;max-width:44ch}
+  .scard.bonus .s-stage{color:rgba(11,13,17,.55)}
+  .scard.bonus .s-stage::before{content:""}
+  .scard.bonus .s-icn{background:rgba(11,13,17,.12);border-color:rgba(11,13,17,.18)}
+  .scard.bonus .s-icn i{color:var(--lime-ink)}
 
-.booking-cta p {
-  font-size: 14px;
-  color: rgba(255,255,255,0.5);
-  line-height: 1.6;
-}
+  /* FLYWHEEL grid */
+  .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .fcard{position:relative;border:1px solid var(--line-lt);background:#fff;border-radius:var(--radius-sm);padding:24px 22px;transition:transform .3s,box-shadow .3s}
+  .fcard:hover{transform:translateY(-3px);box-shadow:0 18px 40px -22px rgba(11,13,17,.25)}
+  .fcard .f-icn{width:44px;height:44px;border-radius:11px;display:grid;place-items:center;background:var(--paper-2);border:1px solid var(--line-lt);margin-bottom:16px}
+  .fcard .f-icn i{width:21px;height:21px;color:#4d6a08;stroke-width:1.9}
+  .fcard .f-stage{font-family:var(--disp);font-size:.74rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#6b8f12;margin-bottom:8px}
+  .fcard h3{font-size:1.06rem;color:var(--ink);margin-bottom:7px}
+  .fcard .f-out{font-size:.84rem;color:var(--slate-2);display:flex;align-items:center;gap:6px}
+  .fcard .f-out i{width:14px;height:14px;color:#6b8f12}
+  .fcard.loop{background:var(--ink);border-color:var(--ink);color:#fff;display:flex;flex-direction:column;justify-content:center}
+  .fcard.loop .f-icn{background:rgba(198,242,74,.14);border-color:rgba(198,242,74,.3)}
+  .fcard.loop .f-icn i{color:var(--lime)}
+  .fcard.loop .f-stage{color:var(--lime)}
+  .fcard.loop h3{color:#fff}
+  .fcard.loop p{font-size:.86rem;color:var(--slate)}
 
-.booking-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 16px 28px;
-  background: var(--lime);
-  color: var(--ink);
-  font-weight: 700;
-  font-size: 15px;
-  border-radius: 12px;
-  white-space: nowrap;
-  transition: all 0.15s;
-  flex-shrink: 0;
-  font-family: var(--sans);
-}
+  /* STATS */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .stat{padding:30px 26px;border-radius:var(--radius);background:var(--card);border:1px solid var(--line-dk);position:relative;overflow:hidden}
+  .stat::after{content:"";position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--lime),transparent)}
+  .stat .st-icn{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;background:rgba(198,242,74,.10);margin-bottom:18px}
+  .stat .st-icn i{width:19px;height:19px;color:var(--lime)}
+  .stat .s-num{font-family:var(--disp);font-size:clamp(2.4rem,3.6vw,3.1rem);font-weight:600;line-height:1;color:#fff;padding:.03em 0}
+  .stat .s-num .suf{color:var(--lime)}
+  .stat .s-lbl{margin-top:10px;color:var(--slate);font-size:.95rem}
 
-.booking-btn:hover {
-  background: #d4f75a;
-  transform: translateY(-1px);
-  box-shadow: 0 8px 24px rgba(198,242,74,0.35);
-}
+  /* STEPS */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .step{position:relative;padding:30px 26px;border-radius:var(--radius);background:#fff;border:1px solid var(--line-lt)}
+  .step .p-icn{width:50px;height:50px;border-radius:13px;display:grid;place-items:center;background:var(--paper-2);border:1px solid var(--line-lt);margin-bottom:18px}
+  .step .p-icn i{width:24px;height:24px;color:#4d6a08}
+  .step .p-meta{font-family:var(--disp);font-size:.74rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#6b8f12;margin-bottom:9px}
+  .step h3{font-size:1.2rem;color:var(--ink);margin-bottom:8px}
+  .step p{color:var(--slate-2);font-size:.95rem}
+  .step code{font-family:'Space Grotesk',monospace;background:var(--paper-2);padding:2px 7px;border-radius:6px;font-size:.86em;color:#3d5407}
 
-/* ── SECTION LABEL ── */
-.section-label {
-  font-family: var(--mono);
-  font-size: 10.5px;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--lime-text);
-  margin-bottom: 16px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
+  /* TIMELINE */
+  .rail{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .rnode{position:relative;padding:26px 22px;border-radius:var(--radius-sm);background:var(--card);border:1px solid var(--line-dk)}
+  .rnode .r-icn{width:44px;height:44px;border-radius:11px;display:grid;place-items:center;background:rgba(198,242,74,.10);border:1px solid rgba(198,242,74,.2);margin-bottom:16px}
+  .rnode .r-icn i{width:21px;height:21px;color:var(--lime)}
+  .rnode .r-week{font-family:var(--disp);font-size:.76rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--lime);margin-bottom:8px}
+  .rnode h3{font-size:1.08rem;color:#fff;margin-bottom:7px}
+  .rnode p{color:var(--slate);font-size:.9rem}
+  .rnode .r-line{position:absolute;top:48px;right:-9px;width:18px;height:2px;background:rgba(198,242,74,.3);z-index:2}
+  .rnode:last-child .r-line{display:none}
 
-.section-label::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: var(--border);
-}
+  /* MEMBERSHIP */
+  .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .plan{position:relative;padding:32px 28px;border-radius:var(--radius);background:var(--card);border:1px solid var(--line-dk);overflow:hidden;transition:transform .3s,border-color .3s}
+  .plan:hover{transform:translateY(-4px);border-color:rgba(198,242,74,.4)}
+  .plan.hot{background:linear-gradient(160deg,rgba(198,242,74,.12),rgba(20,24,33,.9));border-color:rgba(198,242,74,.35)}
+  .plan .pl-icn{width:52px;height:52px;border-radius:13px;display:grid;place-items:center;background:rgba(198,242,74,.1);border:1px solid rgba(198,242,74,.22);margin-bottom:20px}
+  .plan .pl-icn i{width:25px;height:25px;color:var(--lime)}
+  .plan.hot .pl-icn{background:var(--lime)}
+  .plan.hot .pl-icn i{color:var(--lime-ink)}
+  .plan .pl-tag{position:absolute;top:26px;right:26px;font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--lime-ink);background:var(--lime);padding:5px 11px;border-radius:100px}
+  .plan h3{font-size:1.3rem;color:#fff;margin-bottom:10px}
+  .plan p{color:var(--slate);font-size:.96rem;margin-bottom:20px}
+  .plan ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+  .plan li{display:flex;align-items:flex-start;gap:10px;font-size:.94rem;color:rgba(238,240,233,.85)}
+  .plan li i{width:17px;height:17px;color:var(--lime);flex:none;margin-top:3px}
 
-/* ── VIDEO SECTION ── */
-.video-section { margin-bottom: 52px; }
+  /* TESTIMONIALS */
+  .quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .quote{padding:28px 26px;border-radius:var(--radius);background:#fff;border:1px solid var(--line-lt);display:flex;flex-direction:column}
+  .quote .stars{display:flex;gap:3px;margin-bottom:15px;color:#8aa81f}
+  .quote .stars svg{fill:currentColor;width:16px;height:16px}
+  .quote p{font-size:1.02rem;color:var(--ink);line-height:1.6;margin-bottom:20px;flex:1}
+  .quote .who{display:flex;align-items:center;gap:12px}
+  .quote .who img{width:46px;height:46px;border-radius:50%;object-fit:cover}
+  .quote .who .n{font-weight:700;font-size:.95rem;color:var(--ink)}
+  .quote .who .r{font-size:.84rem;color:var(--slate-2)}
 
-.video-wrap {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16/9;
-  border-radius: 16px;
-  overflow: hidden;
-  border: 1px solid var(--border);
-  background: var(--dark);
-}
+  /* FAQ */
+  .faq{max-width:820px;margin:0 auto}
+  .fq{border:1px solid var(--line-dk);border-radius:var(--radius-sm);margin-bottom:13px;background:var(--card);overflow:hidden;transition:border-color .25s}
+  .fq.open{border-color:rgba(198,242,74,.4)}
+  .fq-q{width:100%;text-align:left;background:none;border:none;cursor:pointer;padding:22px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px;font-family:var(--disp);font-size:1.08rem;font-weight:500;color:#fff}
+  .fq-q i{width:21px;height:21px;color:var(--lime);flex:none;transition:transform .3s}
+  .fq.open .fq-q i{transform:rotate(45deg)}
+  .fq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
+  .fq-a p{padding:0 24px 22px;color:var(--slate);font-size:.98rem}
 
-/* Thumbnail (shown before click) */
-.video-thumb {
-  position: absolute;
-  inset: 0;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+  /* FINAL CTA */
+  .final-card{position:relative;border-radius:28px;padding:70px 54px;overflow:hidden;text-align:center;background:linear-gradient(150deg,var(--ink-3),var(--ink-2));border:1px solid var(--line-dk)}
+  .final-card::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(55% 80% at 50% 0%,rgba(198,242,74,.2),transparent 60%)}
+  .final-card>*{position:relative;z-index:1}
+  .final-card h2{color:#fff;margin:16px auto 16px;max-width:20ch}
+  .final-card .lead{margin:0 auto 32px;color:rgba(238,240,233,.78)}
+  .final-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .final-note{margin-top:22px;font-size:.9rem;color:var(--slate);display:inline-flex;align-items:center;gap:8px}
+  .final-note i{width:16px;height:16px;color:var(--lime)}
 
-.video-thumb img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
+  /* FOOTER */
+  footer{background:var(--ink-2);padding:66px 0 32px;border-top:1px solid var(--line-dk)}
+  .foot-grid{display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr;gap:40px;padding-bottom:44px;border-bottom:1px solid var(--line-dk)}
+  .foot-brand .name{font-family:var(--disp);font-weight:600;font-size:1.28rem;color:#fff;display:flex;align-items:center;gap:11px;margin-bottom:15px}
+  .foot-brand .name b{color:var(--lime)}
+  .foot-brand p{color:var(--slate-2);font-size:.94rem;max-width:36ch}
+  .foot-brand .fb-links{margin-top:16px;display:flex;gap:12px}
+  .foot-brand .fb-links a{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;border:1px solid var(--line-dk);color:var(--slate);transition:.2s}
+  .foot-brand .fb-links a:hover{color:var(--lime);border-color:rgba(198,242,74,.4)}
+  .foot-brand .fb-links a i{width:18px;height:18px}
+  .foot-col h4{font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;color:var(--slate-2);margin-bottom:16px;font-weight:700}
+  .foot-col a{display:block;color:rgba(238,240,233,.72);font-size:.94rem;margin-bottom:11px;transition:color .2s}
+  .foot-col a:hover{color:var(--lime)}
+  .foot-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:24px;flex-wrap:wrap;gap:12px}
+  .foot-bottom p{color:var(--slate-2);font-size:.86rem}
+  .foot-bottom .fb-by{color:var(--slate);font-size:.86rem}
+  .foot-bottom .fb-by a{color:var(--lime)}
 
-.video-overlay {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  background: rgba(15,18,24,0.5);
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.2s;
-}
+  /* REVEAL ANIMATION */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
 
-.video-thumb:hover .video-overlay {
-  background: rgba(15,18,24,0.38);
-}
-
-.play-ring {
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  border: 2px solid rgba(198,242,74,0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 16px;
-  position: relative;
-  transition: all 0.2s;
-}
-
-.video-thumb:hover .play-ring {
-  border-color: var(--lime);
-  box-shadow: 0 0 0 8px rgba(198,242,74,0.1);
-}
-
-.play-ring::before {
-  content: '';
-  position: absolute;
-  inset: -10px;
-  border-radius: 50%;
-  border: 1px solid rgba(198,242,74,0.15);
-}
-
-.play-icon {
-  width: 0;
-  height: 0;
-  border-top: 14px solid transparent;
-  border-bottom: 14px solid transparent;
-  border-left: 22px solid var(--lime);
-  margin-left: 5px;
-  opacity: 0.85;
-}
-
-.video-overlay h3 {
-  font-family: var(--display);
-  font-size: 22px;
-  font-weight: 600;
-  color: #fff;
-  margin-bottom: 6px;
-  letter-spacing: -0.02em;
-}
-
-.video-overlay .video-sub {
-  font-family: var(--mono);
-  font-size: 10px;
-  color: rgba(255,255,255,0.5);
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  font-weight: 600;
-}
-
-/* Loom iframe (hidden until clicked) */
-.video-frame {
-  display: none;
-  position: absolute;
-  inset: 0;
-}
-
-.video-frame iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-  display: block;
-}
-
-/* ── BATCH CARDS ── */
-.batches-section { margin-bottom: 52px; }
-
-.batch-card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 2px 20px rgba(21,24,29,0.06);
-  display: grid;
-  grid-template-columns: 260px 1fr;
-}
-
-.batch-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  min-height: 280px;
-}
-
-.batch-body {
-  padding: 36px 36px 32px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.batch-tag {
-  display: inline-block;
-  font-family: var(--mono);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--lime-text);
-  background: var(--lime-soft);
-  border: 1px solid var(--lime-border);
-  border-radius: 20px;
-  padding: 4px 12px;
-  margin-bottom: 16px;
-}
-
-.batch-title {
-  font-family: var(--display);
-  font-size: 20px;
-  font-weight: 600;
-  color: var(--ink);
-  margin-bottom: 8px;
-  letter-spacing: -0.02em;
-  line-height: 1.3;
-}
-
-.batch-desc {
-  font-size: 14px;
-  color: var(--muted);
-  line-height: 1.65;
-  margin-bottom: 24px;
-}
-
-.batch-stats {
-  display: flex;
-  gap: 24px;
-  margin-bottom: 28px;
-  padding: 16px 0;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-}
-
-.stat { display: flex; flex-direction: column; gap: 3px; }
-
-.stat-label {
-  font-family: var(--mono);
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--muted-light);
-}
-
-.stat-value {
-  font-family: var(--mono);
-  font-size: 17px;
-  font-weight: 700;
-  color: var(--ink);
-}
-
-.stat-value.green { color: var(--lime-text); }
-
-.batch-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 13px 24px;
-  background: var(--lime);
-  color: var(--ink);
-  font-weight: 700;
-  font-size: 14px;
-  border-radius: 10px;
-  transition: all 0.15s;
-  align-self: flex-start;
-  margin-top: 20px;
-  font-family: var(--sans);
-}
-
-.batch-cta:hover {
-  background: #d4f75a;
-  transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(198,242,74,0.3);
-}
-
-/* ── FOOTER ── */
-footer {
-  border-top: 1px solid var(--border);
-  padding: 28px 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 880px;
-  margin: 0 auto;
-}
-
-.footer-brand {
-  font-family: var(--mono);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
-/* ── MOBILE ── */
-@media (max-width: 680px) {
-  .booking-cta { flex-direction: column; align-items: flex-start; padding: 28px 24px; }
-  .booking-btn { width: 100%; justify-content: center; }
-  .batch-card { grid-template-columns: 1fr; }
-  .batch-img { min-height: 200px; max-height: 220px; }
-  .batch-body { padding: 24px 20px; }
-  .batch-stats { flex-wrap: wrap; gap: 16px; }
-  footer { flex-direction: column; gap: 16px; text-align: center; }
-  .booking-cta h2 { font-size: 21px; }
-}
+  @media(max-width:1000px){
+    .hero-inner{grid-template-columns:1fr;gap:44px;padding-bottom:90px}
+    .bento{grid-template-columns:repeat(2,1fr)}
+    .scard.feat,.scard.bonus{grid-column:span 2}
+    .flow{grid-template-columns:repeat(2,1fr)}
+    .stats{grid-template-columns:repeat(2,1fr)}
+    .steps{grid-template-columns:1fr}
+    .rail{grid-template-columns:repeat(2,1fr)}
+    .rnode .r-line{display:none}
+    .plans{grid-template-columns:1fr}
+    .quotes{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:640px){
+    .wrap{padding:0 20px}
+    .nav-links{display:none}
+    .sec{padding:74px 0}
+    .bento,.flow,.stats,.rail{grid-template-columns:1fr}
+    .scard.feat,.scard.bonus{grid-column:span 1}
+    .strip-inner{flex-direction:column;align-items:flex-start;gap:14px}
+    .strip-inner .marquee{width:100%}
+    .stat-pill{flex-wrap:wrap}
+    .final-card{padding:46px 22px}
+    .foot-grid{grid-template-columns:1fr}
+    .hero-cta,.final-cta{flex-direction:column}
+    .btn{width:100%}
+    .brand .name{font-size:1.12rem}
+  }
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<header>
-  <div class="header-brand">1MAP <span>Club</span> · Recording Vault</div>
-  <a href="https://1managencyplan.in" target="_blank" class="refer-btn">
-    Refer a Friend →
-  </a>
-</header>
-
-<main>
-
-  <!-- 1. BOOKING CTA -->
-  <div class="booking-cta">
-    <div>
-      <div class="booking-badge">Limited Slots · ₹1,999</div>
-      <h2>Book a 1:1 Strategy Call<br>with Nitin Joshi</h2>
-      <p>Personalised audit of your agency setup, ad account,<br>and AI stack — in 45 minutes.</p>
+<!-- HERO -->
+<section class="hero">
+  <div class="grid-motif"></div>
+  <header>
+    <div class="wrap">
+      <nav class="nav">
+        <a href="#" class="brand" aria-label="1MAP home">
+          <svg class="mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="20" cy="20" r="15.5" stroke="#c6f24a" stroke-width="2.4"/>
+            <path d="M20 6.5a13.5 13.5 0 0 1 13 10" stroke="#eef0e9" stroke-width="2.4" stroke-linecap="round"/>
+            <circle cx="20" cy="20" r="4.6" fill="#c6f24a"/>
+            <path d="M33 16.5l1.6-3.4M33 16.5l-3.6-.7" stroke="#eef0e9" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="name">1MAP<b>.</b></span>
+        </a>
+        <div class="nav-links">
+          <a href="#skills">Skills</a>
+          <a href="#flywheel">Flywheel</a>
+          <a href="#start">Quick start</a>
+          <a href="#club">1MAP Club</a>
+          <a href="https://1managencyplan.online/vault">Vault</a>
+          <a href="#faq">FAQ</a>
+        </div>
+        <div class="nav-right">
+          <a href="https://1managencyplan.in" class="btn btn-primary" style="padding:11px 20px"><i data-lucide="download"></i>Get the skill pack</a>
+        </div>
+        <button class="nav-toggle" aria-label="Menu"><i data-lucide="menu"></i></button>
+      </nav>
     </div>
-    <a href="https://pages.razorpay.com/1map-club-booking" target="_blank" class="booking-btn">
-      Book My Call →
-    </a>
+  </header>
+
+  <div class="wrap">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <span class="eyebrow">By Nitin Joshi · 1MAP Club</span>
+        <h1 class="h-xl">Turn Claude into your<br>performance marketing <span class="accent">OS</span>.</h1>
+        <p class="lead">Seven production-ready skills that run the full growth flywheel — research to reporting — across Meta, Google, five markets, and six currencies. Set it up once in under 10 minutes.</p>
+        <div class="hero-cta">
+          <a href="https://1managencyplan.in" class="btn btn-primary"><i data-lucide="download"></i>Get the skill pack</a>
+          <a href="#skills" class="btn btn-ghost"><i data-lucide="layout-grid"></i>See the skills</a>
+        </div>
+        <div class="stat-pill">
+          <div class="sp"><b data-count="7">7</b><span>Claude skills</span></div>
+          <div class="sp"><b data-count="5">5</b><span>Markets</span></div>
+          <div class="sp"><b data-count="6">6</b><span>Currencies</span></div>
+          <div class="sp"><b>&lt;10</b><span>Min setup</span></div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="code-card">
+          <div class="code-top">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="ct-label">1MAP Performance OS — Claude Project</span>
+          </div>
+          <div class="code-body">
+            <span class="cl"><span class="c"># Run the flywheel on a real brand</span></span>
+            <span class="cl"><span class="run">▸</span> <span class="w">Run the Audit Engine on this brand.</span></span>
+            <span class="cl">&nbsp;&nbsp;<span class="k">Brand:</span> <span class="w">Northline Coffee</span></span>
+            <span class="cl">&nbsp;&nbsp;<span class="k">Market:</span> <span class="w">India (INR)</span></span>
+            <span class="cl">&nbsp;&nbsp;<span class="k">Type:</span> <span class="w">Product · B2C</span></span>
+            <span class="cl">&nbsp;&nbsp;<span class="k">Platform:</span> <span class="w">Meta + Google</span></span>
+            <span class="cl">&nbsp;</span>
+            <span class="cl"><span class="c">→ 24 checkpoints · Critical issues + Quick wins</span></span>
+            <span class="cl"><span class="c">→ Draft campaigns built PAUSED for review</span></span>
+          </div>
+        </div>
+        <div class="float-badge">
+          <div class="fb-icn"><i data-lucide="shield-check"></i></div>
+          <b>Campaigns build PAUSED</b>
+          <span>The human owns the launch button.</span>
+        </div>
+      </div>
+    </div>
   </div>
+</section>
 
-  <!-- 2. VIDEO -->
-  <div class="video-section">
-    <div class="section-label">1MAP Masterclass</div>
-    <div class="video-wrap">
-      <!-- Thumbnail — click to load Loom -->
-      <div class="video-thumb" id="videoThumb" onclick="loadVideo()">
-        <img src="thumbnail.png" alt="1MAP Masterclass">
-        <div class="video-overlay">
-          <div class="play-ring">
-            <div class="play-icon"></div>
-          </div>
-          <h3>1MAP Masterclass</h3>
-          <div class="video-sub">Click to watch</div>
+<!-- CONNECTOR STRIP -->
+<section class="strip">
+  <div class="wrap">
+    <div class="strip-inner">
+      <span class="strip-label">Plugs into</span>
+      <div class="marquee">
+        <div class="marquee-track">
+          <span class="m-item"><i data-lucide="facebook"></i>Meta Ads</span>
+          <span class="m-item"><i data-lucide="search"></i>Google Ads</span>
+          <span class="m-item"><i data-lucide="bot"></i>Apify Scraping</span>
+          <span class="m-item"><i data-lucide="clapperboard"></i>Higgsfield Creative</span>
+          <span class="m-item"><i data-lucide="globe"></i>Web Search</span>
+          <span class="m-item"><i data-lucide="indian-rupee"></i>India · SEA · UAE · US · AU/EU</span>
+          <span class="m-item" aria-hidden="true"><i data-lucide="facebook"></i>Meta Ads</span>
+          <span class="m-item" aria-hidden="true"><i data-lucide="search"></i>Google Ads</span>
+          <span class="m-item" aria-hidden="true"><i data-lucide="bot"></i>Apify Scraping</span>
+          <span class="m-item" aria-hidden="true"><i data-lucide="clapperboard"></i>Higgsfield Creative</span>
+          <span class="m-item" aria-hidden="true"><i data-lucide="globe"></i>Web Search</span>
+          <span class="m-item" aria-hidden="true"><i data-lucide="indian-rupee"></i>India · SEA · UAE · US · AU/EU</span>
         </div>
-      </div>
-      <!-- Loom iframe — injected on click -->
-      <div class="video-frame" id="videoFrame">
-        <iframe id="loomFrame" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- 3. BATCH CARDS -->
-  <div class="batches-section">
-    <div class="section-label">Workshop Recordings</div>
-
-    <!-- BATCH 01 -->
-    <div class="batch-card">
-      <img
-        class="batch-img"
-        src="https://storagev2.files-vault.com/uploads/blacklabel-386/sub-account-86133/funnel_builder/landing_pages/content/148920/87af2e76d34728a2b2272c58ff99d43c-87af2e76d34728a2b2272c58ff99d43c-nitin-profile.webp"
-        alt="1MAP Club Batch 01 Workshop"
-      >
-      <div class="batch-body">
-        <div>
-          <div class="batch-tag">Batch 01 · Jun 2026</div>
-          <div class="batch-title">1ManAgencyPlan Workshop — Batch 01</div>
-          <div class="batch-desc">7-stage Performance Growth Flywheel — Research, Audit, Gaps, Opportunities, Execution, Evaluation, Reporting. AI-native, founder-led, no-fluff.</div>
-          <div class="batch-stats">
-            <div class="stat">
-              <span class="stat-label">Ad Spend</span>
-              <span class="stat-value green">₹6,051</span>
-            </div>
-            <div class="stat">
-              <span class="stat-label">Reach</span>
-              <span class="stat-value">9,218</span>
-            </div>
-            <div class="stat">
-              <span class="stat-label">Clicks</span>
-              <span class="stat-value">448</span>
-            </div>
-          </div>
-        </div>
-        <a href="https://1managencyplan.online/b01-379234/" class="batch-cta">
-          Watch Batch 01 Recording →
-        </a>
-      </div>
+<!-- SKILLS BENTO -->
+<section class="sec dark glow-tr" id="skills">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">One skill for every stage of growth</span>
+      <h2 class="h-lg">Seven core skills + the<br>complete design layer.</h2>
+      <p class="lead">The seven-stage flywheel plus Stage 4.1 Funnel Design, Stage 4.2 Winning Creatives, and the $10,000 Bonus Framework. Use each skill solo or run the full sequence for compounding results.</p>
     </div>
 
-    <!-- BATCH 02 -->
-    <div class="batch-card" style="margin-top:16px;">
-      <img
-        class="batch-img"
-        src="https://storagev2.files-vault.com/uploads/blacklabel-386/sub-account-86133/funnel_builder/landing_pages/content/148920/87af2e76d34728a2b2272c58ff99d43c-87af2e76d34728a2b2272c58ff99d43c-nitin-profile.webp"
-        alt="1MAP Club Batch 02 Workshop"
-      >
-      <div class="batch-body">
-        <div>
-          <div class="batch-tag">Batch 02 · Jul 2026</div>
-          <div class="batch-title">1ManAgencyPlan Workshop — Batch 02</div>
-          <div class="batch-desc">2-part deep-dive — Performance Flywheel in action with live Meta account data, AI execution, and real campaign builds.</div>
-          <div class="batch-stats">
-            <div class="stat">
-              <span class="stat-label">Ad Spend</span>
-              <span class="stat-value green">₹6,597</span>
-            </div>
-            <div class="stat">
-              <span class="stat-label">Reach</span>
-              <span class="stat-value">3,976</span>
-            </div>
-            <div class="stat">
-              <span class="stat-label">Clicks</span>
-              <span class="stat-value">341</span>
-            </div>
-          </div>
-        </div>
-        <a href="https://1managencyplan.online/b02-60d603/" class="batch-cta">
-          Watch Batch 02 Recordings →
-        </a>
-      </div>
-    </div>
+    <div class="bento reveal">
+      <!-- Row 1: 01 (feat, 2-col) + 02 + 03 -->
+      <article class="scard feat">
+        <div class="s-icn"><i data-lucide="radar"></i></div>
+        <span class="s-stage">01</span>
+        <h3>Performance Research Engine</h3>
+        <p>Builds the decision foundation — market, customer, and competitors via web + Apify, plus your own-account signals. Every later stage stands on this brief.</p>
+      </article>
 
-    <!-- BATCH 03 -->
-    <div class="batch-card" style="margin-top:16px;">
-      <img
-        class="batch-img"
-        src="https://storagev2.files-vault.com/uploads/blacklabel-386/sub-account-86133/funnel_builder/landing_pages/content/148920/87af2e76d34728a2b2272c58ff99d43c-87af2e76d34728a2b2272c58ff99d43c-nitin-profile.webp"
-        alt="1MAP Club Batch 03 Workshop"
-      >
-      <div class="batch-body">
-        <div>
-          <div class="batch-tag">Batch 03 · Jul 2026</div>
-          <div class="batch-title">1ManAgencyPlan Workshop — Batch 03</div>
-          <div class="batch-desc">Complete 7-stage Performance Growth Flywheel — 2h 03m full session. AI-native, founder-led, no-fluff.</div>
-          <div class="batch-stats">
-            <div class="stat">
-              <span class="stat-label">Ad Spend</span>
-              <span class="stat-value green">₹5,127</span>
-            </div>
-            <div class="stat">
-              <span class="stat-label">Reach</span>
-              <span class="stat-value">2,507</span>
-            </div>
-            <div class="stat">
-              <span class="stat-label">Clicks</span>
-              <span class="stat-value">225</span>
-            </div>
-          </div>
-        </div>
-        <a href="https://1managencyplan.online/b03-188d81/" class="batch-cta">
-          Watch Batch 03 Recording →
-        </a>
-      </div>
-    </div>
+      <article class="scard">
+        <div class="s-icn"><i data-lucide="clipboard-check"></i></div>
+        <span class="s-stage">02</span>
+        <h3>Ads Audit System</h3>
+        <p>A 24-checkpoint diagnosis of Meta + Google, dual-mode for product or service across 5 markets.</p>
+      </article>
 
-    <!-- BATCH 04 -->
-    <div class="batch-card" style="margin-top:16px;">
-      <img
-        class="batch-img"
-        src="https://storagev2.files-vault.com/uploads/blacklabel-386/sub-account-86133/funnel_builder/landing_pages/content/148920/87af2e76d34728a2b2272c58ff99d43c-87af2e76d34728a2b2272c58ff99d43c-nitin-profile.webp"
-        alt="1MAP Club Batch 04 Workshop"
-      >
-      <div class="batch-body">
-        <div>
-          <div class="batch-tag">Batch 04 · Jul 2026</div>
-          <div class="batch-title">1ManAgencyPlan Workshop — Batch 04</div>
-          <div class="batch-desc">Complete 7-stage Performance Growth Flywheel — 2h 37m full session. AI-native, founder-led, no-fluff.</div>
-          <div class="batch-stats">
-            <div class="stat">
-              <span class="stat-label">Ad Spend</span>
-              <span class="stat-value green">₹5,128</span>
-            </div>
-            <div class="stat">
-              <span class="stat-label">Reach</span>
-              <span class="stat-value">2,507</span>
-            </div>
-            <div class="stat">
-              <span class="stat-label">Clicks</span>
-              <span class="stat-value">225</span>
-            </div>
-          </div>
-        </div>
-        <a href="https://1managencyplan.online/b04-326744/" class="batch-cta">
-          Watch Batch 04 Recording →
-        </a>
-      </div>
-    </div>
+      <article class="scard">
+        <div class="s-icn"><i data-lucide="puzzle"></i></div>
+        <span class="s-stage">03</span>
+        <h3>Gaps Diagnosis</h3>
+        <p>Turns the audit into a prioritized Broken / Missing / Leaking inventory you can act on.</p>
+      </article>
 
+      <!-- Row 2: 04 + 4.1 + 4.2 + 05 -->
+      <article class="scard">
+        <div class="s-icn"><i data-lucide="target"></i></div>
+        <span class="s-stage">04</span>
+        <h3>Opportunities Ranking</h3>
+        <p>Scores each opportunity on Impact × Effort × Confidence × Time, then builds a 30/60/90 roadmap.</p>
+      </article>
+
+      <article class="scard design">
+        <div class="s-icn"><i data-lucide="layout-template"></i></div>
+        <span class="s-stage">4.1</span>
+        <h3>Funnel Design System</h3>
+        <p>Build a complete high-converting funnel — landing page, lead magnet, offer stack, and ad-to-page alignment — using another Claude skill.</p>
+      </article>
+
+      <article class="scard design">
+        <div class="s-icn"><i data-lucide="clapperboard"></i></div>
+        <span class="s-stage">4.2</span>
+        <h3>Winning Creatives Engine</h3>
+        <p>Research hooks from the swipe bank → brief the creative → produce at scale via Higgsfield → test systematically.</p>
+      </article>
+
+      <article class="scard">
+        <div class="s-icn"><i data-lucide="rocket"></i></div>
+        <span class="s-stage">05</span>
+        <h3>Execution System</h3>
+        <p>Builds paused draft campaigns via Meta + Google MCP with Higgsfield creative — behind a manual review gate.</p>
+      </article>
+
+      <!-- Row 3: 06 + 07 + BONUS (2-col) -->
+      <article class="scard">
+        <div class="s-icn"><i data-lucide="line-chart"></i></div>
+        <span class="s-stage">06</span>
+        <h3>Evaluation System</h3>
+        <p>A post-launch read with signal-vs-noise discipline and a clear Continue / Scale / Iterate / Kill / Wait verdict.</p>
+      </article>
+
+      <article class="scard">
+        <div class="s-icn"><i data-lucide="file-bar-chart-2"></i></div>
+        <span class="s-stage">07</span>
+        <h3>Reporting System</h3>
+        <p>Stakeholder-ready output — founder one-pagers, client decks, internal summaries, and Loom scripts.</p>
+      </article>
+
+      <article class="scard bonus">
+        <div class="s-icn"><i data-lucide="trophy"></i></div>
+        <span class="s-stage">Bonus</span>
+        <h3>$10,000 Funnel Design</h3>
+        <p>The complete methodology for designing and delivering a high-ticket funnel — strategy, copy architecture, offer stack, and ad-to-funnel optimization. The system behind a $10,000 engagement.</p>
+      </article>
+    </div>
   </div>
+</section>
 
-</main>
+<!-- FLYWHEEL -->
+<section class="sec light on-light dots-lt" id="flywheel">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Run in order, and it compounds</span>
+      <h2 class="h-lg">The seven-stage flywheel,<br>start to restart.</h2>
+      <p class="lead">Each stage feeds the next with a concrete output. Finish one full loop, then run the second cycle in a week instead of five — that's where the compounding kicks in.</p>
+    </div>
+
+    <div class="flow reveal">
+      <article class="fcard">
+        <div class="f-icn"><i data-lucide="radar"></i></div>
+        <div class="f-stage">Stage 01</div>
+        <h3>Research</h3>
+        <div class="f-out"><i data-lucide="arrow-right"></i>Research Brief</div>
+      </article>
+      <article class="fcard">
+        <div class="f-icn"><i data-lucide="clipboard-check"></i></div>
+        <div class="f-stage">Stage 02</div>
+        <h3>Audit</h3>
+        <div class="f-out"><i data-lucide="arrow-right"></i>Issues + Quick Wins</div>
+      </article>
+      <article class="fcard">
+        <div class="f-icn"><i data-lucide="puzzle"></i></div>
+        <div class="f-stage">Stage 03</div>
+        <h3>Gaps</h3>
+        <div class="f-out"><i data-lucide="arrow-right"></i>Broken/Missing/Leaking</div>
+      </article>
+      <article class="fcard">
+        <div class="f-icn"><i data-lucide="target"></i></div>
+        <div class="f-stage">Stage 04</div>
+        <h3>Opportunities</h3>
+        <div class="f-out"><i data-lucide="arrow-right"></i>30/60/90 Roadmap</div>
+      </article>
+      <article class="fcard">
+        <div class="f-icn"><i data-lucide="rocket"></i></div>
+        <div class="f-stage">Stage 05</div>
+        <h3>Execution</h3>
+        <div class="f-out"><i data-lucide="arrow-right"></i>Paused Draft Campaigns</div>
+      </article>
+      <article class="fcard">
+        <div class="f-icn"><i data-lucide="line-chart"></i></div>
+        <div class="f-stage">Stage 06</div>
+        <h3>Evaluation</h3>
+        <div class="f-out"><i data-lucide="arrow-right"></i>Scale/Iterate/Kill</div>
+      </article>
+      <article class="fcard">
+        <div class="f-icn"><i data-lucide="file-bar-chart-2"></i></div>
+        <div class="f-stage">Stage 07</div>
+        <h3>Reporting</h3>
+        <div class="f-out"><i data-lucide="arrow-right"></i>Founder/Client Report</div>
+      </article>
+      <article class="fcard loop">
+        <div class="f-icn"><i data-lucide="refresh-cw"></i></div>
+        <div class="f-stage">Loop back to 01</div>
+        <h3>Flywheel restarts</h3>
+        <p>Second cycle in 1 week, not 5.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="sec dark glow-bl">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow center">One system, every account you touch</span>
+      <h2 class="h-lg">Built to run on any brand,<br>in any market you serve.</h2>
+    </div>
+    <div class="stats reveal">
+      <div class="stat">
+        <div class="st-icn"><i data-lucide="layers"></i></div>
+        <div class="s-num"><span data-count="7">0</span></div>
+        <div class="s-lbl">Skills covering research to reporting</div>
+      </div>
+      <div class="stat">
+        <div class="st-icn"><i data-lucide="globe-2"></i></div>
+        <div class="s-num"><span data-count="5">0</span></div>
+        <div class="s-lbl">Markets: India, SEA, UAE, US, AU/EU</div>
+      </div>
+      <div class="stat">
+        <div class="st-icn"><i data-lucide="banknote"></i></div>
+        <div class="s-num"><span data-count="6">0</span></div>
+        <div class="s-lbl">Currencies handled natively</div>
+      </div>
+      <div class="stat">
+        <div class="st-icn"><i data-lucide="check-check"></i></div>
+        <div class="s-num"><span data-count="24">0</span></div>
+        <div class="s-lbl">Audit checkpoints on Meta + Google</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUICK START -->
+<section class="sec light on-light dots-lt" id="start">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">From download to first run</span>
+      <h2 class="h-lg">Set up your whole OS<br>in under ten minutes.</h2>
+      <p class="lead">Install once inside a Claude Project. Every brand you work on gets its own Project, and your research, audits, and roadmaps persist across every session.</p>
+    </div>
+    <div class="steps reveal">
+      <div class="step">
+        <div class="p-icn"><i data-lucide="folder-plus"></i></div>
+        <div class="p-meta">Step 1 of 3</div>
+        <h3>Create a Claude Project</h3>
+        <p>Open Claude, click <code>+ New Project</code>, and name it <code>1MAP Performance OS</code>. This is the home of your operating system.</p>
+      </div>
+      <div class="step">
+        <div class="p-icn"><i data-lucide="package-plus"></i></div>
+        <div class="p-meta">Step 2 of 3</div>
+        <h3>Upload the 7 skills</h3>
+        <p>In the Project, open <code>Skills → Add skill</code> and upload all seven <code>.md</code> files. Confirm they appear in the list.</p>
+      </div>
+      <div class="step">
+        <div class="p-icn"><i data-lucide="cable"></i></div>
+        <div class="p-meta">Step 3 of 3</div>
+        <h3>Enable your connectors</h3>
+        <p>Turn on Meta, Google, Apify, or Higgsfield as you need them. Missing a connector? The skills degrade gracefully — nothing breaks.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="sec dark glow-tr">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Don't run all seven on day one</span>
+      <h2 class="h-lg">Your first five weeks,<br>one real brand.</h2>
+      <p class="lead">The recommended first cycle paces the skills so you learn the system as you go — and finish a full flywheel loop on a live account.</p>
+    </div>
+    <div class="rail reveal">
+      <div class="rnode">
+        <div class="r-icn"><i data-lucide="radar"></i></div>
+        <div class="r-line"></div>
+        <div class="r-week">Week 1</div>
+        <h3>Research + Audit</h3>
+        <p>Run Stages 1 and 2 on one existing brand you already know.</p>
+      </div>
+      <div class="rnode">
+        <div class="r-icn"><i data-lucide="list-checks"></i></div>
+        <div class="r-line"></div>
+        <div class="r-week">Week 2</div>
+        <h3>Gaps + Opportunities</h3>
+        <p>Turn the audit into a ranked 30/60/90 roadmap with Stages 3 and 4.</p>
+      </div>
+      <div class="rnode">
+        <div class="r-icn"><i data-lucide="rocket"></i></div>
+        <div class="r-line"></div>
+        <div class="r-week">Week 3</div>
+        <h3>Execution</h3>
+        <p>Pick the top opportunity and build paused draft campaigns with Stage 5.</p>
+      </div>
+      <div class="rnode">
+        <div class="r-icn"><i data-lucide="repeat"></i></div>
+        <div class="r-week">Weeks 4–5</div>
+        <h3>Evaluate + Report</h3>
+        <p>Let it run, then close the loop with Stages 6 and 7. One full cycle, done.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="sec light on-light dots-lt">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">What the workshop room saw</span>
+      <h2 class="h-lg">Marketers who stopped<br>guessing at their accounts.</h2>
+    </div>
+    <div class="quotes reveal">
+      <article class="quote">
+        <div class="stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <p>"I watched it audit a live account in one sitting and hand me a 30/60/90 plan I'd normally spend two days building. The paused-campaign gate sold me — it respects the budget."</p>
+        <div class="who">
+          <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=200&auto=format&fit=crop" alt="Workshop attendee" />
+          <div><div class="n">Arjun M.</div><div class="r">Freelance media buyer</div></div>
+        </div>
+      </article>
+      <article class="quote">
+        <div class="stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <p>"Running the research and gaps skills back to back finally gave my strategy a spine. I stopped launching on vibes. The second loop really did take a week."</p>
+        <div class="who">
+          <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=200&auto=format&fit=crop" alt="Workshop attendee" />
+          <div><div class="n">Priya S.</div><div class="r">Solo agency owner</div></div>
+        </div>
+      </article>
+      <article class="quote">
+        <div class="stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <p>"The reporting skill alone saves me an afternoon a week. Founder one-pager, client deck, Loom script — same data, three audiences, done."</p>
+        <div class="who">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=200&auto=format&fit=crop" alt="Workshop attendee" />
+          <div><div class="n">Daniel R.</div><div class="r">Performance lead, D2C</div></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- MEMBERSHIP -->
+<section class="sec dark glow-bl" id="club">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">The skill pack is the foundation</span>
+      <h2 class="h-lg">Where the system keeps<br>getting sharper.</h2>
+      <p class="lead">The next layer — live mentorship, advanced workflows, and new skills as they drop — lives inside 1MAP Club.</p>
+    </div>
+    <div class="plans reveal">
+      <article class="plan hot">
+        <span class="pl-tag">Core</span>
+        <div class="pl-icn"><i data-lucide="medal"></i></div>
+        <h3>1MAP Club Membership</h3>
+        <p>Direct access to Nitin and the full operating system as it evolves.</p>
+        <ul>
+          <li><i data-lucide="check"></i>Monthly live sessions</li>
+          <li><i data-lucide="check"></i>New skills the moment they ship</li>
+          <li><i data-lucide="check"></i>Direct access to Nitin</li>
+        </ul>
+      </article>
+      <article class="plan">
+        <div class="pl-icn"><i data-lucide="users-round"></i></div>
+        <h3>1ManAgencyPlan Community</h3>
+        <p>A room of operators who run real accounts and share what's working.</p>
+        <ul>
+          <li><i data-lucide="check"></i>Active WhatsApp group</li>
+          <li><i data-lucide="check"></i>Peer support &amp; feedback</li>
+          <li><i data-lucide="check"></i>Real account reviews</li>
+        </ul>
+      </article>
+      <article class="plan">
+        <div class="pl-icn"><i data-lucide="graduation-cap"></i></div>
+        <h3>Upcoming Workshops</h3>
+        <p>Deeper dives into the platforms and the AI-first way of running an agency.</p>
+        <ul>
+          <li><i data-lucide="check"></i>Meta &amp; Google deep dives</li>
+          <li><i data-lucide="check"></i>AI-first agency operations</li>
+          <li><i data-lucide="check"></i>Live builds on real accounts</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec light on-light dots-lt" id="faq">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow center">Before you fire the first skill</span>
+      <h2 class="h-lg">The questions from<br>the install desk.</h2>
+    </div>
+    <div class="faq reveal">
+      <div class="fq" style="background:#fff;border-color:var(--line-lt)">
+        <button class="fq-q" style="color:var(--ink)">Claude isn't using the skill — what's wrong?<i data-lucide="plus"></i></button>
+        <div class="fq-a"><p style="color:var(--slate-2)">Make sure you're inside the Project where the skills are installed. Skills are scoped to their Project — start a chat outside it and they won't be active.</p></div>
+      </div>
+      <div class="fq" style="background:#fff;border-color:var(--line-lt)">
+        <button class="fq-q" style="color:var(--ink)">A connector's authentication failed.<i data-lucide="plus"></i></button>
+        <div class="fq-a"><p style="color:var(--slate-2)">Re-authenticate in Settings → Connectors. Meta tokens expire after 60 days; Google tokens last longer but can need re-auth after account permission changes.</p></div>
+      </div>
+      <div class="fq" style="background:#fff;border-color:var(--line-lt)">
+        <button class="fq-q" style="color:var(--ink)">Do I need every connector to start?<i data-lucide="plus"></i></button>
+        <div class="fq-a"><p style="color:var(--slate-2)">No. The skills degrade gracefully. Stage 5 produces a creative brief instead of a Higgsfield video, Stage 2 produces a framework you can fill by hand — no skill fails just because a connector is missing.</p></div>
+      </div>
+      <div class="fq" style="background:#fff;border-color:var(--line-lt)">
+        <button class="fq-q" style="color:var(--ink)">The output feels generic, not specific to my brand.<i data-lucide="plus"></i></button>
+        <div class="fq-a"><p style="color:var(--slate-2)">Feed it real data — your actual reviews, your actual ad account, your actual category. The skills scale with your input; the more real context you give, the sharper the output.</p></div>
+      </div>
+      <div class="fq" style="background:#fff;border-color:var(--line-lt)">
+        <button class="fq-q" style="color:var(--ink)">Multiple skills fire for one request. Is that a bug?<i data-lucide="plus"></i></button>
+        <div class="fq-a"><p style="color:var(--slate-2)">No — that's expected mid-flywheel; the skills compose by design. To force one, name it: "Use the Performance Audit skill on this account."</p></div>
+      </div>
+      <div class="fq" style="background:#fff;border-color:var(--line-lt)">
+        <button class="fq-q" style="color:var(--ink)">Can I skip straight to Execution?<i data-lucide="plus"></i></button>
+        <div class="fq-a"><p style="color:var(--slate-2)">Don't. Running Stage 5 without Stages 1–4 is how marketers without a strategy burn money fast. The full flywheel is the unlock — one skill is just a tool.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="sec dark" id="get">
+  <div class="wrap">
+    <div class="final-card reveal">
+      <span class="eyebrow center">Build with discipline. Ship with care.</span>
+      <h2 class="h-lg">Run a full-stack agency,<br>powered by AI.</h2>
+      <p class="lead">Get the seven skills, set up your Project in ten minutes, and loop your first flywheel on a real brand this month.</p>
+      <div class="final-cta">
+        <a href="https://1managencyplan.in" class="btn btn-primary"><i data-lucide="download"></i>Get the skill pack</a>
+        <a href="#club" class="btn btn-ghost"><i data-lucide="users-round"></i>Join 1MAP Club</a>
+      </div>
+      <div class="final-note"><i data-lucide="shield-check"></i>Campaigns build paused · You own every launch</div>
+    </div>
+  </div>
+</section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-brand">1MAP Club · Nitin Joshi · 2026</div>
-  <a href="https://1managencyplan.in" target="_blank" class="refer-btn">
-    Refer a Friend →
-  </a>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="name">
+          <svg width="30" height="30" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="20" cy="20" r="15.5" stroke="#c6f24a" stroke-width="2.4"/>
+            <path d="M20 6.5a13.5 13.5 0 0 1 13 10" stroke="#eef0e9" stroke-width="2.4" stroke-linecap="round"/>
+            <circle cx="20" cy="20" r="4.6" fill="#c6f24a"/>
+          </svg>
+          1MAP<b>.</b>
+        </div>
+        <p>A full-stack performance marketing system for freelancers and solo agency owners — powered by AI.</p>
+        <div class="fb-links">
+          <a href="https://instagram.com/highnitin" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+          <a href="https://1managencyplan.in" aria-label="Website"><i data-lucide="globe"></i></a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>The pack</h4>
+        <a href="#skills">The skills</a>
+        <a href="#flywheel">The flywheel</a>
+        <a href="#start">Quick start</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div class="foot-col">
+        <h4>1MAP Club</h4>
+        <a href="#club">Membership</a>
+        <a href="#club">Community</a>
+        <a href="#club">Workshops</a>
+        <a href="https://1managencyplan.in">Website</a>
+      </div>
+      <div class="foot-col">
+        <h4>Resources</h4>
+        <a href="https://1managencyplan.online/vault">Recording Vault</a>
+        <a href="https://1managencyplan.online/claude-master-prompt">Prompt Book</a>
+        <a href="https://1managencyplan.online/1map-os">1MAP OS</a>
+        <a href="https://1managencyplan.in">1managencyplan.in</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>© 2026 1MAP Club · 1ManAgencyPlan · All rights reserved.</p>
+      <p class="fb-by">Built by Nitin Joshi · <a href="https://instagram.com/highnitin">@highnitin</a> · <a href="https://1managencyplan.in">1managencyplan.in</a></p>
+    </div>
+  </div>
 </footer>
 
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 <script>
-function loadVideo() {
-  document.getElementById('videoThumb').style.display = 'none';
-  var iframe = document.getElementById('loomFrame');
-  iframe.src = 'https://www.loom.com/embed/79fea9be6f3a41338818b22d29f3daf1?autoplay=1&hideEmbedTopBar=true';
-  document.getElementById('videoFrame').style.display = 'block';
-}
+  if (window.lucide) lucide.createIcons();
+
+  const revObs = new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');revObs.unobserve(e.target);}})},{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>revObs.observe(el));
+
+  function animateCount(el){
+    const target=parseFloat(el.dataset.count);const isFloat=!Number.isInteger(target);
+    const dur=1400;const start=performance.now();
+    function tick(now){const p=Math.min((now-start)/dur,1);const eased=1-Math.pow(1-p,3);const val=target*eased;
+      el.textContent=isFloat?val.toFixed(1):Math.round(val).toLocaleString();
+      if(p<1)requestAnimationFrame(tick);}
+    requestAnimationFrame(tick);
+  }
+  const countObs=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){animateCount(e.target);countObs.unobserve(e.target);}})},{threshold:.6});
+  document.querySelectorAll('[data-count]').forEach(el=>countObs.observe(el));
+
+  document.querySelectorAll('.fq-q').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const item=btn.parentElement;const ans=item.querySelector('.fq-a');const isOpen=item.classList.contains('open');
+      document.querySelectorAll('.fq').forEach(f=>{f.classList.remove('open');f.querySelector('.fq-a').style.maxHeight=null;});
+      if(!isOpen){item.classList.add('open');ans.style.maxHeight=ans.scrollHeight+'px';}
+    });
+  });
 </script>
 </body>
 </html>
