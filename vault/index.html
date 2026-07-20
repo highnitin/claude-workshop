@@ -297,7 +297,6 @@ main {
 }
 
 .video-frame {
-  display: none;
   position: absolute;
   inset: 0;
 }
@@ -480,18 +479,8 @@ footer {
   <div class="video-section">
     <div class="section-label">1MAP Masterclass</div>
     <div class="video-wrap">
-      <div class="video-thumb" id="videoThumb" onclick="loadVideo()">
-        <img src="../thumbnail.png" alt="1MAP Masterclass">
-        <div class="video-overlay">
-          <div class="play-ring">
-            <div class="play-icon"></div>
-          </div>
-          <h3>1MAP Masterclass</h3>
-          <div class="video-sub">Click to watch</div>
-        </div>
-      </div>
       <div class="video-frame" id="videoFrame">
-        <iframe id="loomFrame" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+        <iframe id="loomFrame" src="https://www.loom.com/embed/79fea9be6f3a41338818b22d29f3daf1?autoplay=1&hideEmbedTopBar=true" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen allow="autoplay; fullscreen"></iframe>
       </div>
     </div>
   </div>
@@ -578,13 +567,5 @@ footer {
   </a>
 </footer>
 
-<script>
-function loadVideo() {
-  document.getElementById('videoThumb').style.display = 'none';
-  var iframe = document.getElementById('loomFrame');
-  iframe.src = 'https://www.loom.com/embed/79fea9be6f3a41338818b22d29f3daf1?autoplay=1&hideEmbedTopBar=true';
-  document.getElementById('videoFrame').style.display = 'block';
-}
-</script>
 </body>
 </html>
