@@ -6,16 +6,16 @@
 <title>1MAP Club — Batch 03 Recording Access</title>
 <style>
 :root {
-  --bg: #FAFAF7;
-  --navy: #03112C;
-  --navy-soft: #1A2540;
-  --green: #00CE48;
-  --green-dark: #00A33A;
-  --green-soft: rgba(0,206,72,0.08);
-  --text: #03112C;
-  --text-muted: #5A5F6A;
-  --border: rgba(3,17,44,0.1);
-  --border-strong: rgba(3,17,44,0.2);
+  --bg: #f6f5ef;
+  --navy: #15181d;
+  --navy-soft: #2c313a;
+  --green: #c6f24a;
+  --green-dark: #5f7d0c;
+  --green-soft: rgba(198,242,74,0.10);
+  --text: #15181d;
+  --text-muted: #5c626d;
+  --border: rgba(21,24,29,.11);
+  --border-strong: rgba(21,24,29,.2);
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body {
@@ -55,20 +55,20 @@ body {
 .brand { font-family: ui-monospace, monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); font-weight: 600; margin-bottom: 20px; }
 h1 { font-family: Georgia, 'Times New Roman', serif; font-size: 28px; font-weight: 500; color: var(--navy); line-height: 1.2; margin-bottom: 12px; letter-spacing: -0.015em; }
 .subtitle { font-size: 14.5px; color: var(--text-muted); line-height: 1.65; margin-bottom: 28px; }
-.pwd-section { background: var(--green-soft); border: 1.5px solid rgba(0,206,72,0.25); border-radius: 12px; padding: 18px 20px; margin-bottom: 28px; }
+.pwd-section { background: var(--green-soft); border: 1.5px solid rgba(198,242,74,0.25); border-radius: 12px; padding: 18px 20px; margin-bottom: 28px; }
 .pwd-section-label { font-family: ui-monospace, monospace; font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--green-dark); margin-bottom: 10px; }
 .pwd-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .pwd-value { font-family: ui-monospace, 'SF Mono', Consolas, monospace; font-size: 22px; font-weight: 700; color: var(--navy); letter-spacing: 0.06em; }
 .copy-btn { padding: 8px 18px; background: var(--green); color: var(--navy); font-weight: 700; font-size: 13px; border: none; border-radius: 8px; cursor: pointer; transition: all 0.15s; font-family: inherit; flex-shrink: 0; display: inline-flex; align-items: center; gap: 5px; }
-.copy-btn:hover { background: var(--green-dark); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,206,72,0.3); }
+.copy-btn:hover { background: var(--green-dark); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(198,242,74,0.3); }
 .copy-btn.copied { background: var(--navy); color: #fff; }
 .pwd-hint { font-size: 12px; color: var(--text-muted); margin-top: 8px; line-height: 1.5; }
 label { display: block; font-family: ui-monospace, monospace; font-size: 10.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy); margin-bottom: 8px; }
 input[type="email"] { width: 100%; padding: 14px 16px; border: 1.5px solid var(--border-strong); border-radius: 10px; font-size: 15px; color: var(--navy); background: #fff; outline: none; transition: border-color 0.15s, box-shadow 0.15s; margin-bottom: 14px; font-family: inherit; }
 input[type="email"]::placeholder { color: #b0b5bf; }
-input[type="email"]:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(0,206,72,0.12); }
+input[type="email"]:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(198,242,74,0.12); }
 button[type="submit"] { width: 100%; padding: 15px; background: var(--green); color: var(--navy); font-weight: 700; font-size: 15px; border: none; border-radius: 10px; cursor: pointer; transition: all 0.15s; font-family: inherit; display: flex; align-items: center; justify-content: center; gap: 8px; }
-button[type="submit"]:hover { background: var(--green-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(0,206,72,0.3); }
+button[type="submit"]:hover { background: var(--green-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(198,242,74,0.3); }
 button[type="submit"].loading { opacity: 0.7; cursor: not-allowed; pointer-events: none; }
 .spinner { width: 16px; height: 16px; border: 2px solid rgba(3,17,44,0.3); border-top-color: var(--navy); border-radius: 50%; animation: spin 0.6s linear infinite; display: none; }
 button[type="submit"].loading .spinner { display: block; }
