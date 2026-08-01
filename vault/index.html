@@ -439,6 +439,18 @@ footer {
   color: var(--muted);
 }
 
+.footer-lp-link {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--lime-text);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.footer-lp-link:hover { color: var(--lime-deep); }
+
 @media (max-width: 680px) {
   .booking-cta { flex-direction: column; align-items: flex-start; padding: 28px 24px; }
   .booking-btn { width: 100%; justify-content: center; }
@@ -562,6 +574,7 @@ footer {
 
 <footer>
   <div class="footer-brand">1MAP Club · Nitin Joshi · 2026</div>
+  <a href="https://1managencyplan.online/1map-lp-design" class="footer-lp-link">Install Premium Landing Page Skill →</a>
   <a href="https://1managencyplan.in" target="_blank" class="refer-btn">
     Refer a Friend →
   </a>
