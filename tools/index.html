@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Tools & Stack — Nitin Joshi | 1MAP Club</title>
+<meta name="description" content="The tools I actually use to run an AI-first agency — automation, payments, WhatsApp, websites and more. Recommended with affiliate links.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#15181d;
+    --ink-dark:#0b0d11;
+    --paper:#f6f5ef;
+    --paper-alt:#efeee5;
+    --card:#ffffff;
+    --lime:#c6f24a;
+    --lime-2:#d4f75a;
+    --lime-text:#5f7d0c;
+    --lime-deep:#4d6a08;
+    --muted:#5c626d;
+    --muted-light:#868d98;
+    --line:rgba(21,24,29,.11);
+    --line-strong:rgba(21,24,29,.2);
+    --wash:rgba(198,242,74,.12);
+    --sans:'Satoshi',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    --display:'Space Grotesk',var(--sans);
+    --mono:'JetBrains Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:960px;margin:0 auto;padding:0 24px}
+
+  /* ---- hero ---- */
+  .hero{background:var(--ink-dark);color:var(--paper);padding:26px 0 64px;position:relative;overflow:hidden}
+  .hero::before{content:"";position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(50% 60% at 85% 0%,rgba(198,242,74,.16),transparent 60%)}
+  .hero .wrap{position:relative;z-index:1}
+  .home-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.04em;color:rgba(238,240,233,.6);margin-bottom:40px;transition:color .15s}
+  .home-link:hover{color:#fff}
+  .eyebrow{font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--lime);display:inline-flex;align-items:center;gap:9px}
+  .eyebrow::before{content:"";width:22px;height:2px;background:var(--lime)}
+  .hero h1{font-family:var(--display);font-weight:700;font-size:clamp(34px,6vw,58px);line-height:1.02;letter-spacing:-.03em;margin:16px 0 16px}
+  .hero h1 em{font-style:normal;color:var(--lime)}
+  .hero p{font-size:clamp(16px,2vw,19px);color:rgba(238,240,233,.72);max-width:56ch}
+  .disclosure{margin-top:22px;font-size:13px;color:rgba(238,240,233,.5);max-width:60ch;font-family:var(--mono)}
+
+  /* ---- sections ---- */
+  main{padding:56px 0 40px}
+  .sec{margin-bottom:56px}
+  .sec-head{margin-bottom:24px}
+  .sec-head .eyebrow{color:var(--lime-text)}
+  .sec-head .eyebrow::before{background:var(--lime-text)}
+  .sec-head h2{font-family:var(--display);font-weight:600;font-size:clamp(24px,3.4vw,32px);letter-spacing:-.02em;margin:12px 0 6px}
+  .sec-head p{color:var(--muted);max-width:60ch;font-size:15.5px}
+
+  /* ---- featured (Pabbly) ---- */
+  .featured{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:30px 30px 12px;box-shadow:0 2px 24px rgba(21,24,29,.05)}
+  .featured-top{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-bottom:8px}
+  .featured-top h3{font-family:var(--display);font-size:22px;font-weight:600;letter-spacing:-.01em;display:flex;align-items:center;gap:12px}
+  .brand-dot{width:34px;height:34px;border-radius:9px;background:var(--wash);border:1px solid var(--line);display:grid;place-items:center;font-family:var(--mono);font-weight:700;color:var(--lime-deep);font-size:15px}
+  .featured-top p{color:var(--muted);font-size:14.5px;width:100%;max-width:62ch}
+  .link-grid{display:grid;grid-template-columns:1fr;margin-top:14px}
+  @media(min-width:640px){.link-grid{grid-template-columns:1fr 1fr;column-gap:28px}}
+  .link-row{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:15px 0;border-top:1px solid var(--line)}
+  .link-row .lr-info{min-width:0}
+  .link-row .lr-name{font-weight:600;font-size:15.5px}
+  .link-row .lr-tag{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-light);margin-top:3px;display:block}
+  .go{flex-shrink:0;display:inline-flex;align-items:center;gap:6px;font-family:var(--sans);font-weight:700;font-size:13px;color:var(--ink);background:var(--lime);padding:8px 14px;border-radius:8px;transition:transform .12s,background .18s,box-shadow .18s;white-space:nowrap}
+  .go:hover{transform:translateY(-1px);background:var(--lime-2);box-shadow:0 6px 16px -6px rgba(198,242,74,.6)}
+  .go.ghost{background:transparent;color:var(--lime-deep);border:1.5px solid var(--line-strong)}
+  .go.ghost:hover{border-color:var(--lime-text);color:var(--lime-text);background:transparent;box-shadow:none}
+  .deal-row{background:var(--wash);margin:6px -14px 0;padding:15px 14px;border-radius:12px;border-top:none}
+
+  /* ---- tool cards ---- */
+  .cards{display:grid;gap:16px;grid-template-columns:1fr}
+  @media(min-width:640px){.cards{grid-template-columns:1fr 1fr}}
+  @media(min-width:900px){.cards{grid-template-columns:1fr 1fr 1fr}}
+  .tool{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 22px;display:flex;flex-direction:column;transition:transform .25s,border-color .25s,box-shadow .25s}
+  .tool:hover{transform:translateY(-3px);border-color:rgba(198,242,74,.5);box-shadow:0 16px 40px -22px rgba(21,24,29,.28)}
+  .tool .t-cat{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--lime-text);font-weight:600;margin-bottom:12px}
+  .tool h3{font-family:var(--display);font-size:19px;font-weight:600;letter-spacing:-.01em;margin-bottom:8px}
+  .tool p{color:var(--muted);font-size:14px;line-height:1.55;margin-bottom:20px;flex:1}
+  .tool .go{align-self:flex-start}
+
+  /* ---- footer ---- */
+  footer{border-top:1px solid var(--line);padding:34px 0 60px;margin-top:20px}
+  .foot-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
+  .foot-brand{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .foot-links{display:flex;gap:16px;flex-wrap:wrap}
+  .foot-links a{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--lime-text);transition:color .15s}
+  .foot-links a:hover{color:var(--lime-deep)}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <a class="home-link" href="https://1managencyplan.online/">← Home</a>
+    <span class="eyebrow">The stack · Nitin Joshi</span>
+    <h1>The tools I actually<br><em>use to run this.</em></h1>
+    <p>Every tool below is one I run inside 1ManAgencyPlan or set up for clients — automation, payments, WhatsApp, websites and AI. Pick one and it's live in minutes.</p>
+    <p class="disclosure">Heads up: these are affiliate links. If you buy through them I may earn a commission — at no extra cost to you. I only list what I actually use.</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ===== PABBLY (featured) ===== -->
+  <section class="sec">
+    <div class="sec-head">
+      <span class="eyebrow">Automation &amp; Ops</span>
+      <h2>Pabbly — the whole suite</h2>
+      <p>My core automation and billing stack. Connect apps, run subscriptions, send email, build forms and automate WhatsApp — most plans come with a one-time (lifetime) option.</p>
+    </div>
+
+    <div class="featured">
+      <div class="featured-top">
+        <h3><span class="brand-dot">P</span> Pabbly</h3>
+        <a class="go ghost" href="https://payments.pabbly.com/api/affurl/RVYZ07kQyUZ0Z1HUKZ1m/hF2B87PB3Z1dxDEwo?target=tm576znNj1Z0Tagzn" target="_blank" rel="sponsored noopener">All apps ↗</a>
+        <p>Start with <strong>Pabbly Connect</strong> if you're new — it's the Zapier alternative that ties everything together. Grab the Black Friday deal if it's live.</p>
+      </div>
+
+      <div class="link-row deal-row">
+        <div class="lr-info">
+          <span class="lr-name">🔥 Black Friday Deal</span>
+          <span class="lr-tag">Best price of the year</span>
+        </div>
+        <a class="go" href="https://payments.pabbly.com/api/affurl/RVYZ07kQyUZ0Z1HUKZ1m/hF2B87PB3Z1dxDEwo?target=gvvAZ1woDCGnckqiq" target="_blank" rel="sponsored noopener">Get deal →</a>
+      </div>
+
+      <div class="link-grid">
+        <div class="link-row">
+          <div class="lr-info"><span class="lr-name">Pabbly Connect</span><span class="lr-tag">Recurring · Automation</span></div>
+          <a class="go" href="https://payments.pabbly.com/api/affurl/RVYZ07kQyUZ0Z1HUKZ1m/hF2B87PB3Z1dxDEwo?target=9Z2AHyhSldo6KI1Fn" target="_blank" rel="sponsored noopener">Get →</a>
+        </div>
+        <div class="link-row">
+          <div class="lr-info"><span class="lr-name">Pabbly Connect</span><span class="lr-tag">One-Time · Lifetime</span></div>
+          <a class="go" href="https://payments.pabbly.com/api/affurl/RVYZ07kQyUZ0Z1HUKZ1m/hF2B87PB3Z1dxDEwo?target=nMfdbf0I90K3UdJn" target="_blank" rel="sponsored noopener">Get →</a>
+        </div>
+        <div class="link-row">
+          <div class="lr-info"><span class="lr-name">Pabbly Connect Agency</span><span class="lr-tag">Recurring · Multi-client</span></div>
+          <a class="go" href="https://payments.pabbly.com/api/affurl/RVYZ07kQyUZ0Z1HUKZ1m/hF2B87PB3Z1dxDEwo?target=P7X6LsuPmxWoqqRp" target="_blank" rel="sponsored noopener">Get →</a>
+        </div>
+        <div class="link-row">
+          <div class="lr-info"><span class="lr-name">Pabbly Plus</span><span class="lr-tag">Recurring · All-apps bundle</span></div>
+          <a class="go" href="https://payments.pabbly.com/api/affurl/RVYZ07kQyUZ0Z1HUKZ1m/hF2B87PB3Z1dxDEwo?target=b1BHyhSldo6RN1Fn" target="_blank" rel="sponsored noopener">Get →</a>
+        </div>
+        <div class="link-row">
+          <div class="lr-info"><span class="lr-name">Pabbly Subscription Billing</span><span class="lr-tag">Recurring · Billing</span></div>
+          <a class="go" href="https://payments.pabbly.com/api/affurl/RVYZ07kQyUZ0Z1HUKZ1m/hF2B87PB3Z1dxDEwo?target=w4UQrrgZ05qQUQa5n" target="_blank" rel="sponsored noopener">Get →</a>
+        </div>
+        <div class="link-row">
+          <div class="lr-info"><span class="lr-name">Pabbly Subscription Billing</span><span class="lr-tag">One-Time · Lifetime</span></div>
+          <a class="go" href="https://payments.pabbly.com/api/affurl/RVYZ07kQyUZ0Z1HUKZ1m/hF2B87PB3Z1dxDEwo?target=GdNZ27XC4L7d1Z1umo" target="_blank" rel="sponsored noopener">Get →</a>
+        </div>
+        <div class="link-row">
+          <div class="lr-info"><span class="lr-name">Pabbly Email Marketing</span><span class="lr-tag">Recurring · Campaigns</span></div>
+          <a class="go" href="https://payments.pabbly.com/api/affurl/RVYZ07kQyUZ0Z1HUKZ1m/hF2B87PB3Z1dxDEwo?target=vqgM0VwdWh6GoJgn" target="_blank" rel="sponsored noopener">Get →</a>
+        </div>
+        <div class="link-row">
+          <div class="lr-info"><span class="lr-name">Pabbly Form Builder</span><span class="lr-tag">Recurring · Forms &amp; leads</span></div>
+          <a class="go" href="https://payments.pabbly.com/api/affurl/RVYZ07kQyUZ0Z1HUKZ1m/hF2B87PB3Z1dxDEwo?target=JWZ1eBi6KuFVa4Kfn" target="_blank" rel="sponsored noopener">Get →</a>
+        </div>
+        <div class="link-row">
+          <div class="lr-info"><span class="lr-name">Pabbly Email Verification</span><span class="lr-tag">List cleaning</span></div>
+          <a class="go" href="https://payments.pabbly.com/api/affurl/RVYZ07kQyUZ0Z1HUKZ1m/hF2B87PB3Z1dxDEwo?target=q1BHyhSldoCFO1Fn" target="_blank" rel="sponsored noopener">Get →</a>
+        </div>
+        <div class="link-row">
+          <div class="lr-info"><span class="lr-name">Pabbly Chatflow</span><span class="lr-tag">Recurring · WhatsApp automation</span></div>
+          <a class="go" href="https://payments.pabbly.com/api/affurl/RVYZ07kQyUZ0Z1HUKZ1m/hF2B87PB3Z1dxDEwo?target=3WkXqse1cUZ2J9Gqq" target="_blank" rel="sponsored noopener">Get →</a>
+        </div>
+        <div class="link-row">
+          <div class="lr-info"><span class="lr-name">Pabbly Chat</span><span class="lr-tag">One-Time · Team inbox</span></div>
+          <a class="go" href="https://payments.pabbly.com/api/affurl/RVYZ07kQyUZ0Z1HUKZ1m/hF2B87PB3Z1dxDEwo?target=WPbgtsZ1YXMjxTfRp" target="_blank" rel="sponsored noopener">Get →</a>
+        </div>
+        <div class="link-row">
+          <div class="lr-info"><span class="lr-name">Pabbly Hook</span><span class="lr-tag">One-Time · Webhooks</span></div>
+          <a class="go" href="https://payments.pabbly.com/api/affurl/RVYZ07kQyUZ0Z1HUKZ1m/hF2B87PB3Z1dxDEwo?target=5RL6LsuPmxWkTfRp" target="_blank" rel="sponsored noopener">Get →</a>
+        </div>
+        <div class="link-row">
+          <div class="lr-info"><span class="lr-name">Pabbly — Free Account</span><span class="lr-tag">Free signup</span></div>
+          <a class="go ghost" href="https://payments.pabbly.com/api/affurl/RVYZ07kQyUZ0Z1HUKZ1m/hF2B87PB3Z1dxDEwo?target=R90zZ1MAwZ1ruZ2wfPo" target="_blank" rel="sponsored noopener">Start free →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== OTHER TOOLS ===== -->
+  <section class="sec">
+    <div class="sec-head">
+      <span class="eyebrow">The rest of the stack</span>
+      <h2>Payments, WhatsApp, websites &amp; AI</h2>
+      <p>The other platforms I rely on day to day — each linked to sign up or start.</p>
+    </div>
+
+    <div class="cards">
+
+      <article class="tool">
+        <div class="t-cat">Courses &amp; Community</div>
+        <h3>TagMango</h3>
+        <p>Host, sell and run your courses, memberships and communities — the platform behind creator-led programs.</p>
+        <a class="go" href="https://tagmango.com/web/sign-up?rneId=65fd7b715e2ad48824910e59" target="_blank" rel="sponsored noopener">Sign up →</a>
+      </article>
+
+      <article class="tool">
+        <div class="t-cat">WhatsApp Marketing</div>
+        <h3>AiSensy</h3>
+        <p>Run WhatsApp broadcasts, automations and chatbots on the official WhatsApp Business API.</p>
+        <a class="go" href="https://wa.aisensy.com/short/aczjiu" target="_blank" rel="sponsored noopener">Try AiSensy →</a>
+      </article>
+
+      <article class="tool">
+        <div class="t-cat">AI App Builder</div>
+        <h3>Lovable</h3>
+        <p>Build and ship full web apps from a prompt — the fastest way to go from idea to live product.</p>
+        <a class="go" href="https://lovable.dev/invite/2OPTQQO" target="_blank" rel="sponsored noopener">Get invite →</a>
+      </article>
+
+      <article class="tool">
+        <div class="t-cat">Website Builder</div>
+        <h3>Elementor</h3>
+        <p>The drag-and-drop website builder for WordPress — design landing pages and full sites without code.</p>
+        <a class="go" href="https://be.elementor.com/visit/?bta=231711&brand=elementor" target="_blank" rel="sponsored noopener">Get Elementor →</a>
+      </article>
+
+      <article class="tool">
+        <div class="t-cat">Payments · We help with KYC</div>
+        <h3>Razorpay</h3>
+        <p>Accept payments in India — cards, UPI, netbanking and more. Sign up through this link and we'll help you get through KYC.</p>
+        <a class="go" href="https://rzp.io/rzp/MUy7Ad6" target="_blank" rel="sponsored noopener">Start + KYC help →</a>
+      </article>
+
+      <article class="tool">
+        <div class="t-cat">Payments · Self-serve</div>
+        <h3>Razorpay</h3>
+        <p>Prefer to set it up yourself? Create your Razorpay payment account and start collecting fast.</p>
+        <a class="go" href="https://rzp.io/rzp/mS1A4fB" target="_blank" rel="sponsored noopener">Sign up →</a>
+      </article>
+
+      <article class="tool">
+        <div class="t-cat">Business Banking</div>
+        <h3>RazorpayX</h3>
+        <p>Current account, vendor payouts, payroll and business banking built for founders and agencies.</p>
+        <a class="go" href="https://rzp.io/rzp/5LmrZZj" target="_blank" rel="sponsored noopener">Open RazorpayX →</a>
+      </article>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-inner">
+    <div class="foot-brand">1MAP Club · Nitin Joshi · 2026</div>
+    <div class="foot-links">
+      <a href="https://1managencyplan.online/">Home</a>
+      <a href="https://1managencyplan.online/vault">Vault</a>
+      <a href="https://instagram.com/highnitin" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.linkedin.com/in/highnitin" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
