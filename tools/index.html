@@ -77,6 +77,18 @@
   .go.ghost:hover{border-color:var(--lime-text);color:var(--lime-text);background:transparent;box-shadow:none}
   .deal-row{background:var(--wash);margin:6px -14px 0;padding:15px 14px;border-radius:12px;border-top:none}
 
+  /* ---- top pick (AI Fiesta) ---- */
+  .toppick{position:relative;background:linear-gradient(150deg,rgba(198,242,74,.18),var(--card) 62%);border:1.5px solid rgba(198,242,74,.55);border-radius:20px;padding:32px 30px;box-shadow:0 12px 44px -20px rgba(198,242,74,.55)}
+  .toppick .badge{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--lime-deep);background:var(--lime);padding:5px 12px;border-radius:100px;margin-bottom:16px}
+  .toppick h3{font-family:var(--display);font-size:clamp(24px,3.6vw,32px);font-weight:700;letter-spacing:-.02em;margin-bottom:10px}
+  .toppick .tp-desc{color:var(--muted);font-size:15.5px;max-width:66ch;margin-bottom:18px}
+  .toppick .tp-feats{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+  .toppick .tp-feats span{font-size:12.5px;font-weight:600;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:100px;padding:6px 13px}
+  .toppick .tp-cta{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  .toppick .price{font-family:var(--mono);font-size:13px;color:var(--muted)}
+  .toppick .price b{color:var(--ink);font-size:15px}
+  .toppick .go.big{font-size:15px;padding:13px 24px;border-radius:10px}
+
   /* ---- tool cards ---- */
   .cards{display:grid;gap:16px;grid-template-columns:1fr}
   @media(min-width:640px){.cards{grid-template-columns:1fr 1fr}}
@@ -110,6 +122,26 @@
 </header>
 
 <main class="wrap">
+
+  <!-- ===== AI FIESTA (top pick) ===== -->
+  <section class="sec">
+    <div class="toppick">
+      <span class="badge">★ Top pick</span>
+      <h3>AI Fiesta</h3>
+      <p class="tp-desc">ChatGPT, Claude, Gemini and 100+ AI models in one subscription — with built-in tools for images, videos, presentations and websites. Compare answers from multiple models side by side.</p>
+      <div class="tp-feats">
+        <span>100+ AI models</span>
+        <span>Side-by-side compare</span>
+        <span>Images &amp; video</span>
+        <span>Presentations</span>
+        <span>Websites</span>
+      </div>
+      <div class="tp-cta">
+        <a class="go big" href="https://aifiesta.link/nitin-joshi" target="_blank" rel="sponsored noopener">Get AI Fiesta →</a>
+        <span class="price">Starts at <b>₹999/month</b></span>
+      </div>
+    </div>
+  </section>
 
   <!-- ===== PABBLY (featured) ===== -->
   <section class="sec">
