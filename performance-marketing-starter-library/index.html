@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Performance Marketing — Starter Library | Build My Ai Ads Campaign Cohort by HighNitin</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* palette from 1managencyplan.online */
+    --bg:#0b0d11; --panel:#141821; --panel2:#1a1e26; --ink:#eef0e9;
+    --muted:#9aa2af; --faint:#636b78; --lime:#c6f24a; --lime-2:#d8ff63;
+    --line:rgba(238,240,233,.10); --lime-line:rgba(198,242,74,.30); --lime-tint:rgba(198,242,74,.12);
+    /* fonts from 1managencyplan.online */
+    --disp:'Space Grotesk','Satoshi',sans-serif;
+    --sans:'Satoshi',-apple-system,BlinkMacSystemFont,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:var(--sans);
+    font-weight:400; line-height:1.55; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1000px; margin:0 auto; padding:40px 22px 70px}
+  .disp{font-family:var(--disp)}
+  a{color:inherit; text-decoration:none}
+
+  /* header */
+  .brandrow{display:flex; flex-wrap:wrap; align-items:center; gap:8px 12px; margin-bottom:38px}
+  .mark{width:14px; height:14px; background:var(--lime); flex:none}
+  .wordmark{font-family:var(--disp); letter-spacing:.08em; font-size:13px; color:var(--ink); font-weight:600; text-transform:uppercase; transition:color .15s ease}
+  .wordmark:hover{color:var(--lime)}
+  .byline{font-family:var(--disp); font-size:13px; font-weight:500; color:var(--muted)}
+  .byline a, footer a.hn{color:var(--lime); border-bottom:1px solid var(--lime-line); transition:border-color .15s ease}
+  .byline a:hover, footer a.hn:hover{border-bottom-color:var(--lime)}
+  footer a.site{color:var(--muted); transition:color .15s ease}
+  footer a.site:hover{color:var(--lime)}
+  h1.title{font-family:var(--disp); font-weight:600; font-size:clamp(34px,6vw,58px); line-height:1.05; letter-spacing:-.03em; margin-bottom:18px}
+  h1 .g{color:var(--lime)}
+  .lede{color:var(--muted); font-size:clamp(15px,2.4vw,18px); max-width:680px; line-height:1.5}
+
+  /* plan */
+  .plan{background:linear-gradient(150deg, rgba(198,242,74,.07), var(--panel) 55%); border-radius:16px; padding:26px 26px 24px; margin:38px 0 10px; border:1px solid var(--line)}
+  .plan h2{font-family:var(--disp); font-weight:600; font-size:21px; margin-bottom:8px}
+  .plan p{color:var(--muted); font-size:15px; margin-bottom:18px}
+  .days{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+  .day{background:var(--panel2); border-radius:12px; padding:16px 18px}
+  .day .k{font-family:var(--disp); font-size:11.5px; letter-spacing:.1em; color:var(--lime); font-weight:600; display:block; margin-bottom:6px}
+  .day .t{font-family:var(--disp); font-weight:600; font-size:17px; margin-bottom:4px}
+  .day .d{color:var(--muted); font-size:13.5px}
+
+  /* sections */
+  section{margin-top:46px}
+  .shead{display:flex; align-items:center; gap:12px; margin-bottom:6px}
+  .sq{width:13px; height:13px; background:var(--lime); flex:none}
+  .shead h2{font-family:var(--disp); font-weight:600; font-size:clamp(22px,3.4vw,28px); letter-spacing:-.02em; line-height:1.15}
+  .ssub{color:var(--muted); font-size:14.5px; margin:0 0 20px 25px}
+
+  /* cards */
+  .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(270px,1fr)); gap:16px}
+  .card{
+    display:flex; flex-direction:column; background:var(--panel);
+    border:1px solid var(--line); border-radius:14px; padding:20px 20px 18px;
+    transition:transform .15s ease, border-color .15s ease, background .15s ease;
+  }
+  .card:hover{transform:translateY(-3px); border-color:var(--lime-line); background:var(--panel2)}
+  .pill{
+    align-self:flex-start; font-family:var(--disp); font-size:10.5px; font-weight:600;
+    letter-spacing:.08em; text-transform:uppercase; color:var(--lime);
+    background:var(--lime-tint); padding:4px 9px; border-radius:999px; margin-bottom:13px;
+  }
+  .card h3{font-family:var(--disp); font-weight:600; font-size:19px; line-height:1.2; margin-bottom:4px}
+  .src{font-family:var(--disp); font-size:12px; font-weight:500; color:var(--faint); margin-bottom:10px}
+  .card p{color:var(--muted); font-size:14px; line-height:1.45; flex:1; margin-bottom:14px}
+  .open{color:var(--lime); font-weight:500; font-size:14px; font-family:var(--sans)}
+  .open .ar{transition:transform .15s ease; display:inline-block}
+  .card:hover .open .ar{transform:translateX(4px)}
+
+  /* glossary */
+  .gloss{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px 26px; margin-top:6px}
+  .term{border-bottom:1px solid var(--line); padding-bottom:12px}
+  .term b{font-family:var(--disp); color:var(--lime); font-weight:600; font-size:15px; display:block; margin-bottom:2px}
+  .term span{color:var(--muted); font-size:13.5px; line-height:1.4}
+
+  /* footer */
+  footer{margin-top:56px; padding-top:26px; border-top:1px solid var(--line); color:var(--faint)}
+  footer .big{font-family:var(--disp); font-weight:500; font-size:18px; color:var(--ink); margin-bottom:8px}
+  footer .big .g{color:var(--lime)}
+  footer .fine{font-size:13px; font-family:var(--disp); font-weight:500; margin-top:14px}
+
+  @media (max-width:560px){
+    .days{grid-template-columns:1fr}
+    .wrap{padding:30px 16px 56px}
+    .brandrow{gap:6px 10px}
+    .mark{width:12px; height:12px}
+    .wordmark{font-size:12px; letter-spacing:.06em}
+    .byline{font-size:12px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="brandrow">
+    <span class="mark" aria-hidden="true"></span>
+    <a class="wordmark" href="https://buildmyaifreedom.com/" target="_blank" rel="noopener">Build My Ai Ads Campaign Cohort</a>
+    <span class="byline">by <a href="https://instagram.com/highnitin" target="_blank" rel="noopener">HighNitin</a></span>
+  </div>
+
+  <h1 class="title">Performance Marketing<br>Starter <span class="g">Library</span></h1>
+  <p class="lede">Everything a beginner should get through before the sessions — the fundamentals, Meta Ads, Google Ads, and how you actually measure it. Two days of focused study to reach the room at roughly the same level.</p>
+
+  <div class="plan">
+    <h2>How to use this</h2>
+    <p>Two days, about 3–4 hours each. Go in order — fundamentals first, then the platforms, then measurement. You won't master any of it in 48 hours, and that's fine. The goal is the language and the mental model, so nothing in the sessions sounds foreign.</p>
+    <div class="days">
+      <div class="day">
+        <span class="k">DAY 1</span>
+        <div class="t">Fundamentals + Meta</div>
+        <div class="d">How ads work and why people buy, then the whole Meta Ads system — objectives, targeting, the pixel, Advantage+.</div>
+      </div>
+      <div class="day">
+        <span class="k">DAY 2</span>
+        <div class="t">Google + Measurement</div>
+        <div class="d">Google Search & Performance Max, then GA4 and conversion tracking. Finish by opening the real accounts.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODULE 1 -->
+  <section>
+    <div class="shead"><span class="sq"></span><h2>1 · Fundamentals &amp; how paid ads work</h2></div>
+    <p class="ssub">Start here. The funnel, how a buyer moves, and where paid advertising fits before you touch a single platform.</p>
+    <div class="grid">
+      <a class="card" href="https://academy.hubspot.com/" target="_blank" rel="noopener">
+        <span class="pill">Courses · Free</span>
+        <h3>HubSpot Academy</h3>
+        <div class="src">academy.hubspot.com</div>
+        <p>Free, structured lessons on digital marketing fundamentals — funnels, audiences, and how the pieces fit together.</p>
+        <span class="open">Open <span class="ar">→</span></span>
+      </a>
+      <a class="card" href="https://www.facebook.com/business/learn" target="_blank" rel="noopener">
+        <span class="pill">Course · Free</span>
+        <h3>How advertising works</h3>
+        <div class="src">Meta Blueprint · “Get started”</div>
+        <p>The absolute basics of how an ad platform runs an auction and delivers your ad. The mental model behind every platform.</p>
+        <span class="open">Open <span class="ar">→</span></span>
+      </a>
+      <a class="card" href="https://www.youtube.com/@SurfsidePPC" target="_blank" rel="noopener">
+        <span class="pill">YouTube · Free</span>
+        <h3>Surfside PPC</h3>
+        <div class="src">youtube.com/@SurfsidePPC</div>
+        <p>Plain-English walkthroughs of paid-media basics across Google and Meta. Great for the “why”, not just the “how”.</p>
+        <span class="open">Open <span class="ar">→</span></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- MODULE 2 -->
+  <section>
+    <div class="shead"><span class="sq"></span><h2>2 · Meta Ads (Facebook &amp; Instagram)</h2></div>
+    <p class="ssub">The core of paid social — campaign structure, objectives, targeting, the pixel/CAPI, and Advantage+.</p>
+    <div class="grid">
+      <a class="card" href="https://www.facebook.com/business/learn" target="_blank" rel="noopener">
+        <span class="pill">Courses · Free</span>
+        <h3>Meta Blueprint</h3>
+        <div class="src">facebook.com/business/learn</div>
+        <p>Meta's official free training — 100+ short courses from Ads Manager basics to objectives, audiences, and creative.</p>
+        <span class="open">Open <span class="ar">→</span></span>
+      </a>
+      <a class="card" href="https://www.facebook.com/business/help" target="_blank" rel="noopener">
+        <span class="pill">Docs · Free</span>
+        <h3>Meta Ads Help Center</h3>
+        <div class="src">facebook.com/business/help</div>
+        <p>The reference manual. Look up any term or setting the moment you're unsure what it does.</p>
+        <span class="open">Open <span class="ar">→</span></span>
+      </a>
+      <a class="card" href="https://www.facebook.com/ads/library/" target="_blank" rel="noopener">
+        <span class="pill">Tool · Free</span>
+        <h3>Meta Ad Library</h3>
+        <div class="src">facebook.com/ads/library</div>
+        <p>Every live ad from every brand. Search a competitor and study what real ads actually look like — your first swipe file.</p>
+        <span class="open">Open <span class="ar">→</span></span>
+      </a>
+      <a class="card" href="https://www.coursera.org/professional-certificates/facebook-social-media-marketing" target="_blank" rel="noopener">
+        <span class="pill">Course · Audit free</span>
+        <h3>Meta Social Media Marketing</h3>
+        <div class="src">Coursera · by Meta</div>
+        <p>A guided, beginner-friendly path built by Meta. Free to audit if you skip the certificate.</p>
+        <span class="open">Open <span class="ar">→</span></span>
+      </a>
+      <a class="card" href="https://www.youtube.com/@BenHeathMarketing" target="_blank" rel="noopener">
+        <span class="pill">YouTube · Free</span>
+        <h3>Ben Heath</h3>
+        <div class="src">youtube.com/@BenHeathMarketing</div>
+        <p>Practical Meta (and Google) walkthroughs grounded in real accounts. Watch a full campaign get built start to finish.</p>
+        <span class="open">Open <span class="ar">→</span></span>
+      </a>
+      <a class="card" href="https://www.jonloomer.com/" target="_blank" rel="noopener">
+        <span class="pill">Blog · Free</span>
+        <h3>Jon Loomer</h3>
+        <div class="src">jonloomer.com</div>
+        <p>When you want to go one level deeper on Meta — tracking, the pixel, and how the platform really behaves.</p>
+        <span class="open">Open <span class="ar">→</span></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- MODULE 3 -->
+  <section>
+    <div class="shead"><span class="sq"></span><h2>3 · Google Ads</h2></div>
+    <p class="ssub">Search, Performance Max, and Shopping — keywords, match types, Quality Score, and bidding.</p>
+    <div class="grid">
+      <a class="card" href="https://skillshop.withgoogle.com/googleads/" target="_blank" rel="noopener">
+        <span class="pill">Courses · Free</span>
+        <h3>Google Skillshop — Ads</h3>
+        <div class="src">skillshop.withgoogle.com/googleads</div>
+        <p>Google's official free learning paths for Search, Display, Video, Shopping, and PMax. Certifications are free too.</p>
+        <span class="open">Open <span class="ar">→</span></span>
+      </a>
+      <a class="card" href="https://support.google.com/google-ads" target="_blank" rel="noopener">
+        <span class="pill">Docs · Free</span>
+        <h3>Google Ads Help Center</h3>
+        <div class="src">support.google.com/google-ads</div>
+        <p>The reference for every setting, bid strategy, and campaign type. Keep it open while you learn.</p>
+        <span class="open">Open <span class="ar">→</span></span>
+      </a>
+      <a class="card" href="https://www.youtube.com/@SurfsidePPC" target="_blank" rel="noopener">
+        <span class="pill">YouTube · Free</span>
+        <h3>Surfside PPC — Google</h3>
+        <div class="src">youtube.com/@SurfsidePPC</div>
+        <p>Step-by-step Google Ads setup guides that explain the reasoning behind each choice, not just the clicks.</p>
+        <span class="open">Open <span class="ar">→</span></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- MODULE 4 -->
+  <section>
+    <div class="shead"><span class="sq"></span><h2>4 · Measurement &amp; analytics</h2></div>
+    <p class="ssub">The part most people skip and shouldn't. Conversion tracking, GA4, and reading whether it actually worked.</p>
+    <div class="grid">
+      <a class="card" href="https://skillshop.withgoogle.com/" target="_blank" rel="noopener">
+        <span class="pill">Courses · Free</span>
+        <h3>Google Analytics (GA4)</h3>
+        <div class="src">Skillshop · Analytics</div>
+        <p>Official GA4 training — properties, events, conversions, and reports. How to see what your ads are really doing.</p>
+        <span class="open">Open <span class="ar">→</span></span>
+      </a>
+      <a class="card" href="https://skillshop.withgoogle.com/googleads/" target="_blank" rel="noopener">
+        <span class="pill">Course · Free</span>
+        <h3>Measurement path</h3>
+        <div class="src">Skillshop · Google Ads</div>
+        <p>The Google Ads Measurement learning path — conversion tracking, attribution, and turning data into decisions.</p>
+        <span class="open">Open <span class="ar">→</span></span>
+      </a>
+      <a class="card" href="https://support.google.com/analytics" target="_blank" rel="noopener">
+        <span class="pill">Docs · Free</span>
+        <h3>Google Analytics Help</h3>
+        <div class="src">support.google.com/analytics</div>
+        <p>The GA4 reference. Use it to decode any metric or report you don't yet recognise.</p>
+        <span class="open">Open <span class="ar">→</span></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- MODULE 5 -->
+  <section>
+    <div class="shead"><span class="sq"></span><h2>5 · Go hands-on</h2></div>
+    <p class="ssub">Reading only gets you so far. Open the real tools, click around, and get the interfaces into muscle memory.</p>
+    <div class="grid">
+      <a class="card" href="https://adsmanager.facebook.com/" target="_blank" rel="noopener">
+        <span class="pill">Tool</span>
+        <h3>Meta Ads Manager</h3>
+        <div class="src">adsmanager.facebook.com</div>
+        <p>Where Meta campaigns are built. Open it and walk through creating a campaign (you don't have to publish).</p>
+        <span class="open">Open <span class="ar">→</span></span>
+      </a>
+      <a class="card" href="https://ads.google.com/" target="_blank" rel="noopener">
+        <span class="pill">Tool</span>
+        <h3>Google Ads</h3>
+        <div class="src">ads.google.com</div>
+        <p>Set up an account and explore the campaign builder — Search first, it's the clearest way in.</p>
+        <span class="open">Open <span class="ar">→</span></span>
+      </a>
+      <a class="card" href="https://analytics.google.com/" target="_blank" rel="noopener">
+        <span class="pill">Tool</span>
+        <h3>Google Analytics</h3>
+        <div class="src">analytics.google.com</div>
+        <p>Create a GA4 property and see what a real reporting interface looks like before the sessions.</p>
+        <span class="open">Open <span class="ar">→</span></span>
+      </a>
+      <a class="card" href="https://www.facebook.com/ads/library/" target="_blank" rel="noopener">
+        <span class="pill">Tool</span>
+        <h3>Build a swipe file</h3>
+        <div class="src">Meta Ad Library</div>
+        <p>Save 20 ads you find interesting. You'll learn more from studying real ads than from any single course.</p>
+        <span class="open">Open <span class="ar">→</span></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- GLOSSARY -->
+  <section>
+    <div class="shead"><span class="sq"></span><h2>Key terms to know</h2></div>
+    <p class="ssub">Learn these cold. They're the shorthand every session will assume you already speak.</p>
+    <div class="gloss">
+      <div class="term"><b>Impression</b><span>One time your ad was shown.</span></div>
+      <div class="term"><b>Reach</b><span>The number of unique people who saw it.</span></div>
+      <div class="term"><b>Frequency</b><span>Average times each person saw your ad.</span></div>
+      <div class="term"><b>CTR</b><span>Click-through rate — clicks ÷ impressions.</span></div>
+      <div class="term"><b>CPC</b><span>Cost per click.</span></div>
+      <div class="term"><b>CPM</b><span>Cost per 1,000 impressions.</span></div>
+      <div class="term"><b>CVR</b><span>Conversion rate — conversions ÷ clicks.</span></div>
+      <div class="term"><b>CPA / CPL</b><span>Cost per acquisition, or per lead.</span></div>
+      <div class="term"><b>CAC</b><span>Cost to acquire one paying customer.</span></div>
+      <div class="term"><b>ROAS</b><span>Revenue ÷ ad spend. The core efficiency number.</span></div>
+      <div class="term"><b>AOV</b><span>Average order value.</span></div>
+      <div class="term"><b>LTV</b><span>Lifetime value of a customer.</span></div>
+      <div class="term"><b>Pixel / CAPI</b><span>Code that sends conversion data back to the platform.</span></div>
+      <div class="term"><b>Conversion event</b><span>The action you count as success (purchase, lead).</span></div>
+      <div class="term"><b>Advantage+</b><span>Meta's AI-automated campaign type.</span></div>
+      <div class="term"><b>Performance Max</b><span>Google's AI-automated, all-inventory campaign.</span></div>
+      <div class="term"><b>Lookalike</b><span>A new audience modelled on your best customers.</span></div>
+      <div class="term"><b>Retargeting</b><span>Ads shown to people who already engaged.</span></div>
+      <div class="term"><b>Quality Score</b><span>Google's rating of your keyword/ad relevance.</span></div>
+      <div class="term"><b>Attribution</b><span>How credit for a conversion is assigned across touches.</span></div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="big">Come to the session with the language. <span class="g">We build the operator on top of it.</span></div>
+    <div>Curated for the <a class="site" href="https://buildmyaifreedom.com/" target="_blank" rel="noopener">Build My Ai Ads Campaign Cohort</a> by <a class="hn" href="https://instagram.com/highnitin" target="_blank" rel="noopener">HighNitin</a> — a starting point, not the finish line.</div>
+    <div class="fine"><a class="site" href="https://buildmyaifreedom.com/" target="_blank" rel="noopener">buildmyaifreedom.com</a> · <a class="site" href="https://instagram.com/highnitin" target="_blank" rel="noopener">@highnitin</a></div>
+  </footer>
+
+</div>
+</body>
+</html>
