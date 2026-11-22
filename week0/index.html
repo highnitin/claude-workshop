@@ -42,6 +42,10 @@
   h1 .g{color:var(--lime)}
   .lede{color:var(--muted);font-size:clamp(15px,2.3vw,18px);max-width:620px;line-height:1.5}
 
+  /* video */
+  .video{position:relative;margin-top:30px;aspect-ratio:16/9;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#000;box-shadow:0 20px 50px -24px rgba(0,0,0,.7)}
+  .video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
   /* tabs */
   .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:36px 0 0;border-bottom:1px solid var(--line);padding-bottom:0}
   .tab{appearance:none;background:transparent;border:none;cursor:pointer;font-family:var(--disp);font-weight:600;font-size:14.5px;color:var(--muted);padding:12px 16px;border-radius:10px 10px 0 0;position:relative;display:flex;align-items:center;gap:9px;transition:color .15s ease,background .15s ease}
@@ -115,7 +119,12 @@
 
   <span class="eyebrow">Week 0 · Get set up</span>
   <h1>Your first <span class="g">four steps</span>.</h1>
-  <p class="lede">Everything you need before the cohort begins — the study library, your About document, the onboarding form, and your GTM strategy exercise. Work through the four tabs below in order.</p>
+  <p class="lede">Everything you need before the cohort begins — the study library, your About document, the onboarding form, and your GTM strategy exercise. Watch the walkthrough, then work through the four tabs below in order.</p>
+
+  <!-- VIDEO -->
+  <div class="video">
+    <iframe src="https://www.youtube-nocookie.com/embed/vOywcDyN0MA" title="Week 0 walkthrough" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  </div>
 
   <!-- TABS -->
   <div class="tabs" role="tablist" aria-label="Week 0 steps">
