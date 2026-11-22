@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Week 0 — Onboarding | Build My Ai Ads Campaign Cohort by HighNitin</title>
+<meta name="description" content="Week 0 onboarding for the Build My Ai Ads Campaign Cohort — the starter library, your About document, the onboarding form and the GTM strategy exercise, all in one place.">
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0d11; --panel:#141821; --panel2:#1a1e26; --ink:#eef0e9;
+    --muted:#9aa2af; --faint:#636b78; --lime:#c6f24a; --lime-2:#d8ff63;
+    --line:rgba(238,240,233,.10); --lime-line:rgba(198,242,74,.30); --lime-tint:rgba(198,242,74,.12);
+    --lime-ink:#0b0d11;
+    --disp:'Space Grotesk','Satoshi',sans-serif;
+    --sans:'Satoshi',-apple-system,BlinkMacSystemFont,sans-serif;
+    --mono:'JetBrains Mono',ui-monospace,monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:900px;margin:0 auto;padding:40px 22px 70px}
+  .disp{font-family:var(--disp)}
+
+  /* header */
+  .brandrow{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-bottom:34px}
+  .mark{width:14px;height:14px;background:var(--lime);flex:none}
+  .wordmark{font-family:var(--disp);letter-spacing:.08em;font-size:13px;color:var(--ink);font-weight:600;text-transform:uppercase;transition:color .15s ease}
+  .wordmark:hover{color:var(--lime)}
+  .byline{font-family:var(--disp);font-size:13px;font-weight:500;color:var(--muted)}
+  .byline a{color:var(--lime);border-bottom:1px solid var(--lime-line);transition:border-color .15s ease}
+  .byline a:hover{border-bottom-color:var(--lime)}
+
+  .eyebrow{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--lime);display:inline-flex;align-items:center;gap:9px;margin-bottom:14px}
+  .eyebrow::before{content:"";width:22px;height:2px;background:var(--lime)}
+  h1{font-family:var(--disp);font-weight:600;font-size:clamp(32px,6vw,54px);line-height:1.04;letter-spacing:-.03em;margin-bottom:16px}
+  h1 .g{color:var(--lime)}
+  .lede{color:var(--muted);font-size:clamp(15px,2.3vw,18px);max-width:620px;line-height:1.5}
+
+  /* tabs */
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:36px 0 0;border-bottom:1px solid var(--line);padding-bottom:0}
+  .tab{appearance:none;background:transparent;border:none;cursor:pointer;font-family:var(--disp);font-weight:600;font-size:14.5px;color:var(--muted);padding:12px 16px;border-radius:10px 10px 0 0;position:relative;display:flex;align-items:center;gap:9px;transition:color .15s ease,background .15s ease}
+  .tab .n{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--faint);background:var(--panel2);border:1px solid var(--line);border-radius:6px;padding:2px 6px;transition:all .15s ease}
+  .tab:hover{color:var(--ink)}
+  .tab[aria-selected="true"]{color:var(--ink)}
+  .tab[aria-selected="true"] .n{color:var(--lime-ink);background:var(--lime);border-color:var(--lime)}
+  .tab[aria-selected="true"]::after{content:"";position:absolute;left:10px;right:10px;bottom:-1px;height:2px;background:var(--lime);border-radius:2px}
+
+  /* panels */
+  .panel{display:none;animation:fade .25s ease}
+  .panel.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:28px 28px 26px;margin-top:26px}
+  .p-tag{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--lime);margin-bottom:12px}
+  .card h2{font-family:var(--disp);font-weight:600;font-size:clamp(22px,3.4vw,27px);letter-spacing:-.02em;line-height:1.15;margin-bottom:12px}
+  .card p{color:var(--muted);font-size:15.5px;line-height:1.55;margin-bottom:16px;max-width:66ch}
+  .card p:last-of-type{margin-bottom:0}
+  .card strong{color:var(--ink);font-weight:600}
+
+  /* step list */
+  ul.steps{list-style:none;margin:4px 0 20px}
+  ul.steps li{position:relative;padding-left:22px;margin-bottom:10px;color:var(--muted);font-size:15px;max-width:66ch}
+  ul.steps li::before{content:"";position:absolute;left:0;top:9px;width:8px;height:2px;background:var(--lime)}
+  ul.steps li strong{color:var(--ink)}
+
+  /* note callout */
+  .note{background:var(--lime-tint);border:1px solid var(--lime-line);border-radius:12px;padding:20px 22px;margin:4px 0 22px}
+  .note p{color:var(--ink);font-size:15px;margin-bottom:12px;max-width:none}
+  .note p:last-child{margin-bottom:0}
+  .note strong{color:var(--lime)}
+
+  /* buttons */
+  .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:4px}
+  .btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--sans);font-weight:700;font-size:15px;padding:13px 22px;border-radius:11px;cursor:pointer;transition:transform .12s ease,background .18s ease,box-shadow .18s ease,border-color .15s ease}
+  .btn.primary{background:var(--lime);color:var(--lime-ink);box-shadow:0 8px 22px -10px rgba(198,242,74,.6)}
+  .btn.primary:hover{transform:translateY(-2px);background:var(--lime-2);box-shadow:0 12px 28px -10px rgba(198,242,74,.65)}
+  .btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+  .btn.ghost:hover{transform:translateY(-2px);border-color:var(--lime-line);color:var(--lime)}
+  .btn .ar{transition:transform .15s ease}
+  .btn:hover .ar{transform:translateX(3px)}
+  .srcline{margin-top:18px;font-size:13px;color:var(--faint);font-family:var(--mono)}
+  .srcline a{color:var(--muted);border-bottom:1px solid var(--line);transition:color .15s ease,border-color .15s ease}
+  .srcline a:hover{color:var(--lime);border-bottom-color:var(--lime-line)}
+
+  /* form embed */
+  .embed{margin-top:20px;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--panel2)}
+  .embed iframe{display:block;width:100%;height:760px;border:0;background:#fff}
+
+  footer{margin-top:52px;padding-top:24px;border-top:1px solid var(--line);color:var(--faint);font-family:var(--mono);font-size:13px;font-weight:500}
+  footer a{color:var(--muted);transition:color .15s ease}
+  footer a:hover{color:var(--lime)}
+
+  @media (max-width:560px){
+    .wrap{padding:30px 16px 56px}
+    .tabs{gap:4px}
+    .tab{padding:10px 11px;font-size:13.5px}
+    .card{padding:22px 18px}
+    .embed iframe{height:680px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="brandrow">
+    <span class="mark" aria-hidden="true"></span>
+    <a class="wordmark" href="https://buildmyaifreedom.com/" target="_blank" rel="noopener">Build My Ai Ads Campaign Cohort</a>
+    <span class="byline">by <a href="https://instagram.com/highnitin" target="_blank" rel="noopener">HighNitin</a></span>
+  </div>
+
+  <span class="eyebrow">Week 0 · Get set up</span>
+  <h1>Your first <span class="g">four steps</span>.</h1>
+  <p class="lede">Everything you need before the cohort begins — the study library, your About document, the onboarding form, and your GTM strategy exercise. Work through the four tabs below in order.</p>
+
+  <!-- TABS -->
+  <div class="tabs" role="tablist" aria-label="Week 0 steps">
+    <button class="tab" role="tab" id="tab-1" aria-controls="panel-1" aria-selected="true"><span class="n">01</span> Starter Library</button>
+    <button class="tab" role="tab" id="tab-2" aria-controls="panel-2" aria-selected="false"><span class="n">02</span> About Document</button>
+    <button class="tab" role="tab" id="tab-3" aria-controls="panel-3" aria-selected="false"><span class="n">03</span> Onboarding Form</button>
+    <button class="tab" role="tab" id="tab-4" aria-controls="panel-4" aria-selected="false"><span class="n">04</span> GTM Strategy</button>
+  </div>
+
+  <!-- PANEL 1 -->
+  <div class="panel active" id="panel-1" role="tabpanel" aria-labelledby="tab-1">
+    <div class="card">
+      <div class="p-tag">Step 01 · Study</div>
+      <h2>Performance Marketing Starter Library</h2>
+      <p>Everything a beginner should get through before the sessions — the fundamentals, Meta Ads, Google Ads, and how you actually measure it. Two days of focused study to reach the room at roughly the same level. Curated free courses, docs, tools, and a glossary of the terms every session will assume you speak.</p>
+      <div class="ctas">
+        <a class="btn primary" href="https://1managencyplan.online/performance-marketing-starter-library" target="_blank" rel="noopener">Open the Starter Library <span class="ar">→</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- PANEL 2 -->
+  <div class="panel" id="panel-2" role="tabpanel" aria-labelledby="tab-2">
+    <div class="card">
+      <div class="p-tag">Step 02 · Foundation</div>
+      <h2>Complete the About Document</h2>
+      <ul class="steps">
+        <li>This is the <strong>base document for the entire project</strong> — fill it with care</li>
+        <li>Make a copy of the blank document, fill your details, and share it back</li>
+        <li>Use the filled sample as reference if you're unsure how to fill it</li>
+        <li>Once done, share the filled copy back in the group or via DM to your CSM</li>
+      </ul>
+
+      <div class="note">
+        <p>Hi 👋 Welcome to the Client Onboarding Process! 🚀</p>
+        <p>I'm Nitin, your Client Success Manager, and I'll be your first point of contact throughout this journey.</p>
+        <p>Sharing the <strong>ABOUT ME</strong> document with you. Please fill it and share back — this will help us start smoothly and faster. Looking forward to working closely with you! 🙏</p>
+      </div>
+
+      <div class="ctas">
+        <a class="btn primary" href="https://docs.google.com/document/d/1-cGauwM1EGGZeAtR8iFCSiQc79O0fc53iqSDvqXyMr0/copy" target="_blank" rel="noopener">About Document — make a copy <span class="ar">→</span></a>
+        <a class="btn ghost" href="https://docs.google.com/document/d/1ptCphWo_74JyYWus6AFDMoVMjSTg2wskKaPAOc0ECcE/edit?usp=drive_link" target="_blank" rel="noopener">View filled sample ↗</a>
+      </div>
+      <div class="srcline">Full onboarding checklist: <a href="https://scaleupgeniushub.in/csm-onboarding" target="_blank" rel="noopener">scaleupgeniushub.in/csm-onboarding</a></div>
+    </div>
+  </div>
+
+  <!-- PANEL 3 -->
+  <div class="panel" id="panel-3" role="tabpanel" aria-labelledby="tab-3">
+    <div class="card">
+      <div class="p-tag">Step 03 · Details</div>
+      <h2>Complete the onboarding form</h2>
+      <p>A quick form to capture your details so we can tailor the cohort to you. Fill it once — it only takes a few minutes. You can complete it right here, or open it in a new tab.</p>
+      <div class="ctas">
+        <a class="btn primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdI3hTKCHqd-yZOAUpoUwnkPLkBclswnqAjcno3X_4qMWgLKg/viewform" target="_blank" rel="noopener">Open the form <span class="ar">→</span></a>
+      </div>
+      <div class="embed">
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdI3hTKCHqd-yZOAUpoUwnkPLkBclswnqAjcno3X_4qMWgLKg/viewform?embedded=true" title="Onboarding form" loading="lazy">Loading the form…</iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- PANEL 4 -->
+  <div class="panel" id="panel-4" role="tabpanel" aria-labelledby="tab-4">
+    <div class="card">
+      <div class="p-tag">Step 04 · Strategy</div>
+      <h2>Complete the GTM Strategy exercise</h2>
+      <p>A guided exercise, about 45 minutes. Seven short steps turn your offer into a one-page go-to-market plan — who to sell to, what to say, where to show up, what it costs, and how to test it before you spend big. It saves as you type and exports to PDF or Markdown when you're done.</p>
+      <div class="ctas">
+        <a class="btn primary" href="https://1managencyplan.online/gtm-strategy-exercise" target="_blank" rel="noopener">Start the GTM exercise <span class="ar">→</span></a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    Week 0 · Build My Ai Ads Campaign Cohort by <a href="https://instagram.com/highnitin" target="_blank" rel="noopener">@highnitin</a>
+  </footer>
+
+</div>
+
+<script>
+  const tabs = Array.from(document.querySelectorAll('.tab'));
+  const panels = Array.from(document.querySelectorAll('.panel'));
+  function select(i){
+    tabs.forEach((t,idx)=>{
+      const on = idx===i;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      panels[idx].classList.toggle('active', on);
+    });
+  }
+  tabs.forEach((t,i)=>{
+    t.addEventListener('click', ()=>select(i));
+    t.addEventListener('keydown', e=>{
+      if(e.key==='ArrowRight'||e.key==='ArrowLeft'){
+        e.preventDefault();
+        const next = (i + (e.key==='ArrowRight'?1:tabs.length-1)) % tabs.length;
+        tabs[next].focus(); select(next);
+      }
+    });
+  });
+</script>
+</body>
+</html>
