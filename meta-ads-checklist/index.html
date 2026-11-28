@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Meta Ads Account Setup Checklist | Build My Ai Ads Campaign · Build My Ai Freedom · HighNitin</title>
+<meta name="description" content="A foundational checklist to set up a Meta Ads account the right way from day one — Business Manager, billing, Pixel, CAPI, catalog, audiences, structure and pre-launch checks. By HighNitin.">
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0d11; --panel:#141821; --panel2:#1a1e26; --ink:#eef0e9;
+    --muted:#9aa2af; --faint:#636b78; --lime:#c6f24a; --lime-2:#d8ff63;
+    --line:rgba(238,240,233,.10); --lime-line:rgba(198,242,74,.30); --lime-tint:rgba(198,242,74,.10);
+    --lime-ink:#0b0d11; --warn:#e0a050;
+    --disp:'Space Grotesk','Satoshi',sans-serif;
+    --sans:'Satoshi',-apple-system,BlinkMacSystemFont,sans-serif;
+    --mono:'JetBrains Mono',ui-monospace,monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:860px;margin:0 auto;padding:40px 22px 80px}
+  .disp{font-family:var(--disp)}
+
+  /* header */
+  .brandrow{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-bottom:30px}
+  .mark{width:14px;height:14px;background:var(--lime);flex:none}
+  .wordmark{font-family:var(--disp);letter-spacing:.07em;font-size:12.5px;color:var(--ink);font-weight:600;text-transform:uppercase}
+  .wordmark b{color:var(--lime);font-weight:600}
+  .byline{font-family:var(--disp);font-size:12.5px;font-weight:500;color:var(--muted)}
+  .byline a{color:var(--lime);border-bottom:1px solid var(--lime-line)}
+
+  .eyebrow{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--lime);display:inline-flex;align-items:center;gap:9px;margin-bottom:14px}
+  .eyebrow::before{content:"";width:22px;height:2px;background:var(--lime)}
+  h1{font-family:var(--disp);font-weight:600;font-size:clamp(30px,5.5vw,48px);line-height:1.05;letter-spacing:-.03em;margin-bottom:14px}
+  h1 .g{color:var(--lime)}
+  .meta{font-family:var(--mono);font-size:12.5px;color:var(--muted);display:flex;flex-wrap:wrap;gap:6px 16px;margin-bottom:18px}
+  .meta b{color:var(--ink);font-weight:600}
+  .lede{color:var(--muted);font-size:clamp(15px,2.2vw,17px);max-width:66ch;line-height:1.55}
+
+  /* progress */
+  .progress{position:sticky;top:0;z-index:20;background:rgba(11,13,17,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:14px;padding:16px 20px;margin:30px 0 8px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .progress .ptxt{font-family:var(--mono);font-size:13px;color:var(--muted);white-space:nowrap}
+  .progress .ptxt b{font-family:var(--disp);font-size:18px;color:var(--lime)}
+  .bar{flex:1;min-width:140px;height:8px;border-radius:99px;background:var(--panel2);overflow:hidden}
+  .bar>i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--lime),var(--lime-2));border-radius:99px;transition:width .3s ease}
+  .reset{font-family:var(--mono);font-size:11.5px;font-weight:600;letter-spacing:.04em;color:var(--faint);background:transparent;border:1px solid var(--line);border-radius:8px;padding:6px 11px;cursor:pointer;transition:color .15s,border-color .15s}
+  .reset:hover{color:var(--lime);border-color:var(--lime-line)}
+
+  /* phases */
+  .phase{margin-top:42px}
+  .phase-head{display:flex;align-items:center;gap:13px;margin-bottom:6px}
+  .phase-head .pn{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--lime-ink);background:var(--lime);border-radius:7px;padding:4px 9px;flex:none}
+  .phase-head h2{font-family:var(--disp);font-weight:600;font-size:clamp(20px,3.2vw,25px);letter-spacing:-.02em;line-height:1.15}
+  .psub{color:var(--muted);font-size:14.5px;margin:0 0 16px 3px;max-width:66ch}
+  .sub-h{font-family:var(--disp);font-weight:600;font-size:15px;color:var(--ink);margin:22px 0 10px;display:flex;align-items:center;gap:9px}
+  .sub-h .sq{width:7px;height:7px;background:var(--lime);flex:none}
+
+  /* checklist items */
+  .items{list-style:none;display:flex;flex-direction:column;gap:2px}
+  .chk{display:flex;align-items:flex-start;gap:12px;padding:11px 14px;border-radius:10px;cursor:pointer;transition:background .15s ease;border:1px solid transparent}
+  .chk:hover{background:var(--panel)}
+  .chk input{appearance:none;-webkit-appearance:none;width:20px;height:20px;border:1.5px solid var(--line-strong,rgba(238,240,233,.28));border-radius:6px;flex:none;margin-top:1px;cursor:pointer;position:relative;transition:background .15s,border-color .15s}
+  .chk input:checked{background:var(--lime);border-color:var(--lime)}
+  .chk input:checked::after{content:"";position:absolute;left:6px;top:2px;width:5px;height:10px;border:solid var(--lime-ink);border-width:0 2.5px 2.5px 0;transform:rotate(45deg)}
+  .chk span{font-size:15px;color:var(--ink);line-height:1.5}
+  .chk span code{font-family:var(--mono);font-size:12.5px;background:var(--panel2);border:1px solid var(--line);border-radius:5px;padding:1px 6px;color:var(--lime-2)}
+  .chk input:checked ~ span{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--faint)}
+  .warn-ic{color:var(--warn)}
+
+  /* callouts */
+  .tip{background:var(--lime-tint);border:1px solid var(--lime-line);border-radius:12px;padding:16px 18px;margin:18px 0 2px;font-size:14.5px;color:var(--ink);line-height:1.55}
+  .tip b{color:var(--lime)}
+
+  /* tables */
+  .tbl-wrap{overflow-x:auto;margin:6px 0 2px;border:1px solid var(--line);border-radius:12px}
+  table{width:100%;border-collapse:collapse;font-size:14px;min-width:420px}
+  th,td{text-align:left;padding:12px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--lime);font-weight:600;background:var(--panel)}
+  tr:last-child td{border-bottom:none}
+  td code{font-family:var(--mono);font-size:12.5px;color:var(--lime-2)}
+  td:first-child{color:var(--ink);font-weight:500}
+
+  /* code block */
+  pre.code{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px 20px;overflow-x:auto;margin:6px 0 2px;font-family:var(--mono);font-size:13px;line-height:1.7;color:var(--muted)}
+  pre.code b{color:var(--lime);font-weight:600}
+
+  footer{margin-top:56px;padding-top:26px;border-top:1px solid var(--line);color:var(--faint);font-family:var(--mono);font-size:13px;font-weight:500;line-height:1.7}
+  footer .big{font-family:var(--disp);font-weight:500;font-size:17px;color:var(--ink);margin-bottom:8px}
+  footer .big .g{color:var(--lime)}
+  footer a{color:var(--muted)}
+  footer a:hover{color:var(--lime)}
+
+  @media (max-width:560px){
+    .wrap{padding:30px 16px 60px}
+    .chk{padding:10px 10px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="brandrow">
+    <span class="mark" aria-hidden="true"></span>
+    <a class="wordmark" href="https://buildmyaifreedom.com/" target="_blank" rel="noopener">Build My Ai Ads Campaign <b>·</b> Build My Ai Freedom</a>
+    <span class="byline">by <a href="https://instagram.com/highnitin" target="_blank" rel="noopener">HighNitin</a></span>
+  </div>
+
+  <span class="eyebrow">Meta Ads Operations · SOP</span>
+  <h1>Meta Ads Account<br><span class="g">Setup Checklist</span></h1>
+  <div class="meta">
+    <span>Category: <b>Meta Ads Operations</b></span>
+    <span>Level: <b>Foundational</b></span>
+    <span>Time: <b>2–4 hours</b></span>
+  </div>
+  <p class="lede">Set up a Meta Ads account properly the first time and you avoid the usual mess later — broken tracking, policy flags, and a tangled account you can't report on. Work through these phases in order. Your progress saves automatically on this device.</p>
+
+  <!-- PROGRESS -->
+  <div class="progress">
+    <span class="ptxt"><b id="done">0</b> / <span id="total">0</span> done</span>
+    <div class="bar"><i id="barfill"></i></div>
+    <button class="reset" id="reset" type="button">Reset</button>
+  </div>
+
+  <!-- PHASE 1 -->
+  <section class="phase">
+    <div class="phase-head"><span class="pn">01</span><h2>Business Manager setup</h2></div>
+    <p class="psub">Your foundation. Get this layer right before anything touches money or tracking.</p>
+
+    <div class="sub-h"><span class="sq"></span>1.1 · Create or verify the Business Manager</div>
+    <ul class="items">
+      <li><label class="chk"><input type="checkbox"><span>Create a new Business Manager at business.facebook.com (or verify your existing one)</span></label></li>
+      <li><label class="chk"><input type="checkbox"><span>Use a <strong>company email</strong>, not a personal Gmail</span></label></li>
+      <li><label class="chk"><input type="checkbox"><span>Set the correct <strong>business name, address, and timezone</strong></span></label></li>
+      <li><label class="chk"><input type="checkbox"><span>Verify your business domain under <strong>Business Settings → Brand Safety → Domains</strong></span></label></li>
+      <li><label class="chk"><input type="checkbox"><span>Add a backup admin (a second trusted person) to the BM</span></label></li>
+    </ul>
+
+    <div class="sub-h"><span class="sq"></span>1.2 · Lock down security</div>
+    <ul class="items">
+      <li><label class="chk"><input type="checkbox"><span>Enable <strong>Two-Factor Authentication (2FA)</strong> for every user</span></label></li>
+      <li><label class="chk"><input type="checkbox"><span>Turn on <strong>login notifications</strong></span></label></li>
+      <li><label class="chk"><input type="checkbox"><span>Remove any old or unknown users from the BM</span></label></li>
+      <li><label class="chk"><input type="checkbox"><span>Clear anything pending under <strong>Business Settings → Requests</strong></span></label></li>
+    </ul>
+
+    <div class="sub-h"><span class="sq"></span>1.3 · Create the ad account</div>
+    <ul class="items">
+      <li><label class="chk"><input type="checkbox"><span>Create a new ad account <strong>inside the BM</strong> — never run ads from a personal ad account</span></label></li>
+      <li><label class="chk"><input type="checkbox"><span>Set the correct <strong>currency</strong> and <strong>timezone</strong> — <span class="warn-ic">⚠</span> these can't be changed later</span></label></li>
+      <li><label class="chk"><input type="checkbox"><span>Set the correct <strong>business category</strong></span></label></li>
+      <li><label class="chk"><input type="checkbox"><span>Assign at least <strong>2 admins</strong> to the ad account</span></label></li>
+      <li><label class="chk"><input type="checkbox"><span>Set a <strong>spending limit</strong> on the account (optional, but smart for new ones)</span></label></li>
+    </ul>
+  </section>
+
+  <!-- PHASE 2 -->
+  <section class="phase">
+    <div class="phase-head"><span class="pn">02</span><h2>Payment &amp; billing</h2></div>
+    <ul class="items">
+      <li><label class="chk"><input type="checkbox"><span>Add a <strong>primary payment method</strong> (a credit card beats prepaid)</span></label></li>
+      <li><label class="chk"><input type="checkbox"><span>Start with a <strong>low manual billing threshold</strong> (safer for new accounts)</span></label></li>
+      <li><label class="chk"><input type="checkbox"><span>Add a <strong>backup payment method</strong></span></label></li>
+      <li><label class="chk"><input type="checkbox"><span>Make sure billing details match your business registration</span></label></li>
+      <li><label class="chk"><input type="checkbox"><span>Route <strong>billing notifications</strong> to the right email</span></label></li>
+    </ul>
+    <div class="tip"><b>Tip:</b> A fresh ad account carries little trust with Meta. Keep Week 1 budgets modest so you don't trip automatic spend holds.</div>
+  </section>
+
+  <!-- PHASE 3 -->
+  <section class="phase">
+    <div class="phase-head"><span class="pn">03</span><h2>Facebook Pixel</h2></div>
+
+    <div class="sub-h"><span class="sq"></span>3.1 · Create the pixel</div>
+    <ul class="items">
+      <li><label class="chk"><input type="checkbox"><span>In <strong>Events Manager → Connect Data Sources → Web</strong>, create a new pixel</span></label></li>
+      <li><label class="chk"><input type="checkbox"><span>Name it clearly — e.g. <code>BrandName_Pixel_2026</code></span></label></li>
+      <li><label class="chk"><input type="checkbox"><span>Connect it to your ad account</span></label></li>
+    </ul>
+
+    <div class="sub-h"><span class="sq"></span>3.2 · Install the pixel</div>
+    <ul class="items">
+      <li><label class="chk"><input type="checkbox"><span>Install the <strong>Meta Pixel Helper</strong> Chrome extension to verify your install</span></label></li>
+      <li><label class="chk"><input type="checkbox"><span>Pick an install method: <strong>Manual</strong> (base code in <code>&lt;head&gt;</code>), <strong>GTM</strong> (most flexible), or a <strong>partner integration</strong> (Shopify, WooCommerce…)</span></label></li>
+      <li><label class="chk"><input type="checkbox"><span>Confirm the pixel fires on your <strong>homepage</strong></span></label></li>
+    </ul>
+
+    <div class="sub-h"><span class="sq"></span>3.3 · Standard events</div>
+    <p class="psub">Map your funnel to the standard events that matter:</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Event</th><th>Fires on</th></tr></thead>
+        <tbody>
+          <tr><td><code>PageView</code></td><td>All pages</td></tr>
+          <tr><td><code>ViewContent</code></td><td>Product / landing page</td></tr>
+          <tr><td><code>AddToCart</code></td><td>Add-to-cart button</td></tr>
+          <tr><td><code>InitiateCheckout</code></td><td>Checkout page load</td></tr>
+          <tr><td><code>Purchase</code></td><td>Order confirmation page</td></tr>
+          <tr><td><code>Lead</code></td><td>Form submission / thank-you page</td></tr>
+          <tr><td><code>CompleteRegistration</code></td><td>Sign-up confirmation</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ul class="items" style="margin-top:12px">
+      <li><label class="chk"><input type="checkbox"><span>Verify each event in <strong>Events Manager → Test Events</strong></span></label></li>
+      <li><label class="chk"><input type="checkbox"><span>Confirm each shows an <strong>Active</strong> (green) status</span></label></li>
+      <li><label class="chk"><input type="checkbox"><span>Check for <strong>duplicate events</strong> — common when GTM and a native install both fire</span></label></li>
+    </ul>
+
+    <div class="sub-h"><span class="sq"></span>3.4 · Custom conversions</div>
+    <ul class="items">
+      <li><label class="chk"><input type="checkbox"><span>Create custom conversions for anything standard events don't cover</span></label></li>
+      <li><label class="chk"><input type="checkbox"><span>Assign a <strong>conversion value</strong> to your Purchase event</span></label></li>
+    </ul>
+  </section>
+
+  <!-- PHASE 4 -->
+  <section class="phase">
+    <div class="phase-head"><span class="pn">04</span><h2>Conversions API (CAPI)</h2></div>
+    <ul class="items">
+      <li><label class="chk"><input type="checkbox"><span>Choose a method: <strong>direct integration</strong>, <strong>GTM server-side</strong>, or a <strong>partner</strong> (Shopify/Klaviyo)</span></label></li>
+      <li><label class="chk"><input type="checkbox"><span>Connect CAPI to the <strong>same dataset</strong> as your pixel</span></label></li>
+      <li><label class="chk"><input type="checkbox"><span>Check your <strong>Event Match Quality (EMQ)</strong> — aim for <strong>6.0+</strong></span></label></li>
+      <li><label class="chk"><input type="checkbox"><span>Deduplicate browser + server events with a shared <code>event_id</code></span></label></li>
+      <li><label class="chk"><input type="checkbox"><span>Make sure CAPI sends at least <code>Purchase</code>, <code>Lead</code>, and <code>CompleteRegistration</code></span></label></li>
+    </ul>
+    <div class="tip"><b>Why it matters:</b> since iOS 14, browser-only tracking leaks badly. CAPI sends conversions server-side and typically recovers 20–40% of the signal you'd otherwise lose — treat it as essential, not optional.</div>
+  </section>
+
+  <!-- PHASE 5 -->
+  <section class="phase">
+    <div class="phase-head"><span class="pn">05</span><h2>Catalog <span style="font-weight:500;color:var(--muted);font-size:.7em">· for e-commerce / product businesses</span></h2></div>
+
+    <div class="sub-h"><span class="sq"></span>5.1 · Create the catalog</div>
+    <ul class="items">
+      <li><label class="chk"><input type="checkbox"><span>In <strong>Commerce Manager → Catalogs → Create Catalog</strong></span></label></li>
+      <li><label class="chk"><input type="checkbox"><span>Pick the right catalog type (E-commerce, Travel, Real Estate…)</span></label></li>
+      <li><label class="chk"><input type="checkbox"><span>Connect the catalog to your ad account</span></label></li>
+    </ul>
+
+    <div class="sub-h"><span class="sq"></span>5.2 · Product feed</div>
+    <ul class="items">
+      <li><label class="chk"><input type="checkbox"><span>Choose a feed source: <strong>Shopify sync, WooCommerce, manual CSV,</strong> or a <strong>scheduled feed URL</strong></span></label></li>
+      <li><label class="chk"><input type="checkbox"><span>Include <code>id</code>, <code>title</code>, <code>description</code>, <code>availability</code>, <code>condition</code>, <code>price</code>, <code>link</code>, <code>image_link</code>, <code>brand</code></span></label></li>
+      <li><label class="chk"><input type="checkbox"><span>Schedule a feed refresh (daily is a good default)</span></label></li>
+      <li><label class="chk"><input type="checkbox"><span>Run <strong>Catalog Diagnostics</strong> — fix every error, clear the warnings</span></label></li>
+    </ul>
+
+    <div class="sub-h"><span class="sq"></span>5.3 · Product sets</div>
+    <ul class="items">
+      <li><label class="chk"><input type="checkbox"><span>Build product sets: <strong>All Products</strong>, <strong>Best Sellers</strong>, and category splits</span></label></li>
+      <li><label class="chk"><input type="checkbox"><span>Link the catalog to the ad account for <strong>Dynamic Product Ads (DPA)</strong></span></label></li>
+    </ul>
+  </section>
+
+  <!-- PHASE 6 -->
+  <section class="phase">
+    <div class="phase-head"><span class="pn">06</span><h2>Audiences</h2></div>
+
+    <div class="sub-h"><span class="sq"></span>6.1 · Custom audiences</div>
+    <ul class="items">
+      <li><label class="chk"><input type="checkbox"><span>Website visitors — all (180 days)</span></label></li>
+      <li><label class="chk"><input type="checkbox"><span>Website visitors — last 30 days</span></label></li>
+      <li><label class="chk"><input type="checkbox"><span>Purchasers</span></label></li>
+      <li><label class="chk"><input type="checkbox"><span>Added to cart but didn't buy</span></label></li>
+      <li><label class="chk"><input type="checkbox"><span>Video viewers (if you run video)</span></label></li>
+      <li><label class="chk"><input type="checkbox"><span>Instagram engagers (90 days)</span></label></li>
+      <li><label class="chk"><input type="checkbox"><span>Facebook page engagers (90 days)</span></label></li>
+      <li><label class="chk"><input type="checkbox"><span>Customer list (upload a hashed CSV if you have one)</span></label></li>
+    </ul>
+
+    <div class="sub-h"><span class="sq"></span>6.2 · Lookalike audiences</div>
+    <ul class="items">
+      <li><label class="chk"><input type="checkbox"><span>1% lookalike from your <strong>purchasers</strong></span></label></li>
+      <li><label class="chk"><input type="checkbox"><span>1% lookalike from your <strong>customer list</strong></span></label></li>
+      <li><label class="chk"><input type="checkbox"><span>2–3% lookalike from <strong>website visitors</strong></span></label></li>
+    </ul>
+    <div class="tip"><b>Note:</b> lookalikes need a seed of at least 100 people — and realistically 1,000+ for good quality. Smaller seeds produce weaker matches.</div>
+  </section>
+
+  <!-- PHASE 7 -->
+  <section class="phase">
+    <div class="phase-head"><span class="pn">07</span><h2>Account structure blueprint</h2></div>
+    <p class="psub">A clean starting architecture for a new account:</p>
+    <pre class="code"><b>Top of Funnel (TOF)</b>
+└─ Campaign: [Brand]_TOF_Awareness
+   ├─ Ad Set: Broad / Interest-based
+   └─ Ad Set: Lookalike audiences
+
+<b>Middle of Funnel (MOF)</b>
+└─ Campaign: [Brand]_MOF_Engagement
+   └─ Ad Set: IG/FB engagers + video viewers
+
+<b>Bottom of Funnel (BOF)</b>
+└─ Campaign: [Brand]_BOF_Conversion
+   ├─ Ad Set: Retargeting — ATC, no purchase
+   └─ Ad Set: Retargeting — visitors (30d)</pre>
+    <ul class="items" style="margin-top:12px">
+      <li><label class="chk"><input type="checkbox"><span>Apply one consistent <strong>naming convention</strong> across campaigns, ad sets, and ads</span></label></li>
+      <li><label class="chk"><input type="checkbox"><span>Suggested format: <code>[Brand]_[Funnel Stage]_[Audience]_[Date]</code></span></label></li>
+      <li><label class="chk"><input type="checkbox"><span>Use <strong>CBO</strong> (campaign budget) for TOF, <strong>ABO</strong> (ad set budget) for testing</span></label></li>
+    </ul>
+  </section>
+
+  <!-- PHASE 8 -->
+  <section class="phase">
+    <div class="phase-head"><span class="pn">08</span><h2>Pre-launch verification</h2></div>
+    <p class="psub">The final gate. Don't publish anything until every box here is ticked.</p>
+    <ul class="items">
+      <li><label class="chk"><input type="checkbox"><span>Pixel fires correctly on all key pages</span></label></li>
+      <li><label class="chk"><input type="checkbox"><span>CAPI is active and EMQ is 6+</span></label></li>
+      <li><label class="chk"><input type="checkbox"><span>All standard events verified in Test Events</span></label></li>
+      <li><label class="chk"><input type="checkbox"><span>Payment method confirmed</span></label></li>
+      <li><label class="chk"><input type="checkbox"><span>Domain verified in the BM</span></label></li>
+      <li><label class="chk"><input type="checkbox"><span>Ad account timezone and currency confirmed</span></label></li>
+      <li><label class="chk"><input type="checkbox"><span>Catalog has no critical errors (if applicable)</span></label></li>
+      <li><label class="chk"><input type="checkbox"><span>Custom audiences are building</span></label></li>
+      <li><label class="chk"><input type="checkbox"><span>Naming convention applied</span></label></li>
+      <li><label class="chk"><input type="checkbox"><span>At least 2 BM admins added</span></label></li>
+    </ul>
+  </section>
+
+  <!-- COMMON MISTAKES -->
+  <section class="phase">
+    <div class="phase-head"><span class="pn">!</span><h2>Common mistakes to avoid</h2></div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Mistake</th><th>What it costs you</th></tr></thead>
+        <tbody>
+          <tr><td>Running ads from a personal ad account</td><td>Ban risk, and no business-level protection</td></tr>
+          <tr><td>Wrong timezone on the ad account</td><td>Reporting drifts and budget burns at the wrong hours</td></tr>
+          <tr><td>Duplicate pixel events</td><td>Inflated conversions; the algorithm trains on bad signals</td></tr>
+          <tr><td>No CAPI set up</td><td>20–40% of conversions lost post iOS 14</td></tr>
+          <tr><td>Skipping domain verification</td><td>Restricted targeting and lower ad trust</td></tr>
+          <tr><td>A single admin on the BM</td><td>Lock-out risk if that one person loses access</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    <div class="big">Set it up right once. <span class="g">Scale on top of it.</span></div>
+    <div>Meta Ads Account Setup Checklist · Build My Ai Ads Campaign · Build My Ai Freedom · by <a href="https://instagram.com/highnitin" target="_blank" rel="noopener">@highnitin</a></div>
+    <div style="margin-top:10px"><a href="https://buildmyaifreedom.com/" target="_blank" rel="noopener">buildmyaifreedom.com</a> · <a href="https://1managencyplan.in" target="_blank" rel="noopener">1managencyplan.in</a></div>
+  </footer>
+
+</div>
+
+<script>
+  const KEY = 'bmaac-meta-ads-checklist-v1';
+  const boxes = Array.from(document.querySelectorAll('.chk input[type=checkbox]'));
+  const doneEl = document.getElementById('done');
+  const totalEl = document.getElementById('total');
+  const fill = document.getElementById('barfill');
+  totalEl.textContent = boxes.length;
+
+  function save(){
+    try{ localStorage.setItem(KEY, JSON.stringify(boxes.map(b=>b.checked))); }catch(e){}
+  }
+  function render(){
+    const n = boxes.filter(b=>b.checked).length;
+    doneEl.textContent = n;
+    fill.style.width = boxes.length ? (n/boxes.length*100)+'%' : '0%';
+  }
+  function load(){
+    try{
+      const saved = JSON.parse(localStorage.getItem(KEY)||'[]');
+      if(Array.isArray(saved)) boxes.forEach((b,i)=>{ if(typeof saved[i]==='boolean') b.checked = saved[i]; });
+    }catch(e){}
+    render();
+  }
+  boxes.forEach(b=>b.addEventListener('change', ()=>{ save(); render(); }));
+  document.getElementById('reset').addEventListener('click', ()=>{
+    boxes.forEach(b=>b.checked=false); save(); render();
+  });
+  load();
+</script>
+</body>
+</html>
