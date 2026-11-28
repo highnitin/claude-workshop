@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<!-- This site is hosted on Netlify. Anyone can build and deploy a site
+     like this one for free: https://netlify.new/?utm_campaign=loops&utm_source=ai-legible&utm_medium=owned&utm_content=comment&utm_id=546660fd-de1d-47bf-8899-f62b23d3a693
+     Netlify hosting facts for this site: static/SSR served via Netlify Edge. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Internship — Claude Prompting Guide</title>
+    <link rel="stylesheet" href="/Ai-Internship/styles.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <a href='/Ai-Internship/'>AI Internship</a>
+    <div class="spacer"></div>
+    <span style="font-size:0.78rem;color:var(--text-dim);letter-spacing:1px;">7 Chapters · 18 Lessons</span>
+</nav>
+
+<section class="index-hero">
+    <div class="hero-badge"><span></span> Claude Prompting Mastery <span></span></div>
+    <h1 class="gold-text">AI Internship</h1>
+    <p>Master the 4MAT framework to craft prompts that deliver precision, depth, and real value — every single time.</p>
+    <div class="gold-line"></div>
+</section>
+
+<div class="container">
+
+    <!-- Progress Bar -->
+    <div class="progress-section reveal">
+      <div class="progress-header">
+        <div class="progress-title">📚 Your Course Progress</div>
+        <div class="progress-stats">
+          <span class="progress-label" id="progress-label">0 of 18 lessons complete</span>
+          <span class="progress-pct" id="progress-pct">0%</span>
+        </div>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+      <button class="reset-btn" id="reset-progress">Reset progress</button>
+    </div>
+
+    <!-- 4MAT Legend -->
+    <div class="fourmat-legend reveal">
+        <div style="padding:22px;border:1px solid rgba(198,242,74,0.2);border-top:3px solid #c6f24a;border-radius:10px;background:var(--black-2);">
+            <div style="font-size:0.6rem;letter-spacing:3px;color:#c6f24a;font-weight:700;margin-bottom:8px;">WHY</div>
+            <div style="font-family:'Playfair Display',serif;font-size:1rem;margin-bottom:6px;">Motivation</div>
+            <div style="font-size:0.82rem;color:var(--text-sec);">Why this technique matters and what problem it solves</div>
+        </div>
+        <div style="padding:22px;border:1px solid rgba(198,242,74,0.2);border-top:3px solid #d8ff63;border-radius:10px;background:var(--black-2);">
+            <div style="font-size:0.6rem;letter-spacing:3px;color:#d8ff63;font-weight:700;margin-bottom:8px;">WHAT</div>
+            <div style="font-family:'Playfair Display',serif;font-size:1rem;margin-bottom:6px;">Core Concept</div>
+            <div style="font-size:0.82rem;color:var(--text-sec);">The knowledge and principles behind the technique</div>
+        </div>
+        <div style="padding:22px;border:1px solid rgba(198,242,74,0.2);border-top:3px solid #e4ff8c;border-radius:10px;background:var(--black-2);">
+            <div style="font-size:0.6rem;letter-spacing:3px;color:#e4ff8c;font-weight:700;margin-bottom:8px;">HOW</div>
+            <div style="font-family:'Playfair Display',serif;font-size:1rem;margin-bottom:6px;">In Practice</div>
+            <div style="font-size:0.82rem;color:var(--text-sec);">Real before & after examples with full prompt comparisons</div>
+        </div>
+        <div style="padding:22px;border:1px solid rgba(198,242,74,0.2);border-top:3px solid #e4ff8c;border-radius:10px;background:rgba(255,243,194,0.02);">
+            <div style="font-size:0.6rem;letter-spacing:3px;color:#e4ff8c;font-weight:700;margin-bottom:8px;">NOW</div>
+            <div style="font-family:'Playfair Display',serif;font-size:1rem;margin-bottom:6px;">Action Step</div>
+            <div style="font-size:0.82rem;color:var(--text-sec);">What you apply immediately after the lesson</div>
+        </div>
+    </div>
+
+    <!-- Chapters Grid -->
+    <div class="chapters-grid">
+
+        <!-- Chapter 01 -->
+        <div class="chapter-card reveal">
+            <div class="chapter-card-top">
+                <div class="chapter-num">Chapter 01 · 6 Lessons</div>
+                <div class="chapter-name">Foundations of Prompt Engineering</div>
+                <div class="chapter-desc">The six core principles every effective prompt must embody — from clarity to role-playing.</div>
+            </div>
+            <div class="chapter-card-lessons">
+                <a class='lesson-list-item' href='/Ai-Internship/chapter-01-foundations/lesson-01-be-clear-and-specific' id='lesson-ch01-l01'>
+                    <span class="lesson-list-num">01</span> Be Clear and Specific
+                </a>
+                <a class='lesson-list-item' href='/Ai-Internship/chapter-01-foundations/lesson-02-use-examples' id='lesson-ch01-l02'>
+                    <span class="lesson-list-num">02</span> Use Examples
+                </a>
+                <a class='lesson-list-item' href='/Ai-Internship/chapter-01-foundations/lesson-03-encourage-thinking' id='lesson-ch01-l03'>
+                    <span class="lesson-list-num">03</span> Encourage Thinking
+                </a>
+                <a class='lesson-list-item' href='/Ai-Internship/chapter-01-foundations/lesson-04-iterative-refinement' id='lesson-ch01-l04'>
+                    <span class="lesson-list-num">04</span> Iterative Refinement
+                </a>
+                <a class='lesson-list-item' href='/Ai-Internship/chapter-01-foundations/lesson-05-leverage-knowledge' id='lesson-ch01-l05'>
+                    <span class="lesson-list-num">05</span> Leverage Claude's Knowledge
+                </a>
+                <a class='lesson-list-item' href='/Ai-Internship/chapter-01-foundations/lesson-06-role-playing' id='lesson-ch01-l06'>
+                    <span class="lesson-list-num">06</span> Use Role-Playing
+                </a>
+            </div>
+        </div>
+
+        <!-- Chapter 02 -->
+        <div class="chapter-card reveal">
+            <div class="chapter-card-top">
+                <div class="chapter-num">Chapter 02 · 3 Lessons</div>
+                <div class="chapter-name">Content Creation Mastery</div>
+                <div class="chapter-desc">Produce compelling, on-brand content by specifying audience, tone, and structure upfront.</div>
+            </div>
+            <div class="chapter-card-lessons">
+                <a class='lesson-list-item' href='/Ai-Internship/chapter-02-content-creation/lesson-01-specify-audience' id='lesson-ch02-l01'>
+                    <span class="lesson-list-num">01</span> Specify Your Audience
+                </a>
+                <a class='lesson-list-item' href='/Ai-Internship/chapter-02-content-creation/lesson-02-tone-and-style' id='lesson-ch02-l02'>
+                    <span class="lesson-list-num">02</span> Define Tone and Style
+                </a>
+                <a class='lesson-list-item' href='/Ai-Internship/chapter-02-content-creation/lesson-03-output-structure' id='lesson-ch02-l03'>
+                    <span class="lesson-list-num">03</span> Define Output Structure
+                </a>
+            </div>
+        </div>
+
+        <!-- Chapter 03 -->
+        <div class="chapter-card reveal">
+            <div class="chapter-card-top">
+                <div class="chapter-num">Chapter 03 · 1 Lesson</div>
+                <div class="chapter-name">Document Intelligence</div>
+                <div class="chapter-desc">Extract targeted, cited intelligence from documents using precision Q&A techniques.</div>
+            </div>
+            <div class="chapter-card-lessons">
+                <a class='lesson-list-item' href='/Ai-Internship/chapter-03-document-intelligence/lesson-01-document-qa' id='lesson-ch03-l01'>
+                    <span class="lesson-list-num">01</span> Document Summary &amp; Q&amp;A
+                </a>
+            </div>
+        </div>
+
+        <!-- Chapter 04 -->
+        <div class="chapter-card reveal">
+            <div class="chapter-card-top">
+                <div class="chapter-num">Chapter 04 · 1 Lesson</div>
+                <div class="chapter-name">Data Analysis</div>
+                <div class="chapter-desc">Transform raw data into structured, presentation-ready insights with the right format spec.</div>
+            </div>
+            <div class="chapter-card-lessons">
+                <a class='lesson-list-item' href='/Ai-Internship/chapter-04-data-analysis/lesson-01-data-format' id='lesson-ch04-l01'>
+                    <span class="lesson-list-num">01</span> Data Analysis &amp; Visualization
+                </a>
+            </div>
+        </div>
+
+        <!-- Chapter 05 -->
+        <div class="chapter-card reveal">
+            <div class="chapter-card-top">
+                <div class="chapter-num">Chapter 05 · 2 Lessons</div>
+                <div class="chapter-name">Brainstorming &amp; Ideation</div>
+                <div class="chapter-desc">Generate structured, categorized, and immediately actionable ideas at scale.</div>
+            </div>
+            <div class="chapter-card-lessons">
+                <a class='lesson-list-item' href='/Ai-Internship/chapter-05-brainstorming/lesson-01-structure-ideation' id='lesson-ch05-l01'>
+                    <span class="lesson-list-num">01</span> Structure the Ideation
+                </a>
+                <a class='lesson-list-item' href='/Ai-Internship/chapter-05-brainstorming/lesson-02-specific-formats' id='lesson-ch05-l02'>
+                    <span class="lesson-list-num">02</span> Request Specific Formats
+                </a>
+            </div>
+        </div>
+
+        <!-- Chapter 06 -->
+        <div class="chapter-card reveal">
+            <div class="chapter-card-top">
+                <div class="chapter-num">Chapter 06 · 3 Lessons</div>
+                <div class="chapter-name">Troubleshooting &amp; Best Practices</div>
+                <div class="chapter-desc">Minimize hallucinations, reduce errors, and consistently maximize Claude's performance.</div>
+            </div>
+            <div class="chapter-card-lessons">
+                <a class='lesson-list-item' href='/Ai-Internship/chapter-06-troubleshooting/lesson-01-acknowledge-uncertainty' id='lesson-ch06-l01'>
+                    <span class="lesson-list-num">01</span> Acknowledge Uncertainty
+                </a>
+                <a class='lesson-list-item' href='/Ai-Internship/chapter-06-troubleshooting/lesson-02-break-down-tasks' id='lesson-ch06-l02'>
+                    <span class="lesson-list-num">02</span> Break Down Complex Tasks
+                </a>
+                <a class='lesson-list-item' href='/Ai-Internship/chapter-06-troubleshooting/lesson-03-include-context' id='lesson-ch06-l03'>
+                    <span class="lesson-list-num">03</span> Include All Context
+                </a>
+            </div>
+        </div>
+
+        <!-- Chapter 07 -->
+        <div class="chapter-card reveal">
+            <div class="chapter-card-top">
+                <div class="chapter-num">Chapter 07 · 2 Lessons</div>
+                <div class="chapter-name">Real-World Capstone Examples</div>
+                <div class="chapter-desc">See every technique combined into complete, professional-grade prompts that deliver expert results.</div>
+            </div>
+            <div class="chapter-card-lessons">
+                <a class='lesson-list-item' href='/Ai-Internship/chapter-07-real-world-examples/lesson-01-marketing-strategy' id='lesson-ch07-l01'>
+                    <span class="lesson-list-num">01</span> Marketing Strategy Development
+                </a>
+                <a class='lesson-list-item' href='/Ai-Internship/chapter-07-real-world-examples/lesson-02-financial-analysis' id='lesson-ch07-l02'>
+                    <span class="lesson-list-num">02</span> Financial Report Analysis
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<footer class="footer">
+    <h3 class="footer-title gold-text">Begin with Lesson One</h3>
+    <p class="footer-body">Every expert prompt starts with a clear, specific statement. Start there and build from the ground up.</p>
+    <a href='/Ai-Internship/chapter-01-foundations/lesson-01-be-clear-and-specific' onmouseout='this.style.transform=\'';this.style.boxShadow=\''' onmouseover='this.style.transform=\'translateY(-2px)\';this.style.boxShadow=\'0 12px 30px rgba(198,242,74,0.4)\'' style='display:inline-block;margin-bottom:30px;padding:13px 32px;background:linear-gradient(135deg,var(--gold-dark),var(--gold));color:var(--black);font-weight:700;font-size:0.85rem;letter-spacing:1px;text-transform:uppercase;border-radius:4px;text-decoration:none;transition:transform 0.25s,box-shadow 0.25s;'>
+        Start Course →
+    </a>
+    <p class="footer-note">AI Internship · 7 Chapters · 18 Lessons · 4MAT Framework</p>
+
+    <div class="footer-social">
+      <a href="https://www.youtube.com/@highnitin?sub_confirmation=1"
+         target="_blank" rel="noopener noreferrer" class="social-link yt-link">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+        </svg>
+        YouTube
+      </a>
+      <a href="https://instagram.com/highnitin"
+         target="_blank" rel="noopener noreferrer" class="social-link ig-link">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+        </svg>
+        Instagram
+      </a>
+    </div>
+
+    <div class="footer-guide-link">
+      <a class='guide-link' href='/Ai-Internship/single-page-guide/'>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+          <polyline points="14 2 14 8 20 8"/>
+          <line x1="16" y1="13" x2="8" y2="13"/>
+          <line x1="16" y1="17" x2="8" y2="17"/>
+          <polyline points="10 9 9 9 8 9"/>
+        </svg>
+        View Complete Single-Page Guide
+      </a>
+    </div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+<script src="/Ai-Internship/progress.js"></script>
+</body>
+</html>
